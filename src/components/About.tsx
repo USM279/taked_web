@@ -5,7 +5,7 @@ export const About = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-heading font-bold text-gray-900 mb-4">مـــــن نـــــحـــــن</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">نحن شركة متخصصة في تقديم حلول متكاملة للأعمال في الإمارات
- نساعد رواد الأعمال والمستثمرين على تحقيق أهدافهم بكل ثقة وسهولة</p>
+نساعد رواد الأعمال والمستثمرين على تحقيق أهدافهم بكل ثقة وسهولة</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mt-12">
