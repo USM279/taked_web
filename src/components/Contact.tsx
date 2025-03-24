@@ -85,7 +85,7 @@ export const Contact = () => {
               </div>
               <div>
                 <h3 className="font-bold mb-2">العنوان</h3>
-                <p className="text-gray-600">الممزر سنتر، دبي، الإمارات العربية المتحدة</p>
+                <p className="text-gray-600">الممزر سنتر ، دبي ، الإمارات العربية المتحدة</p>
               </div>
             </div>
           </div>
