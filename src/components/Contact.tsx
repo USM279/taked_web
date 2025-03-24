@@ -102,7 +102,7 @@ export const Contact = () => {
               </div>
               <div>
                 <h3 className="font-bold mb-2">فيسبوك</h3>
-                <p className="text-gray-600">@taked24</p>
+                <p className="text-gray-600">taked24</p>
               </div>
             </a>
 
