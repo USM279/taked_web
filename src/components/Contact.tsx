@@ -1,5 +1,5 @@
-import React, { FormEvent, useState } from 'react';
-import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
+import React, { FormEvent, useState, useRef } from 'react';
+import { Phone, Mail, MapPin, Facebook, Instagram, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import emailjs from '@emailjs/browser';
 
@@ -11,6 +11,7 @@ interface FormData {
 }
 
 export const Contact = () => {
+  const form = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -22,27 +23,24 @@ export const Contact = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (!form.current) return;
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
-      await emailjs.send(
-        'service_ksxzmdp', // Service ID
-        'template_sdrkczt', // Template ID
-        {
-          to_name: 'Taked Team',
-          from_name: formData.name,
-          reply_to: formData.email,
-          phone: formData.phone,
-          message: formData.message,
-        },
-        'ljV2MAr3l3mVsuEue' // Public Key
+      const result = await emailjs.sendForm(
+        'service_ksxzmdp',
+        'template_sdrkczt',
+        form.current,
+        'ljV2MAr3l3mVsuEue'
       );
 
+      console.log('SUCCESS!', result.text);
       setSubmitStatus('success');
       setFormData({ name: '', email: '', phone: '', message: '' });
     } catch (error) {
-      console.error('Email error:', error);
+      console.error('FAILED...', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -58,87 +56,104 @@ export const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          <div className="space-y-6 md:space-y-8">
-            <div className="grid grid-cols-1 gap-4 md:gap-6">
-              <div className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                <div className="bg-primary/10 p-4 rounded-lg">
-                  <Phone className="text-primary w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-bold mb-2">اتصل بنا</h3>
-                  <p className="text-gray-600 direction-ltr" style={{ direction: 'ltr' }}>+971 56 433 1993</p>
-                  <p className="text-gray-600 direction-ltr" style={{ direction: 'ltr' }}>+971 56 433 1990</p>
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div className="space-y-4">
+            <div className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow h-[104px]">
+              <div className="bg-primary/10 p-4 rounded-lg">
+                <Phone className="text-primary w-6 h-6" />
               </div>
-
-              <div className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                <div className="bg-primary/10 p-4 rounded-lg">
-                  <Mail className="text-primary w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-bold mb-2">البريد الإلكتروني</h3>
-                  <p className="text-gray-600">info@taked.ae</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                <div className="bg-primary/10 p-4 rounded-lg">
-                  <MapPin className="text-primary w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-bold mb-2">العنوان</h3>
-                  <p className="text-gray-600">دبي، الإمارات العربية المتحدة</p>
-                </div>
+              <div>
+                <h3 className="font-bold mb-2">اتصل بنا</h3>
+                <p className="text-gray-600 direction-ltr" style={{ direction: 'ltr' }}>+971 56 433 1993</p>
+                <p className="text-gray-600 direction-ltr" style={{ direction: 'ltr' }}>+971 56 433 1990</p>
               </div>
             </div>
 
-            <div className="h-60 w-full rounded-2xl overflow-hidden shadow-lg">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d859.2126907243588!2d55.35295866975066!3d25.280019932076033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5d0fd57734fd%3A0xfea3c00a8bbf8117!2sMamzar%20Centre!5e0!3m2!1sen!2str!4v1739500443870!5m2!1sen!2str" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-full"
-              ></iframe>
+            <div className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow h-[104px]">
+              <div className="bg-primary/10 p-4 rounded-lg">
+                <Mail className="text-primary w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-bold mb-2">البريد الإلكتروني</h3>
+                <p className="text-gray-600">info@takedgroup.com</p>
+              </div>
             </div>
 
-            <div className="flex gap-4 justify-center mt-4">
-              <a 
-                href="https://www.facebook.com/taked24/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="bg-primary/10 p-4 rounded-lg hover:bg-primary/20 transition-all duration-300 hover:scale-105"
-              >
-                <Facebook className="text-primary w-6 h-6" />
-              </a>
-              <a 
-                href="https://www.instagram.com/taked.ae/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="bg-primary/10 p-4 rounded-lg hover:bg-primary/20 transition-all duration-300 hover:scale-105"
-              >
-                <Instagram className="text-primary w-6 h-6" />
-              </a>
+            <div className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow h-[104px]">
+              <div className="bg-primary/10 p-4 rounded-lg">
+                <MapPin className="text-primary w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-bold mb-2">العنوان</h3>
+                <p className="text-gray-600">المجاز سنتر، دبي، الإمارات العربية المتحدة</p>
+              </div>
             </div>
           </div>
 
+          <div className="space-y-4">
+            <a 
+              href="https://www.facebook.com/taked24/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow h-[104px]"
+            >
+              <div className="bg-primary/10 p-4 rounded-lg">
+                <Facebook className="text-primary w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-bold mb-2">فيسبوك</h3>
+                <p className="text-gray-600">@taked24</p>
+              </div>
+            </a>
+
+            <a 
+              href="https://www.instagram.com/taked.ae/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow h-[104px]"
+            >
+              <div className="bg-primary/10 p-4 rounded-lg">
+                <Instagram className="text-primary w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-bold mb-2">انستغرام</h3>
+                <p className="text-gray-600">taked.ae</p>
+              </div>
+            </a>
+
+            <a 
+              href="https://wa.me/971564331993?text=اهلا%20بكم%20مع%20تأكيد%20،%20كيف%20يمكننا%20خدمتكم%20؟"
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow h-[104px]"
+            >
+              <div className="bg-primary/10 p-4 rounded-lg">
+                <MessageCircle className="text-primary w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-bold mb-2">واتساب</h3>
+                <p className="text-gray-600" style={{ direction: 'ltr' }}>+971 56 433 1993</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <form 
+            ref={form}
             onSubmit={handleSubmit} 
-            className="glass-card p-6 rounded-lg shadow-md h-[520px]"
+            className="glass-card p-6 rounded-lg shadow-md md:h-[520px] order-1 md:order-2"
           >
             <div className="flex flex-col h-full">
               <div className="space-y-3">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="from_name" className="block text-sm font-medium text-gray-700 mb-1">
                     الاسم
                   </label>
                   <input 
                     type="text" 
-                    id="name" 
+                    name="from_name" 
+                    id="from_name" 
                     value={formData.name}
                     onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                     required
@@ -146,12 +161,13 @@ export const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="reply_to" className="block text-sm font-medium text-gray-700 mb-1">
                     البريد الإلكتروني
                   </label>
                   <input 
                     type="email" 
-                    id="email" 
+                    name="reply_to" 
+                    id="reply_to" 
                     value={formData.email}
                     onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                     required
@@ -164,6 +180,7 @@ export const Contact = () => {
                   </label>
                   <input 
                     type="tel" 
+                    name="phone" 
                     id="phone" 
                     dir="ltr"
                     value={formData.phone}
@@ -178,6 +195,7 @@ export const Contact = () => {
                     الرسالة
                   </label>
                   <textarea 
+                    name="message" 
                     id="message" 
                     rows={3} 
                     value={formData.message}
@@ -212,6 +230,34 @@ export const Contact = () => {
               </div>
             </div>
           </form>
+
+          <div className="h-[300px] md:h-[520px] rounded-2xl overflow-hidden shadow-lg order-2 md:order-1">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d859.2126907243588!2d55.35295866975066!3d25.280019932076033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5d0fd57734fd%3A0xfea3c00a8bbf8117!2sMamzar%20Centre!5e0!3m2!1sen!2str!4v1739500443870!5m2!1sen!2str" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0 }} 
+              allowFullScreen 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full h-full"
+            ></iframe>
+          </div>
+        </div>
+
+        <div className="text-center mt-16 pt-8 border-t border-gray-100">
+          <p className="text-sm text-gray-600">
+          ✨ Powered by{' '}
+            <a 
+              href="https://obada.me" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-primary hover:text-primary/80 font-semibold transition-colors duration-200"
+            >
+              Obada's
+            </a>
+            {' '}magic ✨
+          </p>
         </div>
       </div>
     </section>;
