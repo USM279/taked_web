@@ -127,6 +127,9 @@ export function Chatbot() {
   const [showOptions, setShowOptions] = useState(false);
   const [typing, setTyping] = useState(false);
 
+  // حالة لإظهار أيقونة الشات بوت بناءً على موقع التمرير
+  const [showChatIcon, setShowChatIcon] = useState(false);
+
   // مرجع للمحتوى لاستخدامه في التمرير التلقائي
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -155,6 +158,35 @@ export function Chatbot() {
     setShowOptions(false);
     setTyping(false);
   }, [i18n.language]);
+
+  // التحقق من موضع التمرير وإظهار الشات بوت عند التمرير لأسفل
+  useEffect(() => {
+    const handleScroll = () => {
+      // إظهار أيقونة الشات بوت بعد التمرير لأسفل بمقدار 300 بكسل
+      const scrollThreshold = 300;
+      if (window.scrollY > scrollThreshold) {
+        setShowChatIcon(true);
+      } else {
+        setShowChatIcon(false);
+
+        // إغلاق نافذة الشات أيضًا إذا كانت مفتوحة
+        if (open) {
+          setOpen(false);
+        }
+      }
+    };
+
+    // إضافة مستمع للتمرير
+    window.addEventListener("scroll", handleScroll);
+
+    // التحقق من الموضع الأولي
+    handleScroll();
+
+    // إزالة المستمع عند تفكيك المكون
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [open]);
 
   // عند بدء المحادثة
   const handleStart = () => {
@@ -226,10 +258,25 @@ export function Chatbot() {
           unicode-bidi: bidi-override;
           text-align: right;
         }
+        
+        /* تأثير ظهور/اختفاء أيقونة الشات بوت */
+        .chatbot-icon-show {
+          opacity: 1;
+          transform: translateY(0);
+          transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .chatbot-icon-hide {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.3s ease, transform 0.3s ease;
+          pointer-events: none;
+        }
       `}</style>
-      {/* أيقونة الشات بوت */}
+      {/* أيقونة الشات بوت - ستظهر فقط بعد التمرير لأسفل */}
       <button
-        className="fixed z-50 bottom-6 right-6 text-white rounded-full shadow-lg w-14 h-14 flex items-center justify-center chatbot-bounce focus:outline-none"
+        className={`fixed z-50 bottom-6 right-6 text-white rounded-full shadow-lg w-14 h-14 flex items-center justify-center chatbot-bounce focus:outline-none ${
+          showChatIcon ? "chatbot-icon-show" : "chatbot-icon-hide"
+        }`}
         style={{
           backgroundColor: COLORS.primary,
           boxShadow: `0 4px 24px 0 ${COLORS.primaryBorder}`,
@@ -241,7 +288,7 @@ export function Chatbot() {
       </button>
 
       {/* نافذة الشات بوت */}
-      {open && (
+      {open && showChatIcon && (
         <div className="fixed z-50 bottom-24 right-6 max-w-xs w-[350px] sm:w-[350px] chatbot-animate-in">
           <Card className="shadow-2xl border-0">
             <CardHeader
