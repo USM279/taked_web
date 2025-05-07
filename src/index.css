@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-ar: 'Noto Kufi Arabic', sans-serif;
+  --font-en: 'IBM Plex Sans', sans-serif;
+}
+
+html[dir="rtl"] {
+  font-family: var(--font-ar);
+}
+
+html[dir="ltr"] {
+  font-family: var(--font-en);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-lg border border-gray-200 rounded-2xl shadow-lg dark:bg-gray-800/80 dark:border-gray-700;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* ===== Animations ===== */
+
+  @keyframes cloud-move {
+    0% {
+      transform: translateX(-50vw);
+    }
+    100% {
+      transform: translateX(100vw);
+    }
+  }
+  
+  .animate-cloud-move-slow {
+    animation: cloud-move 120s linear infinite;
+  }
+  
+
+  @keyframes zeppelin-float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes balloon-float-up {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    25% {
+      transform: translateY(-10px) translateX(2px);
+    }
+    50% {
+      transform: translateY(-20px) translateX(-2px);
+    }
+    75% {
+      transform: translateY(-30px) translateX(2px);
+    }
+    100% {
+      transform: translateY(-40px) translateX(0);
+    }
+  }
+
+  .animate-cloud-move-slow {
+    animation: cloud-move 120s linear infinite;
+  }
+
+  .animate-zeppelin-float {
+    animation: zeppelin-float 10s ease-in-out infinite;
+  }
+
+  .animate-balloon-float-up {
+    animation: balloon-float-up 12s ease-in-out infinite;
+  }
+  
+}
