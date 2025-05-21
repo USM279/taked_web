@@ -22,11 +22,28 @@ export default defineConfig(({ mode }) => ({
         {
           src: 'public/en/index.html',
           dest: 'en'
+        },
+        {
+          src: 'index.html',
+          dest: 'en',
+          rename: 'index.html',
+          transform: (content) => {
+            return content
+              .toString()
+              .replace('lang="ar" dir="rtl"', 'lang="en" dir="ltr"');
+          }
         }
       ]
     }),
     
   ],
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

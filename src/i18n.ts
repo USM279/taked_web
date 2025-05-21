@@ -5,6 +5,10 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import arTranslation from './locales/ar/translation.json';
 import enTranslation from './locales/en/translation.json';
 
+// Attempt to retrieve saved language or use Arabic as default
+const savedLanguage = localStorage.getItem('i18nextLng');
+const defaultLanguage = (savedLanguage === 'en' || savedLanguage === 'ar') ? savedLanguage : 'ar';
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -17,7 +21,7 @@ i18n
         translation: enTranslation
       }
     },
-    lng: 'ar',
+    lng: defaultLanguage,
     fallbackLng: 'ar',
     detection: {
       order: ['localStorage', 'navigator'],
