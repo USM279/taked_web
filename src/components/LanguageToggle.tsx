@@ -7,14 +7,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const LanguageToggle = () => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  // تحميل اللغة المحفوظة عند بدء التشغيل
+    // Load the saved language when the component mounts
   useEffect(() => {
-    const savedLang = localStorage.getItem("language") || "ar";
+    const savedLang = localStorage.getItem("i18nextLng") || "ar";
     i18n.changeLanguage(savedLang);
     document.documentElement.dir = savedLang === "ar" ? "rtl" : "ltr";
   }, []);
@@ -22,13 +25,15 @@ export const LanguageToggle = () => {
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-    localStorage.setItem("language", lang);
+    localStorage.setItem("i18nextLng", lang);
 
-    const currentHash = window.location.hash;
-    const parts = currentHash.replace("#", "").split("/");
+    // Get the current path after the language
+    const pathParts = location.pathname.split("/").filter(Boolean);
+    const currentPath =
+      pathParts.length > 1 ? `/${pathParts.slice(1).join("/")}` : "";
 
-    const section = parts[1] || ""; // القسم الحالي إذا موجود
-    window.location.hash = section ? `#${lang}/${section}` : `#${lang}`;
+    // Navigate to the same path with the new language
+    navigate(`/${lang}${currentPath}${location.search}`);
 
     setIsOpen(false);
   };
