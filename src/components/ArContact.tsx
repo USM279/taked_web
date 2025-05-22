@@ -30,9 +30,102 @@ export const ArContact = () => {
     "idle" | "success" | "error"
   >("idle");
 
+  // حالة أخطاء الحقول
+  const [fieldErrors, setFieldErrors] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  // دالة التحقق من صحة رقم الهاتف الدولي
+  const validatePhoneNumber = (phone: string): boolean => {
+    // إزالة المسافات والرموز
+    const cleanPhone = phone.replace(/[\s\-\(\)]/g, "");
+
+    // التحقق من الأرقام الدولية (يجب أن يبدأ بـ + ويحتوي على 7-15 رقم)
+    const internationalPhoneRegex = /^\+[1-9]\d{6,14}$/;
+
+    // أو رقم محلي يحتوي على 7-11 رقم على الأقل
+    const localPhoneRegex = /^\d{7,11}$/;
+
+    return (
+      internationalPhoneRegex.test(cleanPhone) ||
+      localPhoneRegex.test(cleanPhone)
+    );
+  };
+
+  // دالة التحقق من صحة البريد الإلكتروني
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email) && email.length > 5;
+  };
+
+  // دالة التحقق من صحة الاسم
+  const validateName = (name: string): boolean => {
+    return name.trim().length >= 2 && name.trim().length <= 50;
+  };
+
+  // دالة التحقق من صحة الرسالة
+  const validateMessage = (message: string): boolean => {
+    return message.trim().length >= 10 && message.trim().length <= 500;
+  };
+
+  // دوال التحقق لكل حقل مع إظهار الأخطاء
+  const validateField = (fieldName: string, value: string) => {
+    let error = "";
+
+    switch (fieldName) {
+      case "name":
+        if (!value.trim()) {
+          error = "يرجى تعبئة الاسم";
+        } else if (!validateName(value)) {
+          error = "الاسم يجب أن يكون من 2-50 حرف";
+        }
+        break;
+
+      case "email":
+        if (!value.trim()) {
+          error = "يرجى تعبئة البريد الإلكتروني";
+        } else if (!validateEmail(value)) {
+          error = "يرجى إدخال بريد إلكتروني صحيح";
+        }
+        break;
+
+      case "phone":
+        if (!value.trim()) {
+          error = "يرجى تعبئة رقم الهاتف";
+        } else if (!validatePhoneNumber(value)) {
+          error = "يرجى إدخال رقم هاتف صحيح";
+        }
+        break;
+
+      case "message":
+        if (!value.trim()) {
+          error = "يرجى كتابة رسالتك";
+        } else if (!validateMessage(value)) {
+          error = "الرسالة يجب أن تكون من 10-500 حرف";
+        }
+        break;
+    }
+
+    setFieldErrors((prev) => ({ ...prev, [fieldName]: error }));
+    return error === "";
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.current) return;
+
+    // التحقق من صحة جميع البيانات
+    const isNameValid = validateField("name", formData.name);
+    const isEmailValid = validateField("email", formData.email);
+    const isPhoneValid = validateField("phone", formData.phone);
+    const isMessageValid = validateField("message", formData.message);
+
+    if (!isNameValid || !isEmailValid || !isPhoneValid || !isMessageValid) {
+      return; // لا نرسل النموذج إذا كان هناك أخطاء
+    }
 
     // التحقق من توفر إعدادات EmailJS
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -181,7 +274,7 @@ export const ArContact = () => {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  الاسم الكامل
+                  الاسم الكامل <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -190,13 +283,26 @@ export const ArContact = () => {
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, name: e.target.value }))
                   }
+                  onBlur={(e) => validateField("name", e.target.value)}
                   required
-                  className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                  minLength={2}
+                  maxLength={50}
+                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary ${
+                    fieldErrors.name ? "border-red-500" : "border-gray-300"
+                  }`}
+                  placeholder="مثال: عبادة فادي "
                 />
+                {fieldErrors.name ? (
+                  <p className="text-xs text-red-500 mt-1">
+                    {fieldErrors.name}
+                  </p>
+                ) : (
+                  <p className="text-xs text-gray-500 mt-1">الاسم مطلوب</p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  البريد الإلكتروني
+                  البريد الإلكتروني <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="email"
@@ -205,13 +311,26 @@ export const ArContact = () => {
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, email: e.target.value }))
                   }
+                  onBlur={(e) => validateField("email", e.target.value)}
                   required
-                  className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary ${
+                    fieldErrors.email ? "border-red-500" : "border-gray-300"
+                  }`}
+                  placeholder="مثال: example@email.com"
                 />
+                {fieldErrors.email ? (
+                  <p className="text-xs text-red-500 mt-1">
+                    {fieldErrors.email}
+                  </p>
+                ) : (
+                  <p className="text-xs text-gray-500 mt-1">
+                    البريد الإلكتروني مطلوب
+                  </p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  رقم الهاتف
+                  رقم الهاتف <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="tel"
@@ -221,14 +340,24 @@ export const ArContact = () => {
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, phone: e.target.value }))
                   }
+                  onBlur={(e) => validateField("phone", e.target.value)}
                   required
-                  className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-left"
-                  placeholder="+971 XX XXX XXXX"
+                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-left ${
+                    fieldErrors.phone ? "border-red-500" : "border-gray-300"
+                  }`}
+                  placeholder="+971 50 123 4567 "
                 />
+                {fieldErrors.phone ? (
+                  <p className="text-xs text-red-500 mt-1">
+                    {fieldErrors.phone}
+                  </p>
+                ) : (
+                  <p className="text-xs text-gray-500 mt-1">رقم هاتف مطلوب</p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  رسالتك
+                  رسالتك <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   name="message"
@@ -240,9 +369,24 @@ export const ArContact = () => {
                       message: e.target.value,
                     }))
                   }
+                  onBlur={(e) => validateField("message", e.target.value)}
                   required
-                  className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary resize-none"
+                  minLength={10}
+                  maxLength={500}
+                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary resize-none ${
+                    fieldErrors.message ? "border-red-500" : "border-gray-300"
+                  }`}
+                  placeholder="يرجى وصف احتياجاتك التجارية أو استفسارك بالتفصيل..."
                 ></textarea>
+                {fieldErrors.message ? (
+                  <p className="text-xs text-red-500 mt-1">
+                    {fieldErrors.message}
+                  </p>
+                ) : (
+                  <p className="text-xs text-gray-500 mt-1">
+                    رسالة مفصلة مطلوبة
+                  </p>
+                )}
               </div>
               <Button
                 type="submit"

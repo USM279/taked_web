@@ -30,9 +30,101 @@ export const EnContact = () => {
     "idle" | "success" | "error"
   >("idle");
 
+  // Field error states
+  const [fieldErrors, setFieldErrors] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  // Phone number validation function
+  const validatePhoneNumber = (phone: string): boolean => {
+    const cleanPhone = phone.replace(/[\s\-\(\)]/g, "");
+
+    // International phone format (+country code + 7-15 digits)
+    const internationalPhoneRegex = /^\+[1-9]\d{6,14}$/;
+
+    // Local phone format (7-11 digits)
+    const localPhoneRegex = /^\d{7,11}$/;
+
+    return (
+      internationalPhoneRegex.test(cleanPhone) ||
+      localPhoneRegex.test(cleanPhone)
+    );
+  };
+
+  // Email validation function
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email) && email.length > 5;
+  };
+
+  // Name validation function
+  const validateName = (name: string): boolean => {
+    return name.trim().length >= 2 && name.trim().length <= 50;
+  };
+
+  // Message validation function
+  const validateMessage = (message: string): boolean => {
+    return message.trim().length >= 10 && message.trim().length <= 500;
+  };
+
+  // Field validation with error display
+  const validateField = (fieldName: string, value: string) => {
+    let error = "";
+
+    switch (fieldName) {
+      case "name":
+        if (!value.trim()) {
+          error = "Please enter your name";
+        } else if (!validateName(value)) {
+          error = "Name must be 2-50 characters";
+        }
+        break;
+
+      case "email":
+        if (!value.trim()) {
+          error = "Please enter your email";
+        } else if (!validateEmail(value)) {
+          error = "Please enter a valid email address";
+        }
+        break;
+
+      case "phone":
+        if (!value.trim()) {
+          error = "Please enter your phone number";
+        } else if (!validatePhoneNumber(value)) {
+          error = "Please enter a valid phone number";
+        }
+        break;
+
+      case "message":
+        if (!value.trim()) {
+          error = "Please write your message";
+        } else if (!validateMessage(value)) {
+          error = "Message must be 10-500 characters";
+        }
+        break;
+    }
+
+    setFieldErrors((prev) => ({ ...prev, [fieldName]: error }));
+    return error === "";
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.current) return;
+
+    // Validate all form data
+    const isNameValid = validateField("name", formData.name);
+    const isEmailValid = validateField("email", formData.email);
+    const isPhoneValid = validateField("phone", formData.phone);
+    const isMessageValid = validateField("message", formData.message);
+
+    if (!isNameValid || !isEmailValid || !isPhoneValid || !isMessageValid) {
+      return; // Don't submit if there are errors
+    }
 
     // Check if EmailJS is configured
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -181,7 +273,7 @@ export const EnContact = () => {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name
+                  Full Name <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -190,13 +282,28 @@ export const EnContact = () => {
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, name: e.target.value }))
                   }
+                  onBlur={(e) => validateField("name", e.target.value)}
                   required
-                  className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                  minLength={2}
+                  maxLength={50}
+                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary ${
+                    fieldErrors.name ? "border-red-500" : "border-gray-300"
+                  }`}
+                  placeholder="e.g., Ahmed Mohammed Ali"
                 />
+                {fieldErrors.name ? (
+                  <p className="text-xs text-red-500 mt-1">
+                    {fieldErrors.name}
+                  </p>
+                ) : (
+                  <p className="text-xs text-gray-500 mt-1">
+                    Full name required
+                  </p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email Address
+                  Email Address <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="email"
@@ -205,13 +312,26 @@ export const EnContact = () => {
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, email: e.target.value }))
                   }
+                  onBlur={(e) => validateField("email", e.target.value)}
                   required
-                  className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary ${
+                    fieldErrors.email ? "border-red-500" : "border-gray-300"
+                  }`}
+                  placeholder="e.g., example@email.com"
                 />
+                {fieldErrors.email ? (
+                  <p className="text-xs text-red-500 mt-1">
+                    {fieldErrors.email}
+                  </p>
+                ) : (
+                  <p className="text-xs text-gray-500 mt-1">
+                    Email address required
+                  </p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Phone Number
+                  Phone Number <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="tel"
@@ -221,14 +341,26 @@ export const EnContact = () => {
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, phone: e.target.value }))
                   }
+                  onBlur={(e) => validateField("phone", e.target.value)}
                   required
-                  className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-left"
-                  placeholder="+971 XX XXX XXXX"
+                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-left ${
+                    fieldErrors.phone ? "border-red-500" : "border-gray-300"
+                  }`}
+                  placeholder="+971 50 123 4567"
                 />
+                {fieldErrors.phone ? (
+                  <p className="text-xs text-red-500 mt-1">
+                    {fieldErrors.phone}
+                  </p>
+                ) : (
+                  <p className="text-xs text-gray-500 mt-1">
+                    Phone number required
+                  </p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Your Message
+                  Your Message <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   name="message"
@@ -240,9 +372,24 @@ export const EnContact = () => {
                       message: e.target.value,
                     }))
                   }
+                  onBlur={(e) => validateField("message", e.target.value)}
                   required
-                  className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary resize-none"
+                  minLength={10}
+                  maxLength={500}
+                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary resize-none ${
+                    fieldErrors.message ? "border-red-500" : "border-gray-300"
+                  }`}
+                  placeholder="Please describe your business needs or inquiry..."
                 ></textarea>
+                {fieldErrors.message ? (
+                  <p className="text-xs text-red-500 mt-1">
+                    {fieldErrors.message}
+                  </p>
+                ) : (
+                  <p className="text-xs text-gray-500 mt-1">
+                    Detailed message required
+                  </p>
+                )}
               </div>
               <Button
                 type="submit"
