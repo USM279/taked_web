@@ -29,9 +29,10 @@ const App = () => {
               path="/"
               element={<Navigate to={`/${defaultLanguage}`} replace />}
             />
+            <Route path="/404" element={<NotFound />} />
             <Route path=":lng" element={<LanguageLayout />}>
               <Route index element={<Index />} />
-              {/* Add other pages here, for example: */}
+              {/* Add other pages here when ready: */}
               {/* <Route path="about" element={<About />} /> */}
               {/* <Route path="contact" element={<Contact />} /> */}
               <Route path="*" element={<NotFound />} />

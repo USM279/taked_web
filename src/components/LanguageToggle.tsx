@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { useNavigate, useLocation } from "react-router-dom";
-import { changeLanguage, getCurrentLanguage, Language } from "@/lib/language";
 
 export const LanguageToggle = () => {
   const { i18n } = useTranslation();
@@ -16,11 +15,8 @@ export const LanguageToggle = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleLanguageChange = (lang: Language) => {
-    // تغيير اللغة باستخدام النظام الجديد
-    changeLanguage(lang);
-
-    // تحديث المسار
+  const handleLanguageChange = (lang: "ar" | "en") => {
+    // تحديث المسار - LanguageLayout سيتولى تغيير اللغة تلقائياً
     const pathParts = location.pathname.split("/").filter(Boolean);
     const currentLang = pathParts[0];
 

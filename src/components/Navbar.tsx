@@ -233,18 +233,17 @@ export const Navbar = () => {
 
   const handleScroll = (id: string) => {
     // الحصول على اللغة الحالية من المسار
-    const currentLang = location.pathname.split("/")[1] || i18n.language;
+    const pathParts = location.pathname.split("/").filter(Boolean);
+    const currentLang = pathParts[0];
 
-    if (!["ar", "en"].includes(currentLang)) {
-      // إذا كانت اللغة غير صالحة، استخدم اللغة المحفوظة أو الافتراضية
-      const savedLang = localStorage.getItem("i18nextLng") || "ar";
-      navigate(`/${savedLang}/${id}`, { replace: true });
-    } else {
-      // تحديث المسار مع الحفاظ على اللغة
-      navigate(`/${currentLang}/${id}`, { replace: true });
-    }
+    // التأكد من أن اللغة صالحة، وإلا استخدم الافتراضية
+    const validLang =
+      currentLang === "ar" || currentLang === "en" ? currentLang : "ar";
 
-    // انتظر قليلاً للانتقال ثم قم بالتمرير
+    // تحديث المسار مع الحفاظ على اللغة
+    navigate(`/${validLang}/${id}`, { replace: true });
+
+    // انتظار قصير للانتقال ثم التمرير
     setTimeout(() => {
       const targetElement = document.getElementById(id);
       if (targetElement) {
@@ -252,7 +251,7 @@ export const Navbar = () => {
         const elementPosition = targetElement.offsetTop - navbarHeight;
         window.scrollTo({ top: elementPosition, behavior: "smooth" });
       }
-    }, 100);
+    }, 200); // زيادة الوقت قليلاً لضمان تحميل الصفحة
 
     // إغلاق القائمة المنسدلة في الهاتف المحمول
     setIsOpen(false);

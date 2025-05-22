@@ -15,6 +15,7 @@ i18n
     },
     lng: 'ar',
     fallbackLng: 'ar',
+    supportedLngs: ['ar', 'en'],
     detection: {
       order: ['path', 'localStorage', 'navigator'],
       lookupFromPathIndex: 0,
@@ -22,6 +23,9 @@ i18n
     },
     interpolation: {
       escapeValue: false
+    },
+    react: {
+      useSuspense: false
     }
   });
 
