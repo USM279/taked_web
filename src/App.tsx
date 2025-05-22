@@ -4,9 +4,9 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { ArPage } from "@/pages/ArPage";
-import { EnPage } from "@/pages/EnPage";
-import NotFound from "@/pages/NotFound";
+import { ArPage } from "./pages/ArPage";
+import { EnPage } from "./pages/EnPage";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (

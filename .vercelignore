@@ -1,12 +1,6 @@
 node_modules
 .git
 .vite
-src
 *.md
-tsconfig.json
-vite.config.ts
-eslint.config.js
-tailwind.config.ts
-postcss.config.js
-components.json
-package-lock.json 
+README.md
+backup_taked/ 

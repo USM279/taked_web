@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import { ArNavbar } from "@/components/ArNavbar";
-import { ArHero } from "@/components/ArHero";
-import { ArAbout } from "@/components/ArAbout";
-import { ArServices } from "@/components/ArServices";
-import { ArTestimonials } from "@/components/ArTestimonials";
-import { ArContact } from "@/components/ArContact";
-import { ArChatbot } from "@/components/ArChatbot";
+import { ArNavbar } from "../components/ArNavbar";
+import { ArHero } from "../components/ArHero";
+import { ArAbout } from "../components/ArAbout";
+import { ArServices } from "../components/ArServices";
+import { ArTestimonials } from "../components/ArTestimonials";
+import { ArContact } from "../components/ArContact";
+import { ArChatbot } from "../components/ArChatbot";
 
 export const ArPage = () => {
   useEffect(() => {
