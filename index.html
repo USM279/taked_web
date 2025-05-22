@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/thewebsite.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>تأكيد - خدمات تأسيس شركات في دبي | رجال أعمال | إقامة مستثمر</title>
     <meta
       name="keywords"
@@ -28,6 +34,24 @@
         } else {
           document.documentElement.lang = "ar";
           document.documentElement.dir = "rtl";
+        }
+
+        // معالجة المسارات الرئيسية للغة
+        var path = window.location.pathname;
+        var pathParts = path.split("/").filter(function (p) {
+          return p;
+        });
+
+        // التحقق مما إذا كان المسار هو مسار رئيسي للغة فقط (مثل /ar أو /en)
+        if (
+          pathParts.length === 1 &&
+          (pathParts[0] === "ar" || pathParts[0] === "en")
+        ) {
+          // إضافة معلمة للمسار لتجنب مشكلة التخزين المؤقت
+          if (!window.location.search) {
+            var timestamp = new Date().getTime();
+            window.history.replaceState(null, "", path + "?_=" + timestamp);
+          }
         }
       })();
     </script>

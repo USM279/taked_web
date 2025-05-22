@@ -9,7 +9,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { RouteHandler } from "./components/RouteHandler";
 import { Analytics } from "@vercel/analytics/react";
 import { Chatbot } from "@/components/Chatbot";
-import { getCurrentLanguage } from "./lib/language";
+import { getCurrentLanguage, handleRootLanguagePaths } from "./lib/language";
 import { useEffect } from "react";
 
 const queryClient = new QueryClient();
@@ -23,6 +23,9 @@ const App = () => {
     // تعيين اتجاه الصفحة بناءً على اللغة
     document.documentElement.dir = defaultLanguage === "ar" ? "rtl" : "ltr";
     document.documentElement.lang = defaultLanguage;
+
+    // معالجة المسارات الرئيسية للغة
+    handleRootLanguagePaths();
   }, []);
 
   return (

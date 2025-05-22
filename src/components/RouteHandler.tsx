@@ -4,6 +4,7 @@ import {
   isValidLanguage,
   getCurrentLanguage,
   changeLanguage,
+  handleRootLanguagePaths,
 } from "@/lib/language";
 
 export const RouteHandler = () => {
@@ -34,6 +35,11 @@ export const RouteHandler = () => {
 
     // تغيير اللغة بناءً على المسار
     changeLanguage(pathLang);
+
+    // معالجة المسارات الرئيسية للغة
+    if (pathParts.length === 1 && isValidLanguage(pathLang)) {
+      handleRootLanguagePaths();
+    }
   }, [location.pathname, navigate]);
 
   return null;

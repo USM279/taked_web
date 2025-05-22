@@ -58,4 +58,19 @@ export const changeLanguage = (lang: Language): void => {
 export const initializeLanguage = (): void => {
   const currentLang = getCurrentLanguage();
   changeLanguage(currentLang);
+};
+
+// معالجة تحديث الصفحة على المسارات الرئيسية للغة
+export const handleRootLanguagePaths = (): void => {
+  const path = window.location.pathname;
+  const pathParts = path.split('/').filter(Boolean);
+  
+  // التحقق مما إذا كان المسار هو مسار رئيسي للغة فقط (مثل /ar أو /en)
+  if (pathParts.length === 1 && isValidLanguage(pathParts[0])) {
+    // إضافة علامة استفهام للمسار لتجنب مشكلة التحديث
+    if (!window.location.search) {
+      const newPath = `${path}?t=${Date.now()}`;
+      window.history.replaceState(null, '', newPath);
+    }
+  }
 }; 
