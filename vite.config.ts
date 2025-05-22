@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import fs from 'fs';
 
 
 // https://vitejs.dev/config/
@@ -20,8 +21,13 @@ export default defineConfig(({ mode }) => ({
     viteStaticCopy({
       targets: [
         {
-          src: 'public/en/index.html',
-          dest: 'en'
+          src: '_redirects',
+          dest: ''
+        },
+        {
+          src: 'index.html',
+          dest: 'ar',
+          rename: 'index.html'
         },
         {
           src: 'index.html',
@@ -35,7 +41,16 @@ export default defineConfig(({ mode }) => ({
         }
       ]
     }),
-    
+    {
+      name: 'generate-200-html',
+      closeBundle: () => {
+        if (fs.existsSync('dist/index.html')) {
+          // نسخ ملف index.html إلى 200.html لدعم التوجيه على Vercel
+          fs.copyFileSync('dist/index.html', 'dist/200.html');
+          console.log('Created 200.html for better SPA routing');
+        }
+      }
+    }
   ],
   build: {
     rollupOptions: {

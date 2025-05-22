@@ -29,6 +29,21 @@
           document.documentElement.lang = "ar";
           document.documentElement.dir = "rtl";
         }
+
+        // التحقق من المسار وإعادة التوجيه إذا لزم الأمر
+        var path = window.location.pathname;
+        var pathParts = path.split("/").filter(function (p) {
+          return p;
+        });
+
+        if (
+          !pathParts.length ||
+          (pathParts[0] !== "ar" && pathParts[0] !== "en")
+        ) {
+          var langToUse = savedLang === "en" ? "en" : "ar";
+          var newPath = "/" + langToUse + (path === "/" ? "" : path);
+          window.location.replace(newPath);
+        }
       })();
     </script>
   </head>

@@ -15,7 +15,7 @@ export const LanguageToggle = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-    // Load the saved language when the component mounts
+  // تحميل اللغة المحفوظة عند تحميل المكون
   useEffect(() => {
     const savedLang = localStorage.getItem("i18nextLng") || "ar";
     i18n.changeLanguage(savedLang);
@@ -23,17 +23,25 @@ export const LanguageToggle = () => {
   }, []);
 
   const changeLanguage = (lang: string) => {
+    // تغيير اللغة في i18n
     i18n.changeLanguage(lang);
+
+    // تعيين اتجاه الصفحة بناءً على اللغة
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+    // حفظ اللغة في التخزين المحلي
     localStorage.setItem("i18nextLng", lang);
 
-    // Get the current path after the language
+    // الحصول على المسار الحالي بعد اللغة
     const pathParts = location.pathname.split("/").filter(Boolean);
-    const currentPath =
+
+    // إذا كان المسار يحتوي على لغة (ar أو en)، استبدلها بالمسار الجديد
+    const restPath =
       pathParts.length > 1 ? `/${pathParts.slice(1).join("/")}` : "";
 
-    // Navigate to the same path with the new language
-    navigate(`/${lang}${currentPath}${location.search}`);
+    // التنقل إلى نفس المسار باللغة الجديدة
+    const newPath = `/${lang}${restPath}`;
+    navigate(newPath, { replace: true });
 
     setIsOpen(false);
   };

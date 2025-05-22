@@ -1,10 +1,11 @@
 {
   "version": 2,
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/en", "destination": "/index.html" },
+    { "source": "/ar", "destination": "/index.html" },
+    { "source": "/en/(.*)", "destination": "/index.html" },
+    { "source": "/ar/(.*)", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "trailingSlash": false
 }

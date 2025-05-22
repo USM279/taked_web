@@ -232,12 +232,17 @@ export const Navbar = () => {
   const location = useLocation();
 
   const handleScroll = (id: string) => {
-    const currentLang =
-      location.pathname.split("/")[1] || (i18n.language === "ar" ? "ar" : "en");
-    const element = document.getElementById(id);
+    // الحصول على اللغة الحالية من المسار
+    const currentLang = location.pathname.split("/")[1] || i18n.language;
 
-    // تحديث المسار مع الحفاظ على اللغة
-    navigate(`/${currentLang}/${id}`);
+    if (!["ar", "en"].includes(currentLang)) {
+      // إذا كانت اللغة غير صالحة، استخدم اللغة المحفوظة أو الافتراضية
+      const savedLang = localStorage.getItem("i18nextLng") || "ar";
+      navigate(`/${savedLang}/${id}`, { replace: true });
+    } else {
+      // تحديث المسار مع الحفاظ على اللغة
+      navigate(`/${currentLang}/${id}`, { replace: true });
+    }
 
     // انتظر قليلاً للانتقال ثم قم بالتمرير
     setTimeout(() => {
@@ -248,6 +253,9 @@ export const Navbar = () => {
         window.scrollTo({ top: elementPosition, behavior: "smooth" });
       }
     }, 100);
+
+    // إغلاق القائمة المنسدلة في الهاتف المحمول
+    setIsOpen(false);
   };
 
   return i18n.language === "ar" ? (

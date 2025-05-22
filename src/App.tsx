@@ -6,31 +6,50 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { LanguageHashHandler } from "./components/LanguageHashHandler";
+import { RouteHandler } from "./components/RouteHandler";
 import { Analytics } from "@vercel/analytics/react";
 import { Chatbot } from "@/components/Chatbot";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <LanguageHashHandler />
-        <Routes>
-          <Route path="/" element={<Navigate to="/ar" replace />} />
-          <Route path="/ar/*" element={<Index />} />
-          <Route path="/en/*" element={<Index />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-      <SpeedInsights />
-      <Analytics />
-      <Chatbot />
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  // الحصول على اللغة المحفوظة أو استخدام العربية كلغة افتراضية
+  const savedLanguage = localStorage.getItem("i18nextLng");
+  const defaultLanguage =
+    savedLanguage === "en" || savedLanguage === "ar" ? savedLanguage : "ar";
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <RouteHandler />
+          <Routes>
+            {/* توجيه المستخدم إلى المسار الصحيح مع اللغة المحفوظة */}
+            <Route
+              path="/"
+              element={<Navigate to={`/${defaultLanguage}`} replace />}
+            />
+
+            {/* مسارات اللغة العربية */}
+            <Route path="/ar" element={<Index />} />
+            <Route path="/ar/*" element={<Index />} />
+
+            {/* مسارات اللغة الإنجليزية */}
+            <Route path="/en" element={<Index />} />
+            <Route path="/en/*" element={<Index />} />
+
+            {/* مسار غير موجود */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+        <SpeedInsights />
+        <Analytics />
+        <Chatbot />
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

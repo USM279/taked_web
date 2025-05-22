@@ -10,22 +10,36 @@ export const LanguageHashHandler = () => {
   useEffect(() => {
     const pathname = location.pathname;
 
-    // Check the path and determine the language
+    // تقسيم المسار للحصول على اللغة
     const pathParts = pathname.split("/").filter(Boolean);
     const currentLang = pathParts[0];
 
-    // Handle the normal path
+    // التحقق من اللغة في المسار
     if (["ar", "en"].includes(currentLang)) {
+      // تغيير اللغة في i18n
       i18n.changeLanguage(currentLang);
+
+      // تعيين اتجاه الصفحة بناءً على اللغة
       document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
-      // Save language in local storage
+
+      // حفظ اللغة في التخزين المحلي
       localStorage.setItem("i18nextLng", currentLang);
-    } else if (pathname === "/") {
-      // Retrieve language from local storage or use Arabic as default
+    } else if (pathname === "/" || !currentLang) {
+      // إذا كان المسار هو الجذر أو لا توجد لغة محددة
+      // استرجاع اللغة المحفوظة أو استخدام العربية كلغة افتراضية
       const savedLang = localStorage.getItem("i18nextLng");
       const langToUse =
         savedLang && ["ar", "en"].includes(savedLang) ? savedLang : "ar";
-      navigate(`/${langToUse}`);
+
+      // توجيه المستخدم إلى المسار الصحيح مع اللغة المحفوظة
+      navigate(`/${langToUse}${location.search}`, { replace: true });
+    } else {
+      // إذا كان المسار غير صالح، توجيه المستخدم إلى المسار الصحيح مع اللغة المحفوظة
+      const savedLang = localStorage.getItem("i18nextLng");
+      const langToUse =
+        savedLang && ["ar", "en"].includes(savedLang) ? savedLang : "ar";
+
+      navigate(`/${langToUse}${location.search}`, { replace: true });
     }
   }, [location.pathname]);
 
