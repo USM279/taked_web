@@ -36,11 +36,11 @@ const App = () => {
         <BrowserRouter>
           <RouteHandler />
           <Routes>
-  <Route path="/" element={<Navigate to="/ar" replace />} />
-  <Route path="/ar/*" element={<Index />} />
-  <Route path="/en/*" element={<Index />} />
-  <Route path="*" element={<NotFound />} />
-</Routes>
+            <Route path="/" element={<Navigate to="/ar" replace />} />
+            <Route path="/ar/*" element={<Index />} />
+            <Route path="/en/*" element={<Index />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </BrowserRouter>
         <SpeedInsights />
         <Analytics />
