@@ -12,72 +12,72 @@ import {
   HeartPulse,
   ScrollText,
 } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
-export const Services = () => {
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n.language === "ar";
-
+export const EnServices = () => {
   const services = [
     {
       icon: Briefcase,
-      title: t("services.economicDept.title"),
-      description: t("services.economicDept.description"),
+      title: "DED Services",
+      description: "Company formation and trade license processing",
     },
     {
       icon: Plane,
-      title: t("services.visas.title"),
-      description: t("services.visas.description"),
+      title: "Visa Services",
+      description:
+        "Issue and renewal of all types of visas (tourist, work, family)",
     },
     {
       icon: Building,
-      title: t("services.rent.title"),
-      description: t("services.rent.description"),
+      title: "Tenancy Services",
+      description:
+        "Certification and renewal of tenancy contracts as per official regulations",
     },
     {
       icon: UserCheck,
-      title: t("services.emiratesId.title"),
-      description: t("services.emiratesId.description"),
+      title: "Emirates ID Services",
+      description: "Quick and easy issuance and renewal of Emirates ID",
     },
     {
       icon: FileText,
-      title: t("services.residency.title"),
-      description: t("services.residency.description"),
+      title: "Residency Services",
+      description:
+        "Procedures for issuing and renewing all types of residencies",
     },
     {
       icon: Scale,
-      title: t("services.legal.title"),
-      description: t("services.legal.description"),
+      title: "Legal & Licensing",
+      description: "Official licensing and commercial contract processing",
     },
     {
       icon: Users,
-      title: t("services.mohre.title"),
-      description: t("services.mohre.description"),
+      title: "MOHRE Services",
+      description:
+        "Transactions with the Ministry of Human Resources & Emiratisation",
     },
     {
       icon: ShieldCheck,
-      title: t("services.gdrfa.title"),
-      description: t("services.gdrfa.description"),
+      title: "GDRFA Services",
+      description: "Quick and accurate immigration and residency transactions",
     },
     {
       icon: HeartPulse,
-      title: t("services.personalInsurance.title"),
-      description: t("services.personalInsurance.description"),
+      title: "Individual & Staff Insurance",
+      description: "Approved health insurance for individuals and employees",
     },
     {
       icon: DollarSign,
-      title: t("services.projectInsurance.title"),
-      description: t("services.projectInsurance.description"),
+      title: "Business & Project Insurance",
+      description: "Protection for projects, buildings, and construction sites",
     },
     {
       icon: FileSignature,
-      title: t("services.translation.title"),
-      description: t("services.translation.description"),
+      title: "Document Attestation & Translation",
+      description: "Certified legal document attestation and translation",
     },
     {
       icon: ScrollText,
-      title: t("services.notary.title"),
-      description: t("services.notary.description"),
+      title: "Notary Services",
+      description: "Official authentication of contracts and transactions",
     },
   ];
 
@@ -85,7 +85,7 @@ export const Services = () => {
     <section
       id="services"
       className="py-20"
-      dir={isRTL ? "rtl" : "ltr"}
+      dir="ltr"
       style={{
         backgroundImage: "linear-gradient(to bottom, white, rgb(240 249 255))",
       }}
@@ -93,10 +93,11 @@ export const Services = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-heading font-bold text-gray-900 mb-4">
-            {t("services.sectionTitle")}
+            Our Services
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {t("services.sectionDescription")}
+            We provide a comprehensive suite of services to meet all your
+            business needs in the UAE
           </p>
         </div>
 
