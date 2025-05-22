@@ -5,28 +5,24 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import arTranslation from './locales/ar/translation.json';
 import enTranslation from './locales/en/translation.json';
 
-// تهيئة i18n
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources: {
-      ar: {
-        translation: arTranslation
-      },
-      en: {
-        translation: enTranslation
-      }
+      ar: { translation: arTranslation },
+      en: { translation: enTranslation }
     },
+    lng: 'ar',
     fallbackLng: 'ar',
     detection: {
       order: ['path', 'localStorage', 'navigator'],
       lookupFromPathIndex: 0,
-      caches: ['localStorage'],
+      caches: ['localStorage']
     },
     interpolation: {
       escapeValue: false
     }
   });
 
-export default i18n; 
+export default i18n;
