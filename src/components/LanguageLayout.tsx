@@ -29,31 +29,35 @@ export const LanguageLayout = () => {
   }
 
   useEffect(() => {
-    // تغيير اللغة في i18n فقط إذا لم تكن محددة بالفعل
-    if (i18n.language !== lng) {
-      i18n.changeLanguage(lng);
-    }
+    const updateLanguage = async () => {
+      // تغيير اللغة في i18n وانتظار تحميلها
+      if (i18n.language !== lng) {
+        await i18n.changeLanguage(lng);
+      }
 
-    // تحديث اتجاه الصفحة ولغتها
-    document.documentElement.dir = lng === "ar" ? "rtl" : "ltr";
-    document.documentElement.lang = lng;
+      // تحديث اتجاه الصفحة ولغتها
+      document.documentElement.dir = lng === "ar" ? "rtl" : "ltr";
+      document.documentElement.lang = lng;
 
-    // حفظ اللغة في localStorage
-    localStorage.setItem("i18nextLng", lng);
+      // حفظ اللغة في localStorage
+      localStorage.setItem("i18nextLng", lng);
 
-    // التمرير إلى القسم المطلوب إذا كان موجوداً في الـ URL
-    if (pathParts.length > 1) {
-      const targetSection = pathParts[1];
-      setTimeout(() => {
-        const targetElement = document.getElementById(targetSection);
-        if (targetElement) {
-          const navbarHeight = 80;
-          const elementPosition = targetElement.offsetTop - navbarHeight;
-          window.scrollTo({ top: elementPosition, behavior: "smooth" });
-        }
-      }, 500); // انتظار أطول للتأكد من تحميل الصفحة
-    }
-  }, [lng, location.pathname]);
+      // التمرير إلى القسم المطلوب إذا كان موجوداً في الـ URL
+      if (pathParts.length > 1) {
+        const targetSection = pathParts[1];
+        setTimeout(() => {
+          const targetElement = document.getElementById(targetSection);
+          if (targetElement) {
+            const navbarHeight = 80;
+            const elementPosition = targetElement.offsetTop - navbarHeight;
+            window.scrollTo({ top: elementPosition, behavior: "smooth" });
+          }
+        }, 300); // زيادة الوقت للتأكد من تحميل الترجمات
+      }
+    };
+
+    updateLanguage();
+  }, [lng, location.pathname, pathParts]);
 
   return <Outlet />;
 };

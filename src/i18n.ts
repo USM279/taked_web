@@ -16,6 +16,7 @@ i18n
     lng: 'ar',
     fallbackLng: 'ar',
     supportedLngs: ['ar', 'en'],
+    debug: false,
     detection: {
       order: ['path', 'localStorage', 'navigator'],
       lookupFromPathIndex: 0,
@@ -26,7 +27,20 @@ i18n
     },
     react: {
       useSuspense: false
+    },
+    initImmediate: false,
+    saveMissing: false,
+    missingKeyHandler: (lng, ns, key) => {
+      console.warn(`Missing translation key: ${key} for language: ${lng}`);
     }
   });
+
+i18n.on('initialized', () => {
+  console.log('i18next initialized successfully');
+});
+
+i18n.on('failedLoading', (lng, ns, msg) => {
+  console.error(`Failed loading language ${lng}: ${msg}`);
+});
 
 export default i18n;
