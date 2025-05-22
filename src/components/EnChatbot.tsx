@@ -9,7 +9,7 @@ const englishChatbotOptions = [
     response: [
       "We are happy to help you obtain a business license! We provide comprehensive services including:",
       "• Free consultation to select the appropriate business activity",
-      "• Assistance in determining the suitable area for the license (Bur Dubai, Deira, Free Zones)",
+      "• Assistance in determining the suitable area for the license",
       "• Efficiently completing all government procedures",
       "Would you like to speak with one of our consultants for more details?",
     ],
@@ -17,12 +17,11 @@ const englishChatbotOptions = [
   {
     label: "Legal or visa/residency consultation",
     response: [
-      "We provide comprehensive visa, residency, and legal consultation services, including:",
+      "We provide comprehensive visa, residency, and legal consultation services:",
       "• Investor and company partner visas",
       "• Family and employee residency visas",
       "• Residency renewal and status adjustment services",
-      "• Legal consultations related to residency and visas",
-      "We can help you obtain the appropriate visa or consultation for your goals. Do you have a specific inquiry?",
+      "We can help you obtain the appropriate visa for your goals.",
     ],
   },
   {
@@ -30,13 +29,44 @@ const englishChatbotOptions = [
     response: [
       "You can contact us through:",
       "📞 Phone: +971 56 433 1993",
-      "📞 Phone: +971 56 433 1990",
       "📧 Email: info@takedgroup.com",
-      "🏢 Address: Ground Floor, Al Mamzar Centre - Deira - Dubai - UAE",
+      "🏢 Address: Ground Floor, Al Mamzar Centre - Deira - Dubai",
       "⏰ Working hours: Sunday - Thursday, 9:00 AM - 6:00 PM",
     ],
   },
 ];
+
+// تعريف الألوان الجديدة
+const COLORS = {
+  primary: "rgba(8, 47, 73, 1)",
+  primaryLight: "rgba(8, 47, 73, 0.1)",
+  primaryBorder: "rgba(8, 47, 73, 0.2)",
+  secondary: "#f8f9fa",
+  text: "#ffffff",
+  accent: "#e9f0f5",
+};
+
+function TypingIndicator() {
+  return (
+    <div className="flex items-center gap-2 mt-2 animate-fade-in">
+      <span
+        className="block w-2 h-2 rounded-full animate-bounce [animation-delay:0ms]"
+        style={{ backgroundColor: COLORS.primary }}
+      ></span>
+      <span
+        className="block w-2 h-2 rounded-full animate-bounce [animation-delay:150ms]"
+        style={{ backgroundColor: COLORS.primary }}
+      ></span>
+      <span
+        className="block w-2 h-2 rounded-full animate-bounce [animation-delay:300ms]"
+        style={{ backgroundColor: COLORS.primary }}
+      ></span>
+      <span className="text-xs" style={{ color: COLORS.primary + "CC" }}>
+        typing...
+      </span>
+    </div>
+  );
+}
 
 export function EnChatbot() {
   const [open, setOpen] = useState(false);
@@ -65,15 +95,19 @@ export function EnChatbot() {
     ]);
   }, []);
 
+  // Auto-scroll to bottom when new messages are added
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   const handleStart = () => {
     setStarted(true);
     setShowOptions(true);
   };
 
-  const handleOption = async (option: (typeof englishChatbotOptions)[0]) => {
+  const handleOption = (option: (typeof englishChatbotOptions)[0]) => {
     setMessages((msgs) => [...msgs, { from: "user", text: option.label }]);
     setShowOptions(false);
-
     setTimeout(() => {
       option.response.forEach((line, index) => {
         setTimeout(() => {
@@ -90,73 +124,93 @@ export function EnChatbot() {
   if (!showChatIcon) return null;
 
   return (
-    <div className="fixed bottom-6 left-6 z-50">
-      {!open ? (
-        <Button
-          onClick={() => setOpen(true)}
-          className="rounded-full w-14 h-14 bg-sky-950 hover:bg-sky-800 shadow-lg"
-        >
-          <MessageCircle className="w-6 h-6" />
-        </Button>
-      ) : (
-        <Card
-          className="w-80 h-96 shadow-xl bg-white border border-gray-200"
-          dir="ltr"
-        >
-          <CardHeader className="bg-sky-950 text-white rounded-t-lg">
-            <div className="flex justify-between items-center">
-              <CardTitle className="text-lg">Taked - Smart Assistant</CardTitle>
-              <Button variant="ghost" size="sm" onClick={() => setOpen(false)}>
-                <X className="w-4 h-4" />
-              </Button>
-            </div>
-          </CardHeader>
-          <CardContent className="p-4 h-full overflow-auto bg-white">
-            <div className="space-y-3">
-              {messages.map((msg, i) => (
-                <div
-                  key={i}
-                  className={`text-sm ${
-                    msg.from === "bot" ? "text-left" : "text-right"
-                  }`}
+    <>
+      {/* أيقونة الشاتبوت */}
+      {!open && (
+        <div className="fixed bottom-6 left-6 z-50">
+          <Button
+            onClick={() => setOpen(true)}
+            className="rounded-full w-14 h-14 bg-sky-950 hover:bg-sky-800 shadow-lg"
+          >
+            <MessageCircle className="w-6 h-6" />
+          </Button>
+        </div>
+      )}
+
+      {/* نافذة الشاتبوت */}
+      {open && (
+        <div className="fixed bottom-6 left-6 z-50">
+          <Card
+            className="w-[360px] h-[500px] shadow-2xl rounded-2xl border border-slate-200 bg-white overflow-hidden animate-fade-in"
+            dir="ltr"
+          >
+            <CardHeader className="bg-gradient-to-r from-sky-900 to-sky-700 text-white px-4 py-3 rounded-t-2xl relative z-10">
+              <div className="flex justify-between items-center">
+                <CardTitle className="text-lg font-bold tracking-wide">
+                  Taked - Smart Assistant
+                </CardTitle>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-white hover:bg-white/10 rounded-full relative z-20"
+                  onClick={() => setOpen(false)}
                 >
+                  <X className="w-5 h-5" />
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent className="p-4 h-[calc(100%-60px)] overflow-y-auto bg-white">
+              <div className="space-y-3">
+                {messages.map((msg, i) => (
                   <div
-                    className={`inline-block p-2 rounded-lg max-w-[80%] ${
-                      msg.from === "bot"
-                        ? "bg-gray-100 text-gray-800"
-                        : "bg-sky-950 text-white"
+                    key={i}
+                    className={`text-sm ${
+                      msg.from === "bot" ? "text-left" : "text-right"
                     }`}
                   >
-                    {msg.text}
-                  </div>
-                </div>
-              ))}
-
-              {!started && (
-                <Button onClick={handleStart} className="w-full bg-sky-950">
-                  Start Conversation
-                </Button>
-              )}
-
-              {showOptions && (
-                <div className="space-y-2">
-                  {englishChatbotOptions.map((option, i) => (
-                    <Button
-                      key={i}
-                      variant="outline"
-                      onClick={() => handleOption(option)}
-                      className="w-full text-left text-sm h-auto p-2"
+                    <div
+                      className={`inline-block px-4 py-2 rounded-xl max-w-[80%] whitespace-pre-line ${
+                        msg.from === "bot"
+                          ? "bg-gray-100 text-gray-800"
+                          : "bg-sky-950 text-white"
+                      }`}
                     >
-                      {option.label}
-                    </Button>
-                  ))}
-                </div>
-              )}
-            </div>
-            <div ref={messagesEndRef} />
-          </CardContent>
-        </Card>
+                      {msg.text.split("\n").map((line, index) => (
+                        <div key={index}>{line}</div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+
+                {!started && (
+                  <Button
+                    onClick={handleStart}
+                    className="w-full bg-sky-900 text-white hover:bg-sky-800 mt-4 rounded-xl py-2 text-base"
+                  >
+                    Start Conversation
+                  </Button>
+                )}
+
+                {showOptions && (
+                  <div className="space-y-2 mt-2">
+                    {englishChatbotOptions.map((option, i) => (
+                      <Button
+                        key={i}
+                        variant="outline"
+                        onClick={() => handleOption(option)}
+                        className="w-full text-left text-sm h-auto py-3 px-4 border-sky-950 hover:bg-sky-50 rounded-lg shadow-sm"
+                      >
+                        {option.label}
+                      </Button>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div ref={messagesEndRef} />
+            </CardContent>
+          </Card>
+        </div>
       )}
-    </div>
+    </>
   );
 }

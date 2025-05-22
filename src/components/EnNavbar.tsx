@@ -119,8 +119,8 @@ export const EnNavbar = () => {
                     href="tel:+971564331993"
                     className="flex items-center gap-2 justify-center bg-sky-950 text-white hover:bg-sky-800 px-4 py-3 rounded-md w-full text-lg"
                   >
-                    <Phone size={20} />
                     <span style={{ direction: "ltr" }}>+971 56 433 1993</span>
+                    <Phone size={20} />
                   </a>
                 </div>
               </div>

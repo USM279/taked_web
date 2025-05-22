@@ -63,8 +63,9 @@ export const ArNavbar = () => {
               href="tel:+971564331993"
               className="hidden md:flex items-center gap-2 text-white bg-sky-950 hover:bg-sky-800 px-4 py-2 rounded-md"
             >
-              <Phone size={18} />
+              
               <span style={{ direction: "ltr" }}>+971 56 433 1993</span>
+              <Phone size={18} />
             </a>
 
             {/* زر تغيير اللغة */}

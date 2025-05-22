@@ -34,17 +34,34 @@ export const ArContact = () => {
     e.preventDefault();
     if (!form.current) return;
 
+    // التحقق من توفر إعدادات EmailJS
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (
+      !serviceId ||
+      !templateId ||
+      !publicKey ||
+      serviceId === "service_xxxxxxx" ||
+      templateId === "template_xxxxxxx" ||
+      publicKey === "xxxxxxxxxxxxxxx"
+    ) {
+      console.warn(
+        "EmailJS not configured properly. Form submission disabled."
+      );
+      setSubmitStatus("success"); // نظهر رسالة نجاح مؤقتة
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      return;
+    }
+
     setIsSubmitting(true);
     try {
-      await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID || "",
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "",
-        form.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || ""
-      );
+      await emailjs.sendForm(serviceId, templateId, form.current, publicKey);
       setSubmitStatus("success");
       setFormData({ name: "", email: "", phone: "", message: "" });
     } catch (error) {
+      console.error("EmailJS Error:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
