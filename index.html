@@ -4,12 +4,6 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/thewebsite.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Cache-Control"
-      content="no-cache, no-store, must-revalidate"
-    />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
     <title>تأكيد - خدمات تأسيس شركات في دبي | رجال أعمال | إقامة مستثمر</title>
     <meta
       name="keywords"
@@ -24,32 +18,6 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Cairo:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <script>
-      // تهيئة اللغة والاتجاه من URL بشكل فوري
-      (function () {
-        // الحصول على اللغة من المسار أولاً
-        var pathLang = window.location.pathname.split("/")[1];
-        var finalLang = "ar"; // افتراضي
-
-        // إذا كانت اللغة في المسار صالحة، استخدمها
-        if (pathLang === "ar" || pathLang === "en") {
-          finalLang = pathLang;
-        } else {
-          // إذا لم تكن صالحة، جرب localStorage
-          var savedLang = localStorage.getItem("i18nextLng");
-          if (savedLang === "ar" || savedLang === "en") {
-            finalLang = savedLang;
-          }
-        }
-
-        // ضبط اللغة والاتجاه فوراً
-        document.documentElement.lang = finalLang;
-        document.documentElement.dir = finalLang === "ar" ? "rtl" : "ltr";
-
-        // حفظ اللغة في localStorage
-        localStorage.setItem("i18nextLng", finalLang);
-      })();
-    </script>
   </head>
   <body>
     <div id="root"></div>
