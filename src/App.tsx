@@ -5,28 +5,18 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+// import About from "./pages/About"; // Commented out if not present
+// import Contact from "./pages/Contact"; // Commented out if not present
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { RouteHandler } from "./components/RouteHandler";
 import { Analytics } from "@vercel/analytics/react";
 import { Chatbot } from "@/components/Chatbot";
-import { getCurrentLanguage, handleRootLanguagePaths } from "./lib/language";
-import { useEffect } from "react";
+import { getCurrentLanguage } from "./lib/language";
+import { LanguageLayout } from "./components/LanguageLayout";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  // الحصول على اللغة الحالية
   const defaultLanguage = getCurrentLanguage();
-
-  // تهيئة اللغة عند تحميل التطبيق
-  useEffect(() => {
-    // تعيين اتجاه الصفحة بناءً على اللغة
-    document.documentElement.dir = defaultLanguage === "ar" ? "rtl" : "ltr";
-    document.documentElement.lang = defaultLanguage;
-
-    // معالجة المسارات الرئيسية للغة
-    handleRootLanguagePaths();
-  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -34,14 +24,18 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <RouteHandler />
           <Routes>
             <Route
               path="/"
               element={<Navigate to={`/${defaultLanguage}`} replace />}
             />
-            <Route path=":lng" element={<Index />} />
-            <Route path=":lng/*" element={<Index />} />
+            <Route path=":lng" element={<LanguageLayout />}>
+              <Route index element={<Index />} />
+              {/* Add other pages here, for example: */}
+              {/* <Route path="about" element={<About />} /> */}
+              {/* <Route path="contact" element={<Contact />} /> */}
+              <Route path="*" element={<NotFound />} />
+            </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
