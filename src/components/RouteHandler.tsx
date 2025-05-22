@@ -1,11 +1,14 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import {
+  isValidLanguage,
+  getCurrentLanguage,
+  changeLanguage,
+} from "@/lib/language";
 
 export const RouteHandler = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { i18n } = useTranslation();
 
   useEffect(() => {
     // التحقق من المسار الحالي
@@ -14,33 +17,24 @@ export const RouteHandler = () => {
 
     // إذا كان المسار فارغًا، قم بالتوجيه إلى المسار الصحيح مع اللغة المحفوظة
     if (!pathParts.length) {
-      const savedLang = localStorage.getItem("i18nextLng") || "ar";
-      navigate(`/${savedLang}`, { replace: true });
+      const currentLang = getCurrentLanguage();
+      navigate(`/${currentLang}`, { replace: true });
       return;
     }
 
     // التحقق من اللغة في المسار
-    const currentLang = pathParts[0];
+    const pathLang = pathParts[0];
 
     // إذا كانت اللغة غير صالحة، قم بالتوجيه إلى المسار الصحيح مع اللغة المحفوظة
-    if (!["ar", "en"].includes(currentLang)) {
-      const savedLang = localStorage.getItem("i18nextLng") || "ar";
-      navigate(`/${savedLang}${path}`, { replace: true });
+    if (!isValidLanguage(pathLang)) {
+      const currentLang = getCurrentLanguage();
+      navigate(`/${currentLang}${path}`, { replace: true });
       return;
     }
 
-    // تغيير اللغة في i18n بناءً على المسار
-    if (i18n.language !== currentLang) {
-      i18n.changeLanguage(currentLang);
-    }
-
-    // تعيين اتجاه الصفحة بناءً على اللغة
-    document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
-    document.documentElement.lang = currentLang;
-
-    // حفظ اللغة في التخزين المحلي
-    localStorage.setItem("i18nextLng", currentLang);
-  }, [location.pathname]);
+    // تغيير اللغة بناءً على المسار
+    changeLanguage(pathLang);
+  }, [location.pathname, navigate]);
 
   return null;
 };

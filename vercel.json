@@ -1,11 +1,22 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/en", "destination": "/index.html" },
     { "source": "/ar", "destination": "/index.html" },
-    { "source": "/en/(.*)", "destination": "/index.html" },
+    { "source": "/en", "destination": "/index.html" },
     { "source": "/ar/(.*)", "destination": "/index.html" },
+    { "source": "/en/(.*)", "destination": "/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "s-maxage=1, stale-while-revalidate=59"
+        }
+      ]
+    }
   ],
   "trailingSlash": false
 }

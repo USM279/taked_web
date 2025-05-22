@@ -9,14 +9,21 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { RouteHandler } from "./components/RouteHandler";
 import { Analytics } from "@vercel/analytics/react";
 import { Chatbot } from "@/components/Chatbot";
+import { getCurrentLanguage } from "./lib/language";
+import { useEffect } from "react";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  // الحصول على اللغة المحفوظة أو استخدام العربية كلغة افتراضية
-  const savedLanguage = localStorage.getItem("i18nextLng");
-  const defaultLanguage =
-    savedLanguage === "en" || savedLanguage === "ar" ? savedLanguage : "ar";
+  // الحصول على اللغة الحالية
+  const defaultLanguage = getCurrentLanguage();
+
+  // تهيئة اللغة عند تحميل التطبيق
+  useEffect(() => {
+    // تعيين اتجاه الصفحة بناءً على اللغة
+    document.documentElement.dir = defaultLanguage === "ar" ? "rtl" : "ltr";
+    document.documentElement.lang = defaultLanguage;
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

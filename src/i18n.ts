@@ -5,13 +5,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import arTranslation from './locales/ar/translation.json';
 import enTranslation from './locales/en/translation.json';
 
-// محاولة استرداد اللغة المحفوظة أو استخدام العربية كلغة افتراضية
-const savedLanguage = localStorage.getItem('i18nextLng');
-const defaultLanguage = (savedLanguage === 'en' || savedLanguage === 'ar') ? savedLanguage : 'ar';
-
-// تعيين اتجاه الصفحة بناءً على اللغة الافتراضية
-document.documentElement.dir = defaultLanguage === 'ar' ? 'rtl' : 'ltr';
-
+// تهيئة i18n
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -24,7 +18,6 @@ i18n
         translation: enTranslation
       }
     },
-    lng: defaultLanguage,
     fallbackLng: 'ar',
     detection: {
       order: ['path', 'localStorage', 'navigator'],
@@ -35,11 +28,5 @@ i18n
       escapeValue: false
     }
   });
-
-// استمع إلى تغييرات اللغة وتحديث الاتجاه
-i18n.on('languageChanged', (lng) => {
-  document.documentElement.dir = lng === 'ar' ? 'rtl' : 'ltr';
-  localStorage.setItem('i18nextLng', lng);
-});
 
 export default i18n; 
