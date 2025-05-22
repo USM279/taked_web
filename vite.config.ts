@@ -20,10 +20,7 @@ export default defineConfig(({ mode }) => ({
     react(),
     viteStaticCopy({
       targets: [
-        {
-          src: '_redirects',
-          dest: ''
-        },
+        
         {
           src: 'index.html',
           dest: 'ar',
