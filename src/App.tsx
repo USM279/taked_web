@@ -36,9 +36,12 @@ const App = () => {
         <BrowserRouter>
           <RouteHandler />
           <Routes>
-            <Route path="/" element={<Navigate to="/ar" replace />} />
-            <Route path="/ar/*" element={<Index />} />
-            <Route path="/en/*" element={<Index />} />
+            <Route
+              path="/"
+              element={<Navigate to={`/${defaultLanguage}`} replace />}
+            />
+            <Route path=":lng" element={<Index />} />
+            <Route path=":lng/*" element={<Index />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

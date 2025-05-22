@@ -66,11 +66,11 @@ export const handleRootLanguagePaths = (): void => {
   const pathParts = path.split('/').filter(Boolean);
   
   // التحقق مما إذا كان المسار هو مسار رئيسي للغة فقط (مثل /ar أو /en)
-  if (pathParts.length === 1 && isValidLanguage(pathParts[0])) {
-    // إضافة علامة استفهام للمسار لتجنب مشكلة التحديث
-    if (!window.location.search) {
-      const newPath = `${path}?t=${Date.now()}`;
-      window.history.replaceState(null, '', newPath);
-    }
-  }
+  // تم تعطيل إضافة باراميتر البحث العشوائي لتجنب مشاكل إعادة التحميل
+  // if (pathParts.length === 1 && isValidLanguage(pathParts[0])) {
+  //   if (!window.location.search) {
+  //     const newPath = `${path}?t=${Date.now()}`;
+  //     window.history.replaceState(null, '', newPath);
+  //   }
+  // }
 }; 
