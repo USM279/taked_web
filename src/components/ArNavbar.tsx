@@ -19,7 +19,7 @@ export const ArNavbar = () => {
     <div className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-lg shadow-sm z-50 transition-all duration-300">
       <div dir="rtl" className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* الشعار - يمين */}
+          {/* logo - right */}
           <div className="flex-shrink-0">
             <img
               alt="شعار تأكيد"
@@ -29,7 +29,7 @@ export const ArNavbar = () => {
             />
           </div>
 
-          {/* الروابط - وسط */}
+            {/* links - center */}
           <div className="hidden md:flex items-center gap-8 flex-grow justify-center">
             <a
               onClick={() => handleScroll("home")}
@@ -57,7 +57,7 @@ export const ArNavbar = () => {
             </a>
           </div>
 
-          {/* زر الهاتف + تغيير اللغة - يسار */}
+          {/* phone button + change language - left */}
           <div className="flex items-center gap-4">
             <a
               href="tel:+971564331993"
@@ -68,7 +68,7 @@ export const ArNavbar = () => {
               <Phone size={18} />
             </a>
 
-            {/* زر تغيير اللغة */}
+            {/* change language button */}
             <Link
               to="/en"
               className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm font-medium"
@@ -82,7 +82,7 @@ export const ArNavbar = () => {
           </div>
         </div>
 
-        {/* قائمة الموبايل */}
+        {/* mobile menu */}
         {isOpen && (
           <div className="md:hidden py-4 animate-fade-down absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-lg border-b">
             <div className="container mx-auto px-4">

@@ -30,7 +30,7 @@ export const ArContact = () => {
     "idle" | "success" | "error"
   >("idle");
 
-  // حالة أخطاء الحقول
+  // state for field errors for validation
   const [fieldErrors, setFieldErrors] = useState({
     name: "",
     email: "",
@@ -38,15 +38,15 @@ export const ArContact = () => {
     message: "",
   });
 
-  // دالة التحقق من صحة رقم الهاتف الدولي
+  // validate phone number
   const validatePhoneNumber = (phone: string): boolean => {
-    // إزالة المسافات والرموز
+    // remove spaces and symbols
     const cleanPhone = phone.replace(/[\s\-\(\)]/g, "");
 
-    // التحقق من الأرقام الدولية (يجب أن يبدأ بـ + ويحتوي على 7-15 رقم)
+    // validate international phone number (must start with + and contain 7-15 digits)
     const internationalPhoneRegex = /^\+[1-9]\d{6,14}$/;
 
-    // أو رقم محلي يحتوي على 7-11 رقم على الأقل
+    // validate local phone number (must contain 7-11 digits)
     const localPhoneRegex = /^\d{7,11}$/;
 
     return (
@@ -55,23 +55,23 @@ export const ArContact = () => {
     );
   };
 
-  // دالة التحقق من صحة البريد الإلكتروني
+  // validate email
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email) && email.length > 5;
   };
 
-  // دالة التحقق من صحة الاسم
+  // validate name
   const validateName = (name: string): boolean => {
     return name.trim().length >= 2 && name.trim().length <= 50;
   };
 
-  // دالة التحقق من صحة الرسالة
+  // validate message
   const validateMessage = (message: string): boolean => {
     return message.trim().length >= 10 && message.trim().length <= 500;
   };
 
-  // دوال التحقق لكل حقل مع إظهار الأخطاء
+  // validate all fields with error messages
   const validateField = (fieldName: string, value: string) => {
     let error = "";
 
@@ -117,17 +117,17 @@ export const ArContact = () => {
     e.preventDefault();
     if (!form.current) return;
 
-    // التحقق من صحة جميع البيانات
+    // validate all data
     const isNameValid = validateField("name", formData.name);
     const isEmailValid = validateField("email", formData.email);
     const isPhoneValid = validateField("phone", formData.phone);
     const isMessageValid = validateField("message", formData.message);
 
     if (!isNameValid || !isEmailValid || !isPhoneValid || !isMessageValid) {
-      return; // لا نرسل النموذج إذا كان هناك أخطاء
+      return; // don't submit the form if there are errors
     }
 
-    // التحقق من توفر إعدادات EmailJS
+    // check if EmailJS is configured
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
@@ -143,7 +143,7 @@ export const ArContact = () => {
       console.warn(
         "EmailJS not configured properly. Form submission disabled."
       );
-      setSubmitStatus("success"); // نظهر رسالة نجاح مؤقتة
+        setSubmitStatus("success"); // show success message temporarily
       setFormData({ name: "", email: "", phone: "", message: "" });
       return;
     }
@@ -376,7 +376,7 @@ export const ArContact = () => {
                   className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary resize-none ${
                     fieldErrors.message ? "border-red-500" : "border-gray-300"
                   }`}
-                  placeholder="يرجى وصف احتياجاتك التجارية أو استفسارك بالتفصيل..."
+                  placeholder="يرجى وصف رسالتك بالتفصيل"
                 ></textarea>
                 {fieldErrors.message ? (
                   <p className="text-xs text-red-500 mt-1">

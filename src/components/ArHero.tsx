@@ -18,13 +18,13 @@ export const ArHero = () => {
       style={{ backgroundImage: "url('/photos/dubai.svg')" }}
       dir="rtl"
     >
-      {/* خلفية ضبابية فوق الصورة */}
+      {/* background blur */}
       <div className="absolute inset-0 bg-white/80 sm:bg-white/70 md:bg-white/60 backdrop-blur-sm z-0"></div>
 
-      {/* تدرج سفلي سلس */}
+      {/* bottom gradient */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-b from-transparent to-white z-10"></div>
 
-      {/* المحتوى */}
+        {/* content */}
       <div className="container mx-auto px-4 relative z-20">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-up rtl">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full font-body">

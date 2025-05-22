@@ -379,7 +379,7 @@ export const EnContact = () => {
                   className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary resize-none ${
                     fieldErrors.message ? "border-red-500" : "border-gray-300"
                   }`}
-                  placeholder="Please describe your business needs or inquiry..."
+                  placeholder="Please describe your message."
                 ></textarea>
                 {fieldErrors.message ? (
                   <p className="text-xs text-red-500 mt-1">

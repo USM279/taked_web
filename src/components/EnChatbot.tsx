@@ -36,7 +36,7 @@ const englishChatbotOptions = [
   },
 ];
 
-// تعريف الألوان الجديدة
+// define new colors
 const COLORS = {
   primary: "rgba(8, 47, 73, 1)",
   primaryLight: "rgba(8, 47, 73, 0.1)",
@@ -125,7 +125,7 @@ export function EnChatbot() {
 
   return (
     <>
-      {/* أيقونة الشاتبوت */}
+      {/* chatbot icon */}
       {!open && (
         <div className="fixed bottom-6 left-6 z-50">
           <Button
@@ -137,7 +137,7 @@ export function EnChatbot() {
         </div>
       )}
 
-      {/* نافذة الشاتبوت */}
+          {/* chatbot window */}
       {open && (
         <div className="fixed bottom-6 left-6 z-50">
           <Card
