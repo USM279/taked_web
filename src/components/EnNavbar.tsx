@@ -68,9 +68,9 @@ export const EnNavbar = () => {
             {/* Language Toggle */}
             <Link
               to="/ar"
-              className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm"
+              className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm font-medium"
             >
-              العربية
+              AR
             </Link>
 
             <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
@@ -110,9 +110,9 @@ export const EnNavbar = () => {
                 </a>
                 <Link
                   to="/ar"
-                  className="text-gray-700 hover:text-primary transition-colors"
+                  className="text-gray-700 hover:text-primary transition-colors font-medium"
                 >
-                  العربية
+                  AR
                 </Link>
                 <div className="w-full pt-4 border-t">
                   <a

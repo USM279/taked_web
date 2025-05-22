@@ -70,9 +70,9 @@ export const ArNavbar = () => {
             {/* زر تغيير اللغة */}
             <Link
               to="/en"
-              className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm"
+              className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm font-medium"
             >
-              English
+              EN
             </Link>
 
             <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
@@ -112,9 +112,9 @@ export const ArNavbar = () => {
                 </a>
                 <Link
                   to="/en"
-                  className="text-xl text-gray-700 hover:text-primary transition-colors"
+                  className="text-xl text-gray-700 hover:text-primary transition-colors font-medium"
                 >
-                  English
+                  EN
                 </Link>
                 <div className="w-full pt-4 border-t">
                   <a

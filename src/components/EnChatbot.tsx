@@ -99,7 +99,10 @@ export function EnChatbot() {
           <MessageCircle className="w-6 h-6" />
         </Button>
       ) : (
-        <Card className="w-80 h-96 shadow-xl" dir="ltr">
+        <Card
+          className="w-80 h-96 shadow-xl bg-white border border-gray-200"
+          dir="ltr"
+        >
           <CardHeader className="bg-sky-950 text-white rounded-t-lg">
             <div className="flex justify-between items-center">
               <CardTitle className="text-lg">Taked - Smart Assistant</CardTitle>
@@ -108,7 +111,7 @@ export function EnChatbot() {
               </Button>
             </div>
           </CardHeader>
-          <CardContent className="p-4 h-full overflow-auto">
+          <CardContent className="p-4 h-full overflow-auto bg-white">
             <div className="space-y-3">
               {messages.map((msg, i) => (
                 <div

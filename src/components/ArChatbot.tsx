@@ -97,7 +97,10 @@ export function ArChatbot() {
           <MessageCircle className="w-6 h-6" />
         </Button>
       ) : (
-        <Card className="w-80 h-96 shadow-xl" dir="rtl">
+        <Card
+          className="w-80 h-96 shadow-xl bg-white border border-gray-200"
+          dir="rtl"
+        >
           <CardHeader className="bg-sky-950 text-white rounded-t-lg">
             <div className="flex justify-between items-center">
               <CardTitle className="text-lg">تأكيد - المساعد الذكي</CardTitle>
@@ -106,7 +109,7 @@ export function ArChatbot() {
               </Button>
             </div>
           </CardHeader>
-          <CardContent className="p-4 h-full overflow-auto">
+          <CardContent className="p-4 h-full overflow-auto bg-white">
             <div className="space-y-3">
               {messages.map((msg, i) => (
                 <div
