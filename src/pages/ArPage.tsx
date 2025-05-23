@@ -6,6 +6,7 @@ import { ArServices } from "../components/ArServices";
 import { ArTestimonials } from "../components/ArTestimonials";
 import { ArContact } from "../components/ArContact";
 import { ArChatbot } from "../components/ArChatbot";
+import { ArFooter } from "../components/ArFooter";
 
 export const ArPage = () => {
   useEffect(() => {
@@ -23,6 +24,7 @@ export const ArPage = () => {
       <ArTestimonials />
       <ArContact />
       <ArChatbot />
+      <ArFooter />
     </div>
   );
 };

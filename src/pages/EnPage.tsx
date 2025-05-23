@@ -6,6 +6,7 @@ import { EnServices } from "../components/EnServices";
 import { EnTestimonials } from "../components/EnTestimonials";
 import { EnContact } from "../components/EnContact";
 import { EnChatbot } from "../components/EnChatbot";
+import { EnFooter } from "../components/EnFooter";
 
 export const EnPage = () => {
   useEffect(() => {
@@ -24,6 +25,7 @@ export const EnPage = () => {
       <EnTestimonials />
       <EnContact />
       <EnChatbot />
+      <EnFooter />
     </div>
   );
 };
