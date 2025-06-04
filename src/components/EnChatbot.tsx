@@ -27,11 +27,11 @@ const englishChatbotOptions = [
   {
     label: "Contact information",
     response: [
-      "You can contact us through:",
+      "You can reach us through:",
       "📞 Phone: +971 56 433 1993",
       "📧 Email: info@takedgroup.com",
       "🏢 Address: Ground Floor, Al Mamzar Centre - Deira - Dubai",
-      "⏰ Working hours: Sunday - Thursday, 9:00 AM - 6:00 PM",
+      "⏰ Working Hours: Sunday - Thursday, 9:00 AM - 6:00 PM",
     ],
   },
 ];
@@ -137,7 +137,7 @@ export function EnChatbot() {
         </div>
       )}
 
-          {/* chatbot window */}
+      {/* chatbot window */}
       {open && (
         <div className="fixed bottom-6 left-6 z-50">
           <Card

@@ -5,14 +5,8 @@ import { Link } from "react-router-dom";
 export const EnNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleScroll = (id: string) => {
-    const targetElement = document.getElementById(id);
-    if (targetElement) {
-      const navbarHeight = 80;
-      const elementPosition = targetElement.offsetTop - navbarHeight;
-      window.scrollTo({ top: elementPosition, behavior: "smooth" });
-    }
-    setIsOpen(false);
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -20,39 +14,41 @@ export const EnNavbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <img
-            alt="Taked Logo"
-            className="h-12 w-auto object-contain cursor-pointer"
-            src="/photos/taked FULL EN.png"
-            onClick={() => handleScroll("home")}
-          />
+          <Link to="/en" onClick={handleLogoClick}>
+            <img
+              alt="Taked Logo"
+              className="h-12 w-auto object-contain cursor-pointer hover:scale-105 transition-transform duration-200"
+              src="/photos/taked FULL EN.png"
+            />
+          </Link>
 
           {/* Links */}
           <div className="hidden md:flex items-center gap-8">
-            <a
-              onClick={() => handleScroll("home")}
-              className="text-gray-700 hover:text-primary transition-colors cursor-pointer"
+            <Link
+              to="/en"
+              onClick={handleLogoClick}
+              className="text-gray-700 hover:text-primary transition-colors"
             >
               Home
-            </a>
-            <a
-              onClick={() => handleScroll("about")}
-              className="text-gray-700 hover:text-primary transition-colors cursor-pointer"
+            </Link>
+            <Link
+              to="/en/about-us"
+              className="text-gray-700 hover:text-primary transition-colors"
             >
               About Us
-            </a>
-            <a
-              onClick={() => handleScroll("services")}
-              className="text-gray-700 hover:text-primary transition-colors cursor-pointer"
+            </Link>
+            <Link
+              to="/en/services"
+              className="text-gray-700 hover:text-primary transition-colors"
             >
               Services
-            </a>
-            <a
-              onClick={() => handleScroll("contact")}
-              className="text-gray-700 hover:text-primary transition-colors cursor-pointer"
+            </Link>
+            <Link
+              to="/en/contact-us"
+              className="text-gray-700 hover:text-primary transition-colors"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
 
           {/* Phone + Language */}
@@ -84,30 +80,37 @@ export const EnNavbar = () => {
           <div className="md:hidden py-4 animate-fade-down absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-lg border-b">
             <div className="container mx-auto px-4">
               <div className="flex flex-col items-start space-y-4">
-                <a
-                  onClick={() => handleScroll("home")}
-                  className="text-gray-700 hover:text-primary transition-colors cursor-pointer"
+                <Link
+                  to="/en"
+                  className="text-gray-700 hover:text-primary transition-colors"
+                  onClick={() => {
+                    setIsOpen(false);
+                    handleLogoClick();
+                  }}
                 >
                   Home
-                </a>
-                <a
-                  onClick={() => handleScroll("about")}
-                  className="text-gray-700 hover:text-primary transition-colors cursor-pointer"
+                </Link>
+                <Link
+                  to="/en/about-us"
+                  className="text-gray-700 hover:text-primary transition-colors"
+                  onClick={() => setIsOpen(false)}
                 >
                   About Us
-                </a>
-                <a
-                  onClick={() => handleScroll("services")}
-                  className="text-gray-700 hover:text-primary transition-colors cursor-pointer"
+                </Link>
+                <Link
+                  to="/en/services"
+                  className="text-gray-700 hover:text-primary transition-colors"
+                  onClick={() => setIsOpen(false)}
                 >
                   Services
-                </a>
-                <a
-                  onClick={() => handleScroll("contact")}
-                  className="text-gray-700 hover:text-primary transition-colors cursor-pointer"
+                </Link>
+                <Link
+                  to="/en/contact-us"
+                  className="text-gray-700 hover:text-primary transition-colors"
+                  onClick={() => setIsOpen(false)}
                 >
                   Contact Us
-                </a>
+                </Link>
                 <Link
                   to="/ar"
                   className="text-gray-700 hover:text-primary transition-colors font-medium"

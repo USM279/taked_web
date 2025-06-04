@@ -5,14 +5,8 @@ import { Link } from "react-router-dom";
 export const ArNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleScroll = (id: string) => {
-    const targetElement = document.getElementById(id);
-    if (targetElement) {
-      const navbarHeight = 80;
-      const elementPosition = targetElement.offsetTop - navbarHeight;
-      window.scrollTo({ top: elementPosition, behavior: "smooth" });
-    }
-    setIsOpen(false);
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -21,40 +15,42 @@ export const ArNavbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* logo - right */}
           <div className="flex-shrink-0">
-            <img
-              alt="شعار تأكيد"
-              className="h-12 w-auto object-contain cursor-pointer"
-              src="/photos/002677c5-a852-429a-b1aa-4f21fa7a3256.png"
-              onClick={() => handleScroll("home")}
-            />
+            <Link to="/ar" onClick={handleLogoClick}>
+              <img
+                alt="شعار تأكيد"
+                className="h-12 w-auto object-contain cursor-pointer hover:scale-105 transition-transform duration-200"
+                src="/photos/002677c5-a852-429a-b1aa-4f21fa7a3256.png"
+              />
+            </Link>
           </div>
 
-            {/* links - center */}
+          {/* links - center */}
           <div className="hidden md:flex items-center gap-8 flex-grow justify-center">
-            <a
-              onClick={() => handleScroll("home")}
-              className="text-gray-700 hover:text-primary transition-colors cursor-pointer"
+            <Link
+              to="/ar"
+              onClick={handleLogoClick}
+              className="text-gray-700 hover:text-primary transition-colors"
             >
               الرئيسية
-            </a>
-            <a
-              onClick={() => handleScroll("about")}
-              className="text-gray-700 hover:text-primary transition-colors cursor-pointer"
+            </Link>
+            <Link
+              to="/ar/about-us"
+              className="text-gray-700 hover:text-primary transition-colors"
             >
               من نحن
-            </a>
-            <a
-              onClick={() => handleScroll("services")}
-              className="text-gray-700 hover:text-primary transition-colors cursor-pointer"
+            </Link>
+            <Link
+              to="/ar/services"
+              className="text-gray-700 hover:text-primary transition-colors"
             >
               خدماتنا
-            </a>
-            <a
-              onClick={() => handleScroll("contact")}
-              className="text-gray-700 hover:text-primary transition-colors cursor-pointer"
+            </Link>
+            <Link
+              to="/ar/contact-us"
+              className="text-gray-700 hover:text-primary transition-colors"
             >
               تواصل معنا
-            </a>
+            </Link>
           </div>
 
           {/* phone button + change language - left */}
@@ -63,7 +59,6 @@ export const ArNavbar = () => {
               href="tel:+971564331993"
               className="hidden md:flex items-center gap-2 text-white bg-sky-950 hover:bg-sky-800 px-4 py-2 rounded-md"
             >
-              
               <span style={{ direction: "ltr" }}>+971 56 433 1993</span>
               <Phone size={18} />
             </a>
@@ -87,30 +82,37 @@ export const ArNavbar = () => {
           <div className="md:hidden py-4 animate-fade-down absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-lg border-b">
             <div className="container mx-auto px-4">
               <div className="flex flex-col items-start space-y-4">
-                <a
-                  onClick={() => handleScroll("home")}
-                  className="text-xl text-gray-700 hover:text-primary transition-colors cursor-pointer"
+                <Link
+                  to="/ar"
+                  className="text-xl text-gray-700 hover:text-primary transition-colors"
+                  onClick={() => {
+                    setIsOpen(false);
+                    handleLogoClick();
+                  }}
                 >
                   الرئيسية
-                </a>
-                <a
-                  onClick={() => handleScroll("about")}
-                  className="text-xl text-gray-700 hover:text-primary transition-colors cursor-pointer"
+                </Link>
+                <Link
+                  to="/ar/about-us"
+                  className="text-xl text-gray-700 hover:text-primary transition-colors"
+                  onClick={() => setIsOpen(false)}
                 >
                   من نحن
-                </a>
-                <a
-                  onClick={() => handleScroll("services")}
-                  className="text-xl text-gray-700 hover:text-primary transition-colors cursor-pointer"
+                </Link>
+                <Link
+                  to="/ar/services"
+                  className="text-xl text-gray-700 hover:text-primary transition-colors"
+                  onClick={() => setIsOpen(false)}
                 >
                   خدماتنا
-                </a>
-                <a
-                  onClick={() => handleScroll("contact")}
-                  className="text-xl text-gray-700 hover:text-primary transition-colors cursor-pointer"
+                </Link>
+                <Link
+                  to="/ar/contact-us"
+                  className="text-xl text-gray-700 hover:text-primary transition-colors"
+                  onClick={() => setIsOpen(false)}
                 >
                   تواصل معنا
-                </a>
+                </Link>
                 <Link
                   to="/en"
                   className="text-xl text-gray-700 hover:text-primary transition-colors font-medium"

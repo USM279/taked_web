@@ -14,6 +14,7 @@ interface FormData {
   name: string;
   email: string;
   phone: string;
+  service: string;
   message: string;
 }
 
@@ -23,6 +24,7 @@ export const ArContact = () => {
     name: "",
     email: "",
     phone: "",
+    service: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -35,8 +37,25 @@ export const ArContact = () => {
     name: "",
     email: "",
     phone: "",
+    service: "",
     message: "",
   });
+
+  // قائمة الخدمات المتاحة
+  const services = [
+    "تأسيس الشركات والرخص التجارية",
+    "التأشيرات والإقامات",
+    "تجديد الإقامة والتأشيرات",
+    "الهوية الإماراتية",
+    "عقود الإيجار",
+    "التراخيص المهنية",
+    "خدمات وزارة الموارد البشرية",
+    "تصديق الوثائق والترجمة",
+    "خدمات كاتب العدل",
+    "التأمين الطبي",
+    "الاستشارات القانونية",
+    "خدمة أخرى",
+  ];
 
   // validate phone number
   const validatePhoneNumber = (phone: string): boolean => {
@@ -107,6 +126,10 @@ export const ArContact = () => {
           error = "الرسالة يجب أن تكون من 10-500 حرف";
         }
         break;
+
+      case "service":
+        // الخدمة اختيارية - لا نحتاج تحقق
+        break;
     }
 
     setFieldErrors((prev) => ({ ...prev, [fieldName]: error }));
@@ -143,8 +166,8 @@ export const ArContact = () => {
       console.warn(
         "EmailJS not configured properly. Form submission disabled."
       );
-        setSubmitStatus("success"); // show success message temporarily
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      setSubmitStatus("success"); // show success message temporarily
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
       return;
     }
 
@@ -152,7 +175,7 @@ export const ArContact = () => {
     try {
       await emailjs.sendForm(serviceId, templateId, form.current, publicKey);
       setSubmitStatus("success");
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
     } catch (error) {
       console.error("EmailJS Error:", error);
       setSubmitStatus("error");
@@ -162,13 +185,13 @@ export const ArContact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4" dir="rtl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-heading font-bold text-gray-900 mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-heading font-bold text-gray-900 mb-6">
             تواصل معنا
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             يسعدنا الرد على استفساراتك ومساعدتك في أي وقت. املأ النموذج أدناه
             وسنرد عليك في أقرب وقت ممكن.
           </p>
@@ -176,12 +199,12 @@ export const ArContact = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <div className="space-y-4">
-            <div className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow h-[104px]">
-              <div className="bg-primary/10 p-4 rounded-lg">
-                <Phone className="text-primary w-6 h-6" />
+            <div className="flex items-center gap-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 h-[104px]">
+              <div className="bg-sky-950/10 p-4 rounded-lg">
+                <Phone className="text-sky-950 w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-bold mb-2">أرقام الهاتف</h3>
+                <h3 className="font-bold mb-2 text-gray-900">أرقام الهاتف</h3>
                 <p dir="ltr" className="text-gray-600">
                   +971 56 433 1993
                 </p>
@@ -191,22 +214,24 @@ export const ArContact = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow h-[104px]">
-              <div className="bg-primary/10 p-4 rounded-lg">
-                <Mail className="text-primary w-6 h-6" />
+            <div className="flex items-center gap-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 h-[104px]">
+              <div className="bg-sky-950/10 p-4 rounded-lg">
+                <Mail className="text-sky-950 w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-bold mb-2">البريد الإلكتروني</h3>
+                <h3 className="font-bold mb-2 text-gray-900">
+                  البريد الإلكتروني
+                </h3>
                 <p className="text-gray-600">info@takedgroup.com</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow h-[104px]">
-              <div className="bg-primary/10 p-4 rounded-lg">
-                <MapPin className="text-primary w-6 h-6" />
+            <div className="flex items-center gap-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 h-[104px]">
+              <div className="bg-sky-950/10 p-4 rounded-lg">
+                <MapPin className="text-sky-950 w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-bold mb-2">العنوان</h3>
+                <h3 className="font-bold mb-2 text-gray-900">العنوان</h3>
                 <p className="text-gray-600">
                   الطابق الأرضي، مركز الممزر - ديرة - دبي - الإمارات العربية
                   المتحدة
@@ -220,13 +245,15 @@ export const ArContact = () => {
               href="https://www.facebook.com/taked24/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow h-[104px]"
+              className="flex items-center gap-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 h-[104px]"
             >
-              <div className="bg-primary/10 p-4 rounded-lg">
-                <Facebook className="text-primary w-6 h-6" />
+              <div className="bg-sky-950/10 p-4 rounded-lg">
+                <Facebook className="text-sky-950 w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-bold mb-2">صفحتنا على فيسبوك</h3>
+                <h3 className="font-bold mb-2 text-gray-900">
+                  صفحتنا على فيسبوك
+                </h3>
                 <p className="text-gray-600">taked24</p>
               </div>
             </a>
@@ -235,13 +262,15 @@ export const ArContact = () => {
               href="https://www.instagram.com/taked.ae/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow h-[104px]"
+              className="flex items-center gap-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 h-[104px]"
             >
-              <div className="bg-primary/10 p-4 rounded-lg">
-                <Instagram className="text-primary w-6 h-6" />
+              <div className="bg-sky-950/10 p-4 rounded-lg">
+                <Instagram className="text-sky-950 w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-bold mb-2">حسابنا على إنستغرام</h3>
+                <h3 className="font-bold mb-2 text-gray-900">
+                  حسابنا على إنستغرام
+                </h3>
                 <p className="text-gray-600">taked.ae</p>
               </div>
             </a>
@@ -250,13 +279,15 @@ export const ArContact = () => {
               href="https://wa.me/971564331993"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow h-[104px]"
+              className="flex items-center gap-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 h-[104px]"
             >
-              <div className="bg-primary/10 p-4 rounded-lg">
-                <MessageCircle className="text-primary w-6 h-6" />
+              <div className="bg-sky-950/10 p-4 rounded-lg">
+                <MessageCircle className="text-sky-950 w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-bold mb-2">الدعم عبر واتساب</h3>
+                <h3 className="font-bold mb-2 text-gray-900">
+                  الدعم عبر واتساب
+                </h3>
                 <p dir="ltr" className="text-gray-600">
                   +971 56 433 1993
                 </p>
@@ -269,7 +300,7 @@ export const ArContact = () => {
           <form
             ref={form}
             onSubmit={handleSubmit}
-            className="glass-card p-6 rounded-lg shadow-md order-1 md:order-2"
+            className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 order-1 md:order-2"
           >
             <div className="space-y-4">
               <div>
@@ -287,17 +318,15 @@ export const ArContact = () => {
                   required
                   minLength={2}
                   maxLength={50}
-                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary ${
+                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-sky-950 focus:border-sky-950 ${
                     fieldErrors.name ? "border-red-500" : "border-gray-300"
                   }`}
-                  placeholder="مثال: عبادة فادي "
+                  placeholder="أدخل اسمك الكامل"
                 />
-                {fieldErrors.name ? (
+                {fieldErrors.name && (
                   <p className="text-xs text-red-500 mt-1">
                     {fieldErrors.name}
                   </p>
-                ) : (
-                  <p className="text-xs text-gray-500 mt-1">الاسم مطلوب</p>
                 )}
               </div>
               <div>
@@ -313,18 +342,14 @@ export const ArContact = () => {
                   }
                   onBlur={(e) => validateField("email", e.target.value)}
                   required
-                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary ${
+                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-sky-950 focus:border-sky-950 ${
                     fieldErrors.email ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="مثال: example@email.com"
                 />
-                {fieldErrors.email ? (
+                {fieldErrors.email && (
                   <p className="text-xs text-red-500 mt-1">
                     {fieldErrors.email}
-                  </p>
-                ) : (
-                  <p className="text-xs text-gray-500 mt-1">
-                    البريد الإلكتروني مطلوب
                   </p>
                 )}
               </div>
@@ -342,18 +367,39 @@ export const ArContact = () => {
                   }
                   onBlur={(e) => validateField("phone", e.target.value)}
                   required
-                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-left ${
+                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-sky-950 focus:border-sky-950 text-left ${
                     fieldErrors.phone ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="+971 50 123 4567 "
                 />
-                {fieldErrors.phone ? (
+                {fieldErrors.phone && (
                   <p className="text-xs text-red-500 mt-1">
                     {fieldErrors.phone}
                   </p>
-                ) : (
-                  <p className="text-xs text-gray-500 mt-1">رقم هاتف مطلوب</p>
                 )}
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  الخدمة المطلوبة
+                </label>
+                <select
+                  name="service"
+                  value={formData.service}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      service: e.target.value,
+                    }))
+                  }
+                  className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-950 focus:border-sky-950"
+                >
+                  <option value="">اختر الخدمة</option>
+                  {services.map((service, index) => (
+                    <option key={index} value={service}>
+                      {service}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -373,18 +419,14 @@ export const ArContact = () => {
                   required
                   minLength={10}
                   maxLength={500}
-                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary resize-none ${
+                  className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-sky-950 focus:border-sky-950 resize-none ${
                     fieldErrors.message ? "border-red-500" : "border-gray-300"
                   }`}
-                  placeholder="يرجى وصف رسالتك بالتفصيل"
+                  placeholder="أدخل رسالتك"
                 ></textarea>
-                {fieldErrors.message ? (
+                {fieldErrors.message && (
                   <p className="text-xs text-red-500 mt-1">
                     {fieldErrors.message}
-                  </p>
-                ) : (
-                  <p className="text-xs text-gray-500 mt-1">
-                    رسالة مفصلة مطلوبة
                   </p>
                 )}
               </div>
@@ -419,6 +461,35 @@ export const ArContact = () => {
               className="w-full h-full"
               title="العنوان"
             ></iframe>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-16">
+          <div className="bg-gradient-to-r from-sky-900 via-sky-800 to-blue-900 rounded-3xl p-12 text-center text-white">
+            <h3 className="text-3xl font-bold mb-6">هل أنت مستعد للبدء؟</h3>
+            <p className="text-xl text-sky-100 mb-8 max-w-2xl mx-auto">
+              انضم إلى آلاف العملاء الراضين الذين اختاروا تأكيد لخدماتهم
+              الحكومية في الإمارات
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-lg mx-auto">
+              <a
+                href="tel:+971564331993"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white text-sky-900 px-8 py-4 rounded-2xl hover:bg-gray-100 transition text-lg font-bold"
+              >
+                <Phone className="w-6 h-6" />
+                اتصل الآن
+              </a>
+              <a
+                href="https://wa.me/971564331993?text=مرحباً%2C%20كيف%20يمكننا%20مساعدتك%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white border-2 border-green-400 px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 text-lg font-bold"
+              >
+                <MessageCircle className="w-6 h-6" />
+                تواصل واتساب
+              </a>
+            </div>
           </div>
         </div>
       </div>

@@ -17,103 +17,103 @@ export const EnServices = () => {
   const services = [
     {
       icon: Briefcase,
-      title: "DED Services",
-      description: "Company formation and trade license processing",
+      title: "Department of Economic Development Services",
+      description: "Company establishment and commercial license processing",
     },
     {
       icon: Plane,
       title: "Visa Services",
       description:
-        "Issue and renewal of all types of visas (tourist, work, family)",
+        "Issuance and renewal of all types of tourist, work and family visas",
     },
     {
       icon: Building,
-      title: "Tenancy Services",
+      title: "Tenancy Contract Services",
       description:
-        "Certification and renewal of tenancy contracts as per official regulations",
+        "Authentication and renewal of tenancy contracts according to approved regulations",
     },
     {
       icon: UserCheck,
       title: "Emirates ID Services",
-      description: "Quick and easy issuance and renewal of Emirates ID",
+      description: "Issuance and renewal of Emirates ID easily and quickly",
     },
     {
       icon: FileText,
-      title: "Residency Services",
+      title: "Residence Services",
       description:
-        "Procedures for issuing and renewing all types of residencies",
+        "Procedures for issuing and renewing residence of various types",
     },
     {
       icon: Scale,
-      title: "Legal & Licensing",
-      description: "Official licensing and commercial contract processing",
+      title: "Legal Services and Licensing",
+      description: "Commercial licensing procedures and official contracts",
     },
     {
       icon: Users,
-      title: "MOHRE Services",
+      title: "Ministry of Human Resources Services",
       description:
-        "Transactions with the Ministry of Human Resources & Emiratisation",
+        "Completion of Ministry of Human Resources and Emiratisation transactions",
     },
     {
       icon: ShieldCheck,
-      title: "GDRFA Services",
-      description: "Quick and accurate immigration and residency transactions",
+      title: "General Directorate of Residency Services",
+      description:
+        "Immigration and residence transactions quickly and accurately",
     },
     {
       icon: HeartPulse,
-      title: "Individual & Staff Insurance",
-      description: "Approved health insurance for individuals and employees",
+      title: "Individual and Employee Insurance",
+      description:
+        "Providing approved health insurance for individuals and employees",
     },
     {
       icon: DollarSign,
-      title: "Business & Project Insurance",
-      description: "Protection for projects, buildings, and construction sites",
+      title: "Company and Project Insurance",
+      description: "Protection for projects, buildings and construction sites",
     },
     {
       icon: FileSignature,
-      title: "Document Attestation & Translation",
-      description: "Certified legal document attestation and translation",
+      title: "Document Authentication & Translation",
+      description:
+        "Authentication of documents and their certified legal translation",
     },
     {
       icon: ScrollText,
       title: "Notary Services",
-      description: "Official authentication of contracts and transactions",
+      description: "Official authentication of transactions and contracts",
     },
   ];
 
   return (
-    <section
-      id="services"
-      className="py-20"
-      dir="ltr"
-      style={{
-        backgroundImage: "linear-gradient(to bottom, white, rgb(240 249 255))",
-      }}
-    >
+    <section id="services" className="py-20 bg-white" dir="ltr">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-heading font-bold text-gray-900 mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-heading font-bold text-gray-900 mb-6">
             Our Services
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             We provide a comprehensive suite of services to meet all your
             business needs in the UAE
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <div
               key={index}
-              className="glass-card p-6 hover:shadow-xl transition-shadow"
+              className="bg-white p-6 rounded-xl border border-gray-200 hover:border-sky-950 hover:shadow-lg transition-all duration-300 group"
             >
               <div className="flex items-start gap-4">
-                <div className="bg-primary/10 p-3 rounded-lg">
-                  <service.icon className="text-primary w-6 h-6" />
+                <div className="bg-sky-950/10 p-3 rounded-lg group-hover:bg-sky-950 transition-colors duration-300">
+                  <service.icon className="text-sky-950 w-6 h-6 group-hover:text-white transition-colors duration-300" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                  <p className="text-gray-600">{service.description}</p>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold mb-3 text-gray-900 leading-tight">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {service.description}
+                  </p>
                 </div>
               </div>
             </div>
