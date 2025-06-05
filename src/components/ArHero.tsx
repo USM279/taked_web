@@ -1,7 +1,36 @@
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export const ArHero = () => {
+  const [text, setText] = useState("");
+  const [showCursor, setShowCursor] = useState(true);
+  const fullText = "من الحلم إلى الواقع، شركتك تبدأ مع تأكيد";
+
+  useEffect(() => {
+    let currentIndex = 0;
+    const typingSpeed = 50;
+
+    const typeText = () => {
+      if (currentIndex < fullText.length) {
+        setText(fullText.slice(0, currentIndex + 1));
+        currentIndex++;
+        setTimeout(typeText, typingSpeed);
+      }
+    };
+
+    setTimeout(typeText, 500);
+
+    const cursorInterval = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, 530);
+
+    return () => {
+      clearInterval(cursorInterval);
+    };
+  }, []);
+
   const handleScroll = (id: string) => {
     const targetElement = document.getElementById(id);
     if (targetElement) {
@@ -32,10 +61,26 @@ export const ArHero = () => {
             شريكك الموثوق لتأسيس الشركات في الإمارات
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-gray-900 leading-tight">
-            من الحلم إلى الواقع، شركتك تبدأ مع{" "}
-            <span className="text-sky-950">تأكيد</span>
-          </h1>
+          <div className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-gray-900 leading-tight min-h-[120px] flex items-center justify-center">
+            <span>
+              {text.split(" ").map((word, i, arr) => (
+                <span
+                  key={i}
+                  className={`inline-block mx-1 ${
+                    word === "تأكيد" ? "text-sky-950" : ""
+                  }`}
+                >
+                  {word}
+                  {i < arr.length - 1 ? " " : ""}
+                </span>
+              ))}
+              <span
+                className={`inline-block w-[3px] h-[60px] bg-sky-950 ml-1 ${
+                  showCursor ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            </span>
+          </div>
 
           <p className="text-xl md:text-2xl text-gray-600 font-body max-w-3xl mx-auto leading-relaxed">
             تأسيس شركات، تراخيص قانونية، إقامات مستثمرين، كل الخدمات في مكان
