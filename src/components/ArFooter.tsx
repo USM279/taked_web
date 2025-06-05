@@ -24,7 +24,7 @@ export const ArFooter = () => {
 
       <div className="relative">
         {/* Main Footer Content */}
-        <div className="container mx-auto px-4 py-16" dir="rtl">
+        <div className="container mx-auto px-4 py-16 hidden md:block" dir="rtl">
           <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-12">
             {/* Company Info */}
             <div className="space-y-6">
