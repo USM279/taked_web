@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TypingAnimation, DEFAULT_TYPING_SPEED } from "./TypingAnimation";
 
 export const EnHero = () => {
   const handleScroll = (id: string) => {
@@ -38,9 +39,13 @@ export const EnHero = () => {
             Your Trusted Partner for Business Setup in UAE
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-gray-900 leading-tight">
-            From Dream to Reality, Your Company Starts with{" "}
-            <span className="text-sky-950">Taked</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-gray-900 leading-tight min-h-[120px] flex items-center justify-center">
+            <TypingAnimation
+              text="From Dream to Reality, Your Company Starts with Taked"
+              highlightedWord="Taked"
+              direction="ltr"
+              speed={DEFAULT_TYPING_SPEED}
+            />
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-600 font-body max-w-3xl mx-auto leading-relaxed">

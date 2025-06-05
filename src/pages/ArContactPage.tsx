@@ -17,6 +17,10 @@ import {
   Globe,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  DEFAULT_TYPING_SPEED,
+  TypingAnimation,
+} from "../components/TypingAnimation";
 
 export const ArContactPage = () => {
   const [formData, setFormData] = useState({
@@ -114,7 +118,7 @@ export const ArContactPage = () => {
   const handleInputChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData({
@@ -247,7 +251,12 @@ export const ArContactPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-6xl font-heading font-bold text-gray-900 mb-6">
-              تواصل معنا
+              <TypingAnimation
+                text="تواصل معنا تأكيد"
+                highlightedWord="تواصل معنا"
+                direction="rtl"
+                speed={DEFAULT_TYPING_SPEED}
+              />
             </h1>
             <p className="text-2xl text-gray-700 leading-relaxed mb-8">
               نحن هنا لمساعدتك في كل خطوة من رحلتك التجارية. تواصل معنا اليوم
@@ -508,8 +517,8 @@ export const ArContactPage = () => {
                 </h3>
                 <div className="space-y-4">
                   <p className="text-gray-700">
-                    <strong>العنوان:</strong> الطابق الأرضي، مركز الممزر - ديرة - دبي - الإمارات العربية المتحدة
-
+                    <strong>العنوان:</strong> الطابق الأرضي، مركز الممزر - ديرة
+                    - دبي - الإمارات العربية المتحدة
                   </p>
                 </div>
               </div>

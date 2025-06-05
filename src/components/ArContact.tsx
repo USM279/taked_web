@@ -164,7 +164,7 @@ export const ArContact = () => {
       publicKey === "xxxxxxxxxxxxxxx"
     ) {
       console.warn(
-        "EmailJS not configured properly. Form submission disabled."
+        "EmailJS not configured properly. Form submission disabled.",
       );
       setSubmitStatus("success"); // show success message temporarily
       setFormData({ name: "", email: "", phone: "", service: "", message: "" });

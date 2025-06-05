@@ -154,8 +154,16 @@ export const ArFooter = () => {
                 <span className="text-gray-400 text-sm ml-4">تابعنا على:</span>
                 <div className="flex gap-3">
                   {[
-                    { icon: Facebook, href: "https://www.facebook.com/taked24/", color: "text-blue-400" },
-                    { icon: Instagram, href: "https://www.instagram.com/taked.ae/", color: "text-pink-400" },
+                    {
+                      icon: Facebook,
+                      href: "https://www.facebook.com/taked24/",
+                      color: "text-blue-400",
+                    },
+                    {
+                      icon: Instagram,
+                      href: "https://www.instagram.com/taked.ae/",
+                      color: "text-pink-400",
+                    },
                     {
                       icon: Linkedin,
                       href: "https://www.linkedin.com/company/taked/",

@@ -163,7 +163,7 @@ export const EnContact = () => {
       publicKey === "xxxxxxxxxxxxxxx"
     ) {
       console.warn(
-        "EmailJS not configured properly. Form submission disabled."
+        "EmailJS not configured properly. Form submission disabled.",
       );
       setSubmitStatus("success"); // Show temporary success message
       setFormData({ name: "", email: "", phone: "", service: "", message: "" });

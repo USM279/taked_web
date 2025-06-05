@@ -25,6 +25,10 @@ import {
   UserCheck,
   MessageCircle,
 } from "lucide-react";
+import {
+  TypingAnimation,
+  DEFAULT_TYPING_SPEED,
+} from "../components/TypingAnimation.tsx";
 
 export const EnAboutPage = () => {
   const [activeYear, setActiveYear] = useState(2024);
@@ -147,7 +151,12 @@ export const EnAboutPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-6xl font-heading font-bold text-gray-900 mb-6">
-              About <span className="text-primary">Taked</span>
+              <TypingAnimation
+                text="About Taked"
+                highlightedWord="About Taked"
+                direction="ltr"
+                speed={DEFAULT_TYPING_SPEED}
+              />
             </h1>
             <p className="text-2xl text-gray-700 leading-relaxed mb-8">
               For over 15 years, we have been your trusted partner in navigating
@@ -313,7 +322,7 @@ export const EnAboutPage = () => {
                         {item.description}
                       </p>
                     </div>
-                  )
+                  ),
               )}
             </div>
           </div>

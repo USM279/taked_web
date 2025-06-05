@@ -24,6 +24,10 @@ import {
   Mail,
   MessageCircle,
 } from "lucide-react";
+import {
+  TypingAnimation,
+  DEFAULT_TYPING_SPEED,
+} from "../components/TypingAnimation";
 
 export const ArServicesPage = () => {
   useEffect(() => {
@@ -156,7 +160,12 @@ export const ArServicesPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-6xl font-heading font-bold text-gray-900 mb-6">
-              خدماتنا المتكاملة
+              <TypingAnimation
+                text="خدماتنا المتكاملة"
+                highlightedWord="خدماتنا"
+                direction="rtl"
+                speed={DEFAULT_TYPING_SPEED}
+              />
             </h1>
             <p className="text-2xl text-gray-700 leading-relaxed mb-8">
               في <span className="font-bold text-primary">تأكيد</span>، نفخر

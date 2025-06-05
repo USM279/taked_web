@@ -2,6 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { TypingAnimation, DEFAULT_TYPING_SPEED } from "../components/TypingAnimation";
 
 export const ArHero = () => {
   const [text, setText] = useState("");
@@ -10,13 +11,12 @@ export const ArHero = () => {
 
   useEffect(() => {
     let currentIndex = 0;
-    const typingSpeed = 50;
 
     const typeText = () => {
       if (currentIndex < fullText.length) {
         setText(fullText.slice(0, currentIndex + 1));
         currentIndex++;
-        setTimeout(typeText, typingSpeed);
+        setTimeout(typeText, DEFAULT_TYPING_SPEED);
       }
     };
 
@@ -47,7 +47,7 @@ export const ArHero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-20 bg-gradient-to-br from-sky-50 via-white to-blue-50"
+      className="relative min-h-screen flex items-center pt-20"
       dir="rtl"
     >
       {/* content */}
@@ -62,29 +62,16 @@ export const ArHero = () => {
           </div>
 
           <div className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-gray-900 leading-tight min-h-[120px] flex items-center justify-center">
-            <span>
-              {text.split(" ").map((word, i, arr) => (
-                <span
-                  key={i}
-                  className={`inline-block mx-1 ${
-                    word === "تأكيد" ? "text-sky-950" : ""
-                  }`}
-                >
-                  {word}
-                  {i < arr.length - 1 ? " " : ""}
-                </span>
-              ))}
-              <span
-                className={`inline-block w-[3px] h-[60px] bg-sky-950 ml-1 ${
-                  showCursor ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            </span>
+            <TypingAnimation
+              text="من الحلم إلى الواقع، شركتك تبدأ مع تأكيد"
+              highlightedWord="تأكيد"
+              direction="rtl"
+              speed={DEFAULT_TYPING_SPEED}
+            />
           </div>
 
           <p className="text-xl md:text-2xl text-gray-600 font-body max-w-3xl mx-auto leading-relaxed">
-            تأسيس شركات، تراخيص قانونية، إقامات مستثمرين، كل الخدمات في مكان
-            واحد
+            تأسيس شركات، تراخيص قانونية، إقامات مستثمرين، كل الخدمات في مكان واحد
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
@@ -138,6 +125,16 @@ export const ArHero = () => {
           </div>
         </div>
       </div>
+
+      <img
+        src="/public/photos/dubai.svg"
+        alt="Dubai Skyline"
+        className="absolute inset-0 w-full h-full object-cover opacity-70 filter blur-sm brightness-90 opacity-35"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0))",
+        }}
+      />
     </section>
   );
 };

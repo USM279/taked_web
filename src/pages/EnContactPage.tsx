@@ -17,6 +17,10 @@ import {
   Globe,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  TypingAnimation,
+  DEFAULT_TYPING_SPEED,
+} from "../components/TypingAnimation.tsx";
 
 export const EnContactPage = () => {
   const [formData, setFormData] = useState({
@@ -114,7 +118,7 @@ export const EnContactPage = () => {
   const handleInputChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData({
@@ -246,8 +250,13 @@ export const EnContactPage = () => {
       >
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-6xl font-heading font-bold text-gray-900 mb-6">
-              Contact Us
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-gray-900 leading-tight">
+              <TypingAnimation
+                text="Contact Us"
+                highlightedWord="Contact Us"
+                direction="ltr"
+                speed={DEFAULT_TYPING_SPEED}
+              />
             </h1>
             <p className="text-2xl text-gray-700 leading-relaxed mb-8">
               We're here to help you every step of your business journey.

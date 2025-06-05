@@ -78,7 +78,7 @@ export function ArChatbot() {
       });
       setTimeout(
         () => setShowOptions(true),
-        option.response.length * 500 + 500
+        option.response.length * 500 + 500,
       );
     }, 1000);
   };
@@ -141,15 +141,15 @@ export function ArChatbot() {
                             __html: line
                               .replace(
                                 /(\+\d{1,3}\s*\d[\d\s-]*)/g,
-                                '<span dir="ltr">$1</span>'
+                                '<span dir="ltr">$1</span>',
                               )
                               .replace(
                                 /(info@takedgroup\.com)/g,
-                                '<span dir="ltr">$1</span>'
+                                '<span dir="ltr">$1</span>',
                               )
                               .replace(
                                 /(\d{1,2}:\d{2}\s*(صباحًا|مساءً))/g,
-                                '<span dir="ltr">$1</span>'
+                                '<span dir="ltr">$1</span>',
                               ),
                           }}
                         />

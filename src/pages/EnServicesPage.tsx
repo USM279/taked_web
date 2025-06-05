@@ -24,6 +24,10 @@ import {
   Mail,
   MessageCircle,
 } from "lucide-react";
+import {
+  TypingAnimation,
+  DEFAULT_TYPING_SPEED,
+} from "../components/TypingAnimation.tsx";
 
 export const EnServicesPage = () => {
   useEffect(() => {
@@ -160,8 +164,13 @@ export const EnServicesPage = () => {
       >
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-6xl font-heading font-bold text-gray-900 mb-6">
-              Our Comprehensive Services
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-gray-900 leading-tight">
+              <TypingAnimation
+                text="Our Services"
+                highlightedWord="Our Services"
+                direction="ltr"
+                speed={DEFAULT_TYPING_SPEED}
+              />
             </h1>
             <p className="text-2xl text-gray-700 leading-relaxed mb-8">
               At <span className="font-bold text-primary">Taked</span>, we pride

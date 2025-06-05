@@ -25,6 +25,10 @@ import {
   UserCheck,
   MessageCircle,
 } from "lucide-react";
+import {
+  TypingAnimation,
+  DEFAULT_TYPING_SPEED,
+} from "../components/TypingAnimation";
 
 export const ArAboutPage = () => {
   const [activeYear, setActiveYear] = useState(2024);
@@ -140,7 +144,12 @@ export const ArAboutPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-6xl font-heading font-bold text-gray-900 mb-6">
-              من نحن <span className="text-primary">تأكيد</span>
+              <TypingAnimation
+                text="من نحن تأكيد"
+                highlightedWord="من نحن"
+                direction="rtl"
+                speed={DEFAULT_TYPING_SPEED}
+              />
             </h1>
             <p className="text-2xl text-gray-700 leading-relaxed mb-8">
               لأكثر من 15 عاماً، كنا شريككم الموثوق في التنقل في المشهد التجاري
@@ -300,7 +309,7 @@ export const ArAboutPage = () => {
                         {item.description}
                       </p>
                     </div>
-                  )
+                  ),
               )}
             </div>
           </div>

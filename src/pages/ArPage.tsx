@@ -7,6 +7,7 @@ import { ArTestimonials } from "../components/ArTestimonials";
 import { ArContact } from "../components/ArContact";
 import { ArChatbot } from "../components/ArChatbot";
 import { ArFooter } from "../components/ArFooter";
+import { TypingAnimation } from "../components/TypingAnimation";
 
 export const ArPage = () => {
   useEffect(() => {
