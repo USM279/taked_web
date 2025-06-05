@@ -253,7 +253,7 @@ export const ArContactPage = () => {
             <h1 className="text-6xl font-heading font-bold text-gray-900 mb-6">
               <TypingAnimation
                 text="تواصل معنا تأكيد"
-                highlightedWord="تواصل معنا"
+                highlightedWord="تأكيد"
                 direction="rtl"
                 speed={DEFAULT_TYPING_SPEED}
               />

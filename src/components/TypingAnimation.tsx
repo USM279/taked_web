@@ -11,7 +11,7 @@ export const DEFAULT_TYPING_SPEED = 50;
 export const TypingAnimation: React.FC<TypingAnimationProps> = ({
   text,
   highlightedWord,
-  highlightClass = "text-sky-950",
+  highlightClass = "text-sky-900",
   speed = DEFAULT_TYPING_SPEED,
   direction = "rtl",
 }) => {

@@ -146,7 +146,7 @@ export const ArAboutPage = () => {
             <h1 className="text-6xl font-heading font-bold text-gray-900 mb-6">
               <TypingAnimation
                 text="من نحن تأكيد"
-                highlightedWord="من نحن"
+                highlightedWord="تأكيد"
                 direction="rtl"
                 speed={DEFAULT_TYPING_SPEED}
               />
