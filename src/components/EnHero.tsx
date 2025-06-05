@@ -19,14 +19,13 @@ export const EnHero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-20 bg-gradient-to-br from-sky-50 via-white to-blue-50"
+      className="relative min-h-screen flex items-center pt-20 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/photos/dubai.svg')" }}
       dir="ltr"
     >
-      {/* Background overlay */}
+      {/* background blur */}
       <div className="absolute inset-0 bg-white/80 sm:bg-white/70 md:bg-white/60 backdrop-blur-sm z-0"></div>
-
-      {/* Bottom gradient */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-b from-transparent to-white z-10"></div>
+      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-white z-10"></div>
 
       {/* Content */}
       <div className="container mx-auto px-4 relative z-20">

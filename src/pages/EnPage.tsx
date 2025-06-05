@@ -24,14 +24,6 @@ export const EnPage = () => {
     <div className="min-h-screen bg-white">
       <EnNavbar />
       <EnHero />
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-gray-900 leading-tight">
-        <TypingAnimation
-          text="Welcome to Taked"
-          highlightedWord="Taked"
-          direction="ltr"
-          speed={DEFAULT_TYPING_SPEED}
-        />
-      </h1>
       <EnAbout />
       <EnServices />
       <EnTestimonials />

@@ -2,7 +2,10 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { TypingAnimation, DEFAULT_TYPING_SPEED } from "../components/TypingAnimation";
+import {
+  TypingAnimation,
+  DEFAULT_TYPING_SPEED,
+} from "../components/TypingAnimation";
 
 export const ArHero = () => {
   const [text, setText] = useState("");
@@ -47,9 +50,13 @@ export const ArHero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-20"
+      className="relative min-h-screen flex items-center pt-20 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/photos/dubai.svg')" }}
       dir="rtl"
     >
+      {/* background blur */}
+      <div className="absolute inset-0 bg-white/80 sm:bg-white/70 md:bg-white/60 backdrop-blur-sm z-0"></div>
+
       {/* content */}
       <div className="container mx-auto px-4 relative z-20">
         <div className="max-w-5xl mx-auto text-center space-y-8 animate-fade-up">
@@ -71,7 +78,8 @@ export const ArHero = () => {
           </div>
 
           <p className="text-xl md:text-2xl text-gray-600 font-body max-w-3xl mx-auto leading-relaxed">
-            تأسيس شركات، تراخيص قانونية، إقامات مستثمرين، كل الخدمات في مكان واحد
+            تأسيس شركات، تراخيص قانونية، إقامات مستثمرين، كل الخدمات في مكان
+            واحد
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
@@ -126,15 +134,7 @@ export const ArHero = () => {
         </div>
       </div>
 
-      <img
-        src="/public/photos/dubai.svg"
-        alt="Dubai Skyline"
-        className="absolute inset-0 w-full h-full object-cover opacity-70 filter blur-sm brightness-90 opacity-35"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0))",
-        }}
-      />
+      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-white z-10"></div>
     </section>
   );
 };
