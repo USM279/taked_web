@@ -6,9 +6,11 @@ import {
   TypingAnimation,
   DEFAULT_TYPING_SPEED,
 } from "../components/TypingAnimation";
+import { RotatingText } from "./RotatingText";
 
 export const ArHero = () => {
-  const [text, setText] = useState("");
+  const [typingComplete, setTypingComplete] = useState(false);
+  const [currentText, setCurrentText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
   const fullText = "من الحلم إلى الواقع، شركتك تبدأ مع تأكيد";
 
@@ -17,9 +19,15 @@ export const ArHero = () => {
 
     const typeText = () => {
       if (currentIndex < fullText.length) {
-        setText(fullText.slice(0, currentIndex + 1));
+        setCurrentText(fullText.slice(0, currentIndex + 1));
         currentIndex++;
         setTimeout(typeText, DEFAULT_TYPING_SPEED);
+      } else {
+        // إخفاء المؤشر وبدء التأثير الدوار
+        setShowCursor(false);
+        setTimeout(() => {
+          setTypingComplete(true);
+        }, 800);
       }
     };
 
@@ -69,12 +77,42 @@ export const ArHero = () => {
           </div>
 
           <div className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-gray-900 leading-tight min-h-[120px] flex items-center justify-center">
-            <TypingAnimation
-              text="من الحلم إلى الواقع، شركتك تبدأ مع تأكيد"
-              highlightedWord="تأكيد"
-              direction="rtl"
-              speed={DEFAULT_TYPING_SPEED}
-            />
+            <span>
+              {!typingComplete ? (
+                <>
+                  {currentText.split(" ").map((word, i, arr) => (
+                    <span
+                      key={i}
+                      className={`inline-block mx-1 ${
+                        word === "تأكيد"
+                          ? "text-sky-950"
+                          : word === "شركتك"
+                            ? "text-sky-950"
+                            : ""
+                      }`}
+                    >
+                      {word}
+                      {i < arr.length - 1 ? " " : ""}
+                    </span>
+                  ))}
+                  <span
+                    className={`inline-block w-[3px] h-[60px] bg-sky-950 ml-1 ${
+                      showCursor ? "opacity-100" : "opacity-0"
+                    }`}
+                  />
+                </>
+              ) : (
+                <>
+                  من الحلم إلى الواقع،{" "}
+                  <RotatingText
+                    words={["إقامتك", "تأشيرتك", "ضريبتك", "تأمينك", "شركتك"]}
+                    className="text-sky-950"
+                    interval={2500}
+                  />{" "}
+                  تبدأ مع <span className="text-sky-950">تأكيد</span>
+                </>
+              )}
+            </span>
           </div>
 
           <p className="text-xl md:text-2xl text-gray-600 font-body max-w-3xl mx-auto leading-relaxed">
