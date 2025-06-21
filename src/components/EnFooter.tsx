@@ -69,9 +69,8 @@ export const EnFooter = () => {
                 ))}
               </ul>
             </div>
-
             {/* Services */}
-            <div>
+            <div className="hidden">
               <h4 className="text-xl font-bold text-white mb-6">
                 Our Main Services
               </h4>
@@ -90,7 +89,6 @@ export const EnFooter = () => {
                 ))}
               </ul>
             </div>
-
             {/* Contact Info */}
             <div>
               <h4 className="text-xl font-bold text-white mb-6">
@@ -124,10 +122,9 @@ export const EnFooter = () => {
                     </p>
                   </div>
                 </div>
-
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3 hidden">
                   <Clock className="w-5 h-5 text-sky-400 mt-1 flex-shrink-0" />
-                  <div>
+                  <div className="text-right">
                     <p className="text-gray-300 text-lg">Sunday - Thursday</p>
                     <p className="text-gray-400 text-sm">9:00 AM - 6:00 PM</p>
                   </div>
