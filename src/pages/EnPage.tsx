@@ -10,7 +10,7 @@ import { EnFooter } from "../components/EnFooter";
 import {
   TypingAnimation,
   DEFAULT_TYPING_SPEED,
-} from "../components/TypingAnimation";
+} from "../components/motions/TypingAnimation";
 
 export const EnPage = () => {
   useEffect(() => {

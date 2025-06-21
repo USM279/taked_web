@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button";
 import {
   TypingAnimation,
   DEFAULT_TYPING_SPEED,
-} from "../components/TypingAnimation.tsx";
+} from "../components/motions/TypingAnimation.tsx";
 
 export const EnContactPage = () => {
   const [formData, setFormData] = useState({
@@ -118,7 +118,7 @@ export const EnContactPage = () => {
   const handleInputChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
+    >
   ) => {
     const { name, value } = e.target;
     setFormData({

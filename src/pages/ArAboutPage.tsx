@@ -28,7 +28,7 @@ import {
 import {
   TypingAnimation,
   DEFAULT_TYPING_SPEED,
-} from "../components/TypingAnimation";
+} from "../components/motions/TypingAnimation";
 
 export const ArAboutPage = () => {
   const [activeYear, setActiveYear] = useState(2024);
@@ -309,7 +309,7 @@ export const ArAboutPage = () => {
                         {item.description}
                       </p>
                     </div>
-                  ),
+                  )
               )}
             </div>
           </div>

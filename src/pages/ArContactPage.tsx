@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button";
 import {
   DEFAULT_TYPING_SPEED,
   TypingAnimation,
-} from "../components/TypingAnimation";
+} from "../components/motions/TypingAnimation";
 
 export const ArContactPage = () => {
   const [formData, setFormData] = useState({
@@ -118,7 +118,7 @@ export const ArContactPage = () => {
   const handleInputChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
+    >
   ) => {
     const { name, value } = e.target;
     setFormData({

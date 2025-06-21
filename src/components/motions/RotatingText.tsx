@@ -7,12 +7,16 @@ interface RotatingTextProps {
   words: string[];
   className?: string;
   interval?: number;
+  highlight?: boolean;
+  highlightClass?: string;
 }
 
 export const RotatingText: React.FC<RotatingTextProps> = ({
   words,
   className = "",
   interval = 2000,
+  highlight = false,
+  highlightClass = "bg-sky-500/20",
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -37,9 +41,14 @@ export const RotatingText: React.FC<RotatingTextProps> = ({
             damping: 25,
             stiffness: 300,
           }}
-          className="inline-block"
+          className="inline-block relative"
         >
-          {words[currentIndex]}
+          <span className="relative z-10">{words[currentIndex]}</span>
+          {highlight && (
+            <span
+              className={`absolute bottom-0 left-0 w-full h-2 ${highlightClass} -z-0`}
+            ></span>
+          )}
         </motion.span>
       </AnimatePresence>
     </span>

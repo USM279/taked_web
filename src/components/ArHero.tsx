@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import {
   TypingAnimation,
   DEFAULT_TYPING_SPEED,
-} from "../components/TypingAnimation";
-import { RotatingText } from "./RotatingText";
+} from "./motions/TypingAnimation";
+import { RotatingText } from "./motions/RotatingText";
 
 export const ArHero = () => {
   const [typingComplete, setTypingComplete] = useState(false);
@@ -80,21 +80,26 @@ export const ArHero = () => {
             <span>
               {!typingComplete ? (
                 <>
-                  {currentText.split(" ").map((word, i, arr) => (
-                    <span
-                      key={i}
-                      className={`inline-block mx-1 ${
-                        word === "تأكيد"
-                          ? "text-sky-950"
-                          : word === "شركتك"
-                            ? "text-sky-950"
-                            : ""
-                      }`}
-                    >
-                      {word}
-                      {i < arr.length - 1 ? " " : ""}
-                    </span>
-                  ))}
+                  {currentText.split(" ").map((word, i, arr) =>
+                    word === "شركتك" ? (
+                      <span
+                        key={i}
+                        className="relative inline-block mx-1 text-sky-950"
+                      >
+                        <span className="relative z-10">{word}</span>
+                        <span className="absolute bottom-0 left-0 w-full h-2 bg-sky-500/20 -z-0"></span>
+                        {i < arr.length - 1 ? " " : ""}
+                      </span>
+                    ) : (
+                      <span
+                        key={i}
+                        className={`inline-block mx-1 ${word === "تأكيد" ? "text-sky-950" : ""}`}
+                      >
+                        {word}
+                        {i < arr.length - 1 ? " " : ""}
+                      </span>
+                    )
+                  )}
                   <span
                     className={`inline-block w-[3px] h-[60px] bg-sky-950 ml-1 ${
                       showCursor ? "opacity-100" : "opacity-0"
@@ -108,6 +113,7 @@ export const ArHero = () => {
                     words={["إقامتك", "تأشيرتك", "ضريبتك", "تأمينك", "شركتك"]}
                     className="text-sky-950"
                     interval={2500}
+                    highlight
                   />{" "}
                   تبدأ مع <span className="text-sky-950">تأكيد</span>
                 </>

@@ -27,7 +27,7 @@ import {
 import {
   TypingAnimation,
   DEFAULT_TYPING_SPEED,
-} from "../components/TypingAnimation.tsx";
+} from "../components/motions/TypingAnimation.tsx";
 
 export const EnServicesPage = () => {
   useEffect(() => {

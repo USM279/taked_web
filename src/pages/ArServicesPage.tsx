@@ -27,7 +27,7 @@ import {
 import {
   TypingAnimation,
   DEFAULT_TYPING_SPEED,
-} from "../components/TypingAnimation";
+} from "../components/motions/TypingAnimation";
 
 export const ArServicesPage = () => {
   useEffect(() => {

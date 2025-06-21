@@ -28,7 +28,7 @@ import {
 import {
   TypingAnimation,
   DEFAULT_TYPING_SPEED,
-} from "../components/TypingAnimation.tsx";
+} from "../components/motions/TypingAnimation.tsx";
 
 export const EnAboutPage = () => {
   const [activeYear, setActiveYear] = useState(2024);
@@ -322,7 +322,7 @@ export const EnAboutPage = () => {
                         {item.description}
                       </p>
                     </div>
-                  ),
+                  )
               )}
             </div>
           </div>

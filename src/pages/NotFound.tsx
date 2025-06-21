@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import {
   TypingAnimation,
   DEFAULT_TYPING_SPEED,
-} from "../components/TypingAnimation";
+} from "../components/motions/TypingAnimation";
 
 const NotFound = () => {
   return (

@@ -1,6 +1,11 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TypingAnimation, DEFAULT_TYPING_SPEED } from "./TypingAnimation";
+import {
+  DEFAULT_TYPING_SPEED,
+  TypingAnimation,
+} from "./motions/TypingAnimation";
+import { RotatingText } from "./motions/RotatingText";
+import { useState, useEffect } from "react";
 
 export const EnHero = () => {
   const handleScroll = (id: string) => {
@@ -15,6 +20,31 @@ export const EnHero = () => {
   const handleNavigateToServices = () => {
     window.location.href = "/en/services";
   };
+
+  const [typingComplete, setTypingComplete] = useState(false);
+  const [currentText, setCurrentText] = useState("");
+  const [showCursor, setShowCursor] = useState(true);
+  const firstLineText = "From Dream to Reality";
+
+  useEffect(() => {
+    let currentIndex = 0;
+
+    const type = () => {
+      if (currentIndex < firstLineText.length) {
+        setCurrentText(firstLineText.slice(0, currentIndex + 1));
+        currentIndex++;
+        setTimeout(type, DEFAULT_TYPING_SPEED);
+      } else {
+        setShowCursor(false);
+        setTimeout(() => setTypingComplete(true), 300);
+      }
+    };
+
+    setTimeout(type, 500);
+
+    const cursorInterval = setInterval(() => setShowCursor((p) => !p), 500);
+    return () => clearInterval(cursorInterval);
+  }, []);
 
   return (
     <section
@@ -38,13 +68,34 @@ export const EnHero = () => {
             Your Trusted Partner for Business Setup in UAE
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-gray-900 leading-tight min-h-[120px] flex items-center justify-center">
-            <TypingAnimation
-              text="From Dream to Reality, Your Company Starts with Taked"
-              highlightedWord="Taked"
-              direction="ltr"
-              speed={DEFAULT_TYPING_SPEED}
-            />
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-gray-900 leading-tight min-h-[120px] text-center">
+            {!typingComplete ? (
+              <>
+                {currentText}
+                <span
+                  className={`inline-block w-[3px] h-[60px] bg-sky-950 ml-1 ${showCursor ? "opacity-100" : "opacity-0"}`}
+                />
+              </>
+            ) : (
+              <>
+                <span className="block">{firstLineText}</span>
+                <span className="block">
+                  Your{" "}
+                  <RotatingText
+                    words={["Company", "Residence", "Visa", "Tax", "Insurance"]}
+                    className="text-sky-950 inline-block"
+                    interval={2500}
+                    highlight
+                  />
+                  <TypingAnimation
+                    text=" Starts with Taked"
+                    highlightedWord="Taked"
+                    direction="ltr"
+                    speed={DEFAULT_TYPING_SPEED}
+                  />
+                </span>
+              </>
+            )}
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-600 font-body max-w-3xl mx-auto leading-relaxed">
