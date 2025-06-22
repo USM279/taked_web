@@ -98,7 +98,7 @@ export const ArServices = () => {
             >
               <div className="flex items-start gap-4">
                 <div className="bg-sky-950/10 p-3 rounded-lg group-hover:bg-sky-950 transition-colors duration-300">
-                  <service.icon className="text-sky-950 w-6 h-6 group-hover:text-white transition-colors duration-300" />
+                  <service.icon className="text-sky-900 w-6 h-6 group-hover:text-white transition-colors duration-300" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-lg font-bold mb-3 text-gray-900 leading-tight">

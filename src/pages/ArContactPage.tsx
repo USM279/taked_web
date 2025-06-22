@@ -252,7 +252,7 @@ export const ArContactPage = () => {
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-6xl font-heading font-bold text-gray-900 mb-6">
               <TypingAnimation
-                text="تواصل معنا تأكيد"
+                text="تواصل مع فريق تأكيد"
                 highlightedWord="تأكيد"
                 direction="rtl"
                 speed={DEFAULT_TYPING_SPEED}
@@ -266,17 +266,17 @@ export const ArContactPage = () => {
             {/* Quick Stats */}
             <div className="grid md:grid-cols-3 gap-6 mt-12">
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">
+                <div className="text-4xl font-bold text-primary mb-2 text-sky-900">
                   &lt; 1hr
                 </div>
                 <div className="text-gray-600">متوسط وقت الرد</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">24/7</div>
+                <div className="text-4xl font-bold text-primary mb-2 text-sky-900 ">24/7</div>
                 <div className="text-gray-600">دعم مستمر</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">95%</div>
+                <div className="text-4xl font-bold text-primary mb-2 text-sky-900" >95%</div>
                 <div className="text-gray-600">رضا العملاء</div>
               </div>
             </div>

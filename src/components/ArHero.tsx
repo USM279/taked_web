@@ -7,6 +7,7 @@ import {
   DEFAULT_TYPING_SPEED,
 } from "./motions/TypingAnimation";
 import { RotatingText } from "./motions/RotatingText";
+import { CountingNumber } from "./motions/counting-number";
 
 export const ArHero = () => {
   const [typingComplete, setTypingComplete] = useState(false);
@@ -68,7 +69,7 @@ export const ArHero = () => {
       {/* content */}
       <div className="container mx-auto px-4 relative z-20">
         <div className="max-w-5xl mx-auto text-center space-y-8 animate-fade-up">
-          <div className="inline-flex items-center gap-3 bg-sky-950/10 text-sky-950 px-6 py-3 rounded-full font-medium">
+          <div className="inline-flex items-center gap-3 bg-sky-950/10 text-sky-900 px-6 py-3 rounded-full font-medium">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-950 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-950"></span>
@@ -84,7 +85,7 @@ export const ArHero = () => {
                     word === "شركتك" ? (
                       <span
                         key={i}
-                        className="relative inline-block mx-1 text-sky-950"
+                        className="relative inline-block mx-1 text-sky-900"
                       >
                         <span className="relative z-10">{word}</span>
                         <span className="absolute bottom-0 left-0 w-full h-2 bg-sky-500/20 -z-0"></span>
@@ -93,7 +94,7 @@ export const ArHero = () => {
                     ) : (
                       <span
                         key={i}
-                        className={`inline-block mx-1 ${word === "تأكيد" ? "text-sky-950" : ""}`}
+                        className={`inline-block mx-1 ${word === "تأكيد" ? "text-sky-900" : ""}`}
                       >
                         {word}
                         {i < arr.length - 1 ? " " : ""}
@@ -111,11 +112,11 @@ export const ArHero = () => {
                   من الحلم إلى الواقع،{" "}
                   <RotatingText
                     words={["إقامتك", "تأشيرتك", "ضريبتك", "تأمينك", "شركتك"]}
-                    className="text-sky-950"
+                    className="text-sky-900"
                     interval={2500}
                     highlight
                   />{" "}
-                  تبدأ مع <span className="text-sky-950">تأكيد</span>
+                  تبدأ مع <span className="text-sky-900">تأكيد</span>
                 </>
               )}
             </span>
@@ -142,37 +143,70 @@ export const ArHero = () => {
             <Button
               size="lg"
               onClick={handleNavigateToServices}
-              className="w-full sm:w-auto bg-white text-sky-950 border-2 border-sky-950 hover:bg-sky-950 hover:text-white text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg font-medium"
+              className="w-full sm:w-auto bg-white text-sky-900 border-2 border-sky-950 hover:bg-sky-950 hover:text-white text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg font-medium"
             >
               تعرف على خدماتنا
             </Button>
           </div>
 
           {/* Stats Section */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-gray-200">
+          <div className="text-sky-900 grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-gray-200">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-sky-950 mb-2">
-                +15
+              <div
+                className="flex items-baseline justify-center gap-0.5"
+                dir="ltr"
+              >
+                <span className="text-3xl font-bold">+</span>
+                <CountingNumber
+                  number={15}
+                  className="text-4xl md:text-5xl font-bold"
+                />
               </div>
-              <div className="text-gray-600 font-medium">عام من الخبرة</div>
+              <p className="text-gray-600 mt-1">عام من الخبرة</p>
             </div>
+
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-sky-950 mb-2">
-                10K+
+              <div
+                className="flex items-baseline justify-center gap-0.5"
+                dir="ltr"
+              >
+                <span className="text-3xl font-bold">+</span>
+                <CountingNumber
+                  number={10}
+                  className="text-4xl md:text-5xl font-bold"
+                />
+                <span className="text-4xl font-bold">K</span>
               </div>
-              <div className="text-gray-600 font-medium">عميل راضٍ</div>
+              <p className="text-gray-600 mt-1">عميل راضٍ</p>
             </div>
+
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-sky-950 mb-2">
-                50K+
+              <div
+                className="flex items-baseline justify-center gap-0.5"
+                dir="ltr"
+              >
+                <span className="text-3xl font-bold">+</span>
+                <CountingNumber
+                  number={50}
+                  className="text-4xl md:text-5xl font-bold"
+                />
+                <span className="text-4xl font-bold">K</span>
               </div>
-              <div className="text-gray-600 font-medium">معاملة منجزة</div>
+              <p className="text-gray-600 mt-1">معاملة منجزة</p>
             </div>
+
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-sky-950 mb-2">
-                100%
+              <div
+                className="flex items-baseline justify-center gap-0.5"
+                dir="ltr"
+              >
+                <CountingNumber
+                  number={100}
+                  className="text-4xl md:text-5xl font-bold"
+                />
+                <span className="text-3xl font-bold">%</span>
               </div>
-              <div className="text-gray-600 font-medium">معدل النجاح</div>
+              <p className="text-gray-600 mt-1">معدل النجاح</p>
             </div>
           </div>
         </div>

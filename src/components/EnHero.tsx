@@ -60,7 +60,7 @@ export const EnHero = () => {
       {/* Content */}
       <div className="container mx-auto px-4 relative z-20">
         <div className="max-w-5xl mx-auto text-center space-y-8 animate-fade-up">
-          <div className="inline-flex items-center gap-3 bg-sky-950/10 text-sky-950 px-6 py-3 rounded-full font-medium">
+          <div className="inline-flex items-center gap-3 bg-sky-950/10 text-sky-900 px-6 py-3 rounded-full font-medium">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-950 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-950"></span>
@@ -83,7 +83,7 @@ export const EnHero = () => {
                   Your{" "}
                   <RotatingText
                     words={["Company", "Residence", "Visa", "Tax", "Insurance"]}
-                    className="text-sky-950 inline-block"
+                    className="text-sky-900 inline-block"
                     interval={2500}
                     highlight
                   />
@@ -119,7 +119,7 @@ export const EnHero = () => {
             <Button
               size="lg"
               onClick={handleNavigateToServices}
-              className="w-full sm:w-auto bg-white text-sky-950 border-2 border-sky-950 hover:bg-sky-950 hover:text-white text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg font-medium"
+              className="w-full sm:w-auto bg-white text-sky-900 border-2 border-sky-950 hover:bg-sky-950 hover:text-white text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg font-medium"
             >
               Explore Our Services
             </Button>
@@ -128,7 +128,7 @@ export const EnHero = () => {
           {/* Stats Section */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-gray-200">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-sky-950 mb-2">
+              <div className="text-3xl md:text-4xl font-bold text-sky-900 mb-2">
                 +15
               </div>
               <div className="text-gray-600 font-medium">
@@ -136,13 +136,13 @@ export const EnHero = () => {
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-sky-950 mb-2">
+              <div className="text-3xl md:text-4xl font-bold text-sky-900 mb-2">
                 10K+
               </div>
               <div className="text-gray-600 font-medium">Satisfied Clients</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-sky-950 mb-2">
+              <div className="text-3xl md:text-4xl font-bold text-sky-900 mb-2">
                 50K+
               </div>
               <div className="text-gray-600 font-medium">
@@ -150,7 +150,7 @@ export const EnHero = () => {
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-sky-950 mb-2">
+              <div className="text-3xl md:text-4xl font-bold text-sky-900 mb-2">
                 100%
               </div>
               <div className="text-gray-600 font-medium">Success Rate</div>

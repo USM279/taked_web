@@ -29,6 +29,7 @@ import {
   TypingAnimation,
   DEFAULT_TYPING_SPEED,
 } from "../components/motions/TypingAnimation";
+import { CountingNumber } from "@/components/motions/counting-number";
 
 export const ArAboutPage = () => {
   const [activeYear, setActiveYear] = useState(2024);
@@ -158,22 +159,63 @@ export const ArAboutPage = () => {
             </p>
 
             {/* Quick Stats */}
-            <div className="grid md:grid-cols-4 gap-6 mt-12">
+            <div className="text-sky-900 grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-gray-200">
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">15+</div>
-                <div className="text-gray-600">عام من التميز</div>
+                <div
+                  className="flex items-baseline justify-center gap-0.5"
+                  dir="ltr"
+                >
+                  <span className="text-3xl font-bold">+</span>
+                  <CountingNumber
+                    number={15}
+                    className="text-4xl md:text-5xl font-bold"
+                  />
+                </div>
+                <p className="text-gray-600 mt-1">عام من التميّز</p>
               </div>
+
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">10K+</div>
-                <div className="text-gray-600">عميل سعيد</div>
+                <div
+                  className="flex items-baseline justify-center gap-0.5"
+                  dir="ltr"
+                >
+                  <span className="text-3xl font-bold">+</span>
+                  <CountingNumber
+                    number={10}
+                    className="text-4xl md:text-5xl font-bold"
+                  />
+                  <span className="text-4xl font-bold">K</span>
+                </div>
+                <p className="text-gray-600 mt-1">عميل سعيد</p>
               </div>
+
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">50K+</div>
-                <div className="text-gray-600">خدمة مكتملة</div>
+                <div
+                  className="flex items-baseline justify-center gap-0.5"
+                  dir="ltr"
+                >
+                  <span className="text-3xl font-bold">+</span>
+                  <CountingNumber
+                    number={50}
+                    className="text-4xl md:text-5xl font-bold"
+                  />
+                  <span className="text-4xl font-bold">K</span>
+                </div>
+                <p className="text-gray-600 mt-1">خدمة مكتملة</p>
               </div>
+
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">100%</div>
-                <div className="text-gray-600">معدل النجاح</div>
+                <div
+                  className="flex items-baseline justify-center gap-0.5"
+                  dir="ltr"
+                >
+                  <CountingNumber
+                    number={100}
+                    className="text-4xl md:text-5xl font-bold"
+                  />
+                  <span className="text-3xl font-bold">%</span>
+                </div>
+                <p className="text-gray-600 mt-1">معدل النجاح</p>
               </div>
             </div>
           </div>
