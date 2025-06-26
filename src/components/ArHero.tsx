@@ -150,7 +150,7 @@ export const ArHero = () => {
           </div>
 
           {/* Stats Section */}
-          <div className="text-sky-900 grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-gray-200">
+          <div className="text-sky-900 grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-gray-200">
             <div className="text-center">
               <div
                 className="flex items-baseline justify-center gap-0.5"
