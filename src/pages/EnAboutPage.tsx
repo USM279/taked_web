@@ -31,7 +31,7 @@ import {
 } from "../components/motions/TypingAnimation.tsx";
 
 export const EnAboutPage = () => {
-  const [activeYear, setActiveYear] = useState(2024);
+  const [activeYear, setActiveYear] = useState(2025);
 
   useEffect(() => {
     document.documentElement.dir = "ltr";
@@ -42,7 +42,7 @@ export const EnAboutPage = () => {
 
   const timeline = [
     {
-      year: 2008,
+      year: 2011,
       title: "Company Establishment",
       description:
         "Founded Taked with the vision of simplifying government transactions in the UAE",
@@ -66,7 +66,7 @@ export const EnAboutPage = () => {
         "Became one of the leading companies in government services in the UAE",
     },
     {
-      year: 2024,
+      year: 2025,
       title: "Sustainable Growth",
       description:
         "Continuing our journey towards innovation and excellence in customer service",
@@ -112,32 +112,32 @@ export const EnAboutPage = () => {
     },
   ];
 
-  const team = [
-    {
-      name: "Ahmed Al-Mansouri",
-      position: "Chief Executive Officer",
-      experience: "15+ years",
-      specialty: "Strategic Leadership and Business Development",
-    },
-    {
-      name: "Sarah Al-Zahra",
-      position: "Head of Operations",
-      experience: "12+ years",
-      specialty: "Government Relations and Process Management",
-    },
-    {
-      name: "Mohammed Al-Rashid",
-      position: "Legal Services Director",
-      experience: "10+ years",
-      specialty: "Commercial Law and Licensing",
-    },
-    {
-      name: "Fatima Al-Nuaimi",
-      position: "Customer Relations Manager",
-      experience: "8+ years",
-      specialty: "Customer Experience and Support",
-    },
-  ];
+  // const team = [
+  //   {
+  //     name: "Ahmed Al-Mansouri",
+  //     position: "Chief Executive Officer",
+  //     experience: "15+ years",
+  //     specialty: "Strategic Leadership and Business Development",
+  //   },
+  //   {
+  //     name: "Sarah Al-Zahra",
+  //     position: "Head of Operations",
+  //     experience: "12+ years",
+  //     specialty: "Government Relations and Process Management",
+  //   },
+  //   {
+  //     name: "Mohammed Al-Rashid",
+  //     position: "Legal Services Director",
+  //     experience: "10+ years",
+  //     specialty: "Commercial Law and Licensing",
+  //   },
+  //   {
+  //     name: "Fatima Al-Nuaimi",
+  //     position: "Customer Relations Manager",
+  //     experience: "8+ years",
+  //     specialty: "Customer Experience and Support",
+  //   },
+  // ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -364,7 +364,7 @@ export const EnAboutPage = () => {
       </section>
 
       {/* Our Team */}
-      <section
+      {/* <section
         className="py-20 bg-gradient-to-b from-gray-50 to-white"
         dir="ltr"
       >

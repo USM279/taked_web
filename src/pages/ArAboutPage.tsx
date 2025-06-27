@@ -32,7 +32,7 @@ import {
 import { CountingNumber } from "@/components/motions/counting-number";
 
 export const ArAboutPage = () => {
-  const [activeYear, setActiveYear] = useState(2024);
+  const [activeYear, setActiveYear] = useState(2025);
 
   useEffect(() => {
     document.documentElement.dir = "rtl";
@@ -43,7 +43,7 @@ export const ArAboutPage = () => {
 
   const timeline = [
     {
-      year: 2008,
+      year: 2011,
       title: "تأسيس الشركة",
       description:
         "تأسست تأكيد برؤية تبسيط المعاملات الحكومية في دولة الإمارات",
@@ -65,7 +65,7 @@ export const ArAboutPage = () => {
         "أصبحنا إحدى الشركات الرائدة في الخدمات الحكومية في الإمارات",
     },
     {
-      year: 2024,
+      year: 2025,
       title: "النمو المستدام",
       description: "نواصل رحلتنا نحو الابتكار والتميز في خدمة العملاء",
     },
@@ -106,32 +106,32 @@ export const ArAboutPage = () => {
     },
   ];
 
-  const team = [
-    {
-      name: "أحمد المنصوري",
-      position: "الرئيس التنفيذي",
-      experience: "+15 عام",
-      specialty: "القيادة الاستراتيجية وتطوير الأعمال",
-    },
-    {
-      name: "سارة الزهراء",
-      position: "رئيسة العمليات",
-      experience: "+12 عام",
-      specialty: "العلاقات الحكومية وإدارة العمليات",
-    },
-    {
-      name: "محمد الراشد",
-      position: "مدير الخدمات القانونية",
-      experience: "+10 أعوام",
-      specialty: "القانون التجاري والتراخيص",
-    },
-    {
-      name: "فاطمة النعيمي",
-      position: "مديرة علاقات العملاء",
-      experience: "+8 أعوام",
-      specialty: "تجربة العملاء والدعم",
-    },
-  ];
+  // const team = [
+  //   {
+  //     name: "أحمد المنصوري",
+  //     position: "الرئيس التنفيذي",
+  //     experience: "+15 عام",
+  //     specialty: "القيادة الاستراتيجية وتطوير الأعمال",
+  //   },
+  //   {
+  //     name: "سارة الزهراء",
+  //     position: "رئيسة العمليات",
+  //     experience: "+12 عام",
+  //     specialty: "العلاقات الحكومية وإدارة العمليات",
+  //   },
+  //   {
+  //     name: "محمد الراشد",
+  //     position: "مدير الخدمات القانونية",
+  //     experience: "+10 أعوام",
+  //     specialty: "القانون التجاري والتراخيص",
+  //   },
+  //   {
+  //     name: "فاطمة النعيمي",
+  //     position: "مديرة علاقات العملاء",
+  //     experience: "+8 أعوام",
+  //     specialty: "تجربة العملاء والدعم",
+  //   },
+  // ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -392,7 +392,7 @@ export const ArAboutPage = () => {
       </section>
 
       {/* Our Team */}
-      <section
+      {/* <section
         className="py-20 bg-gradient-to-b from-gray-50 to-white"
         dir="rtl"
       >
@@ -434,7 +434,7 @@ export const ArAboutPage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Information */}
       <section className="py-20 bg-white" dir="rtl">
