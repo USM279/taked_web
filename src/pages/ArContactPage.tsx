@@ -266,17 +266,21 @@ export const ArContactPage = () => {
             {/* Quick Stats */}
             <div className="grid md:grid-cols-3 gap-6 mt-12">
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2 text-sky-900">
+                <div className="text-4xl font-bold text-sky-900 mb-2 text-sky-900">
                   &lt; 1hr
                 </div>
                 <div className="text-gray-600">متوسط وقت الرد</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2 text-sky-900 ">24/7</div>
+                <div className="text-4xl font-bold text-sky-900 mb-2 text-sky-900 ">
+                  24/7
+                </div>
                 <div className="text-gray-600">دعم مستمر</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2 text-sky-900" >95%</div>
+                <div className="text-4xl font-bold text-sky-900 mb-2 text-sky-900">
+                  95%
+                </div>
                 <div className="text-gray-600">رضا العملاء</div>
               </div>
             </div>
@@ -489,7 +493,7 @@ export const ArContactPage = () => {
               {/* Office Hours */}
               <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                  <Clock className="text-primary w-6 h-6" />
+                  <Clock className="text-sky-900 w-6 h-6" />
                   أوقات العمل
                 </h3>
                 <div className="space-y-4">
@@ -501,7 +505,7 @@ export const ArContactPage = () => {
                       <span className="font-medium text-gray-900">
                         {schedule.day}
                       </span>
-                      <span className="text-primary font-semibold">
+                      <span className="text-sky-900 font-semibold">
                         {schedule.hours}
                       </span>
                     </div>
@@ -512,7 +516,7 @@ export const ArContactPage = () => {
               {/* Location */}
               <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                  <MapPin className="text-primary w-6 h-6" />
+                  <MapPin className="text-sky-900 w-6 h-6" />
                   موقعنا
                 </h3>
                 <div className="space-y-4">
@@ -562,7 +566,7 @@ export const ArContactPage = () => {
                 className="bg-gray-50 rounded-2xl p-8 hover:shadow-md transition-shadow"
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-start gap-3">
-                  <AlertCircle className="text-primary w-6 h-6 mt-1 flex-shrink-0" />
+                  <AlertCircle className="text-sky-900 w-6 h-6 mt-1 flex-shrink-0" />
                   {item.question}
                 </h3>
                 <p className="text-gray-700 leading-relaxed pr-9">

@@ -230,7 +230,7 @@ export const ArAboutPage = () => {
               <h2 className="text-4xl font-bold text-gray-900 mb-6">قصتنا</h2>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                 <p>
-                  وُلدت <strong className="text-primary">تأكيد</strong> من رؤية
+                  وُلدت <strong className="text-sky-900">تأكيد</strong> من رؤية
                   بسيطة ولكنها قوية: جعل الخدمات الحكومية في دولة الإمارات في
                   متناول الجميع وفعالة وخالية من المتاعب. ما بدأ كفريق صغير من
                   المهنيين المتفانين نما ليصبح واحداً من أكثر الأسماء الموثوقة
@@ -339,8 +339,8 @@ export const ArAboutPage = () => {
                       className="bg-white rounded-3xl shadow-lg p-12 border border-gray-100"
                     >
                       <div className="flex items-center justify-center gap-3 mb-6">
-                        <Calendar className="text-primary w-8 h-8" />
-                        <span className="text-4xl font-bold text-primary">
+                        <Calendar className="text-sky-900 w-8 h-8" />
+                        <span className="text-4xl font-bold text-sky-900">
                           {item.year}
                         </span>
                       </div>
@@ -377,7 +377,7 @@ export const ArAboutPage = () => {
                 className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow"
               >
                 <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                  <value.icon className="text-primary w-8 h-8" />
+                  <value.icon className="text-sky-900 w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   {value.title}
@@ -414,12 +414,12 @@ export const ArAboutPage = () => {
               >
                 <div className="p-8 text-center">
                   <div className="bg-gradient-to-br from-primary/20 to-sky-200/50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Users className="text-primary w-10 h-10" />
+                    <Users className="text-sky-900 w-10 h-10" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
                     {member.name}
                   </h3>
-                  <p className="text-primary font-semibold mb-3">
+                  <p className="text-sky-900 font-semibold mb-3">
                     {member.position}
                   </p>
                   <div className="space-y-2 text-sm text-gray-600">
@@ -451,11 +451,11 @@ export const ArAboutPage = () => {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center p-8 bg-gradient-to-br from-blue-50 to-sky-50 rounded-2xl">
-              <Phone className="text-primary w-12 h-12 mx-auto mb-4" />
+              <Phone className="text-sky-900 w-12 h-12 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">اتصل بنا</h3>
               <a
                 href="tel:+971564331993"
-                className="text-primary font-semibold text-lg hover:underline"
+                className="text-sky-900 font-semibold text-lg hover:underline"
               >
                 +971 56 433 1993
               </a>

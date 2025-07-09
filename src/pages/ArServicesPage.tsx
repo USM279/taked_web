@@ -168,7 +168,7 @@ export const ArServicesPage = () => {
               />
             </h1>
             <p className="text-2xl text-gray-700 leading-relaxed mb-8">
-              في <span className="font-bold text-primary">تأكيد</span>، نفخر
+              في <span className="font-bold text-sky-900">تأكيد</span>، نفخر
               بتقديم أشمل باقة من الخدمات الحكومية والتجارية في دولة الإمارات
               العربية المتحدة. بخبرة تمتد لأكثر من 15 عاماً، نضمن لعملائنا إنجاز
               جميع معاملاتهم بأعلى مستويات الجودة والكفاءة.
@@ -177,19 +177,19 @@ export const ArServicesPage = () => {
             {/* Stats */}
             <div className="grid md:grid-cols-4 gap-6 mt-12">
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">+15</div>
+                <div className="text-4xl font-bold text-sky-900 mb-2">+15</div>
                 <div className="text-gray-600">عام من الخبرة</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">+10K</div>
+                <div className="text-4xl font-bold text-sky-900 mb-2">+10K</div>
                 <div className="text-gray-600">عميل راضٍ</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">+50K</div>
+                <div className="text-4xl font-bold text-sky-900 mb-2">+50K</div>
                 <div className="text-gray-600">معاملة منجزة</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">100%</div>
+                <div className="text-4xl font-bold text-sky-900 mb-2">100%</div>
                 <div className="text-gray-600">معدل النجاح</div>
               </div>
             </div>
@@ -211,7 +211,7 @@ export const ArServicesPage = () => {
 
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center p-8 bg-gradient-to-br from-blue-50 to-sky-50 rounded-2xl">
-              <Clock className="text-primary w-12 h-12 mx-auto mb-4" />
+              <Clock className="text-sky-900 w-12 h-12 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 سرعة في الإنجاز
               </h3>
@@ -275,7 +275,7 @@ export const ArServicesPage = () => {
                 <div className="p-10">
                   <div className="flex items-start gap-8 mb-8">
                     <div className="bg-gradient-to-br from-primary/10 to-primary/20 p-6 rounded-2xl">
-                      <service.icon className="text-primary w-12 h-12" />
+                      <service.icon className="text-sky-900 w-12 h-12" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-3xl font-bold mb-4 text-gray-900">
@@ -292,7 +292,7 @@ export const ArServicesPage = () => {
                     {/* What we offer */}
                     <div className="lg:col-span-2">
                       <h4 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                        <Target className="text-primary w-6 h-6" />
+                        <Target className="text-sky-900 w-6 h-6" />
                         ما نقدمه لك:
                       </h4>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -313,11 +313,11 @@ export const ArServicesPage = () => {
                     {/* Service Info */}
                     <div className="space-y-6">
                       <div className="bg-gradient-to-br from-blue-50 to-sky-50 p-6 rounded-2xl text-center">
-                        <Clock className="text-primary w-8 h-8 mx-auto mb-3" />
+                        <Clock className="text-sky-900 w-8 h-8 mx-auto mb-3" />
                         <h5 className="font-bold text-gray-900 mb-2">
                           مدة الإنجاز
                         </h5>
-                        <p className="text-lg font-semibold text-primary">
+                        <p className="text-lg font-semibold text-sky-900">
                           {service.processTime}
                         </p>
                       </div>
