@@ -3,7 +3,11 @@ import {
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom";
+import { useEffect } from "react";
+import ReactGA from "react-ga4";
+
 import { ArPage } from "./pages/ArPage";
 import { EnPage } from "./pages/EnPage";
 import { ArAboutPage } from "./pages/ArAboutPage";
@@ -14,11 +18,22 @@ import { EnServicesPage } from "./pages/EnServicesPage";
 import { EnContactPage } from "./pages/EnContactPage";
 import NotFound from "./pages/NotFound";
 
+// ✅ Page tracking component
+function PageTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: location.pathname });
+  }, [location]);
+
+  return null;
+}
+
 function App() {
   return (
     <Router>
+      <PageTracker /> {/* ✅ Page view tracking */}
       <Routes>
-        {/* Redirect root to Arabic by default */}
         <Route path="/" element={<Navigate to="/ar" replace />} />
 
         {/* Arabic routes */}
@@ -33,7 +48,7 @@ function App() {
         <Route path="/en/services" element={<EnServicesPage />} />
         <Route path="/en/contact-us" element={<EnContactPage />} />
 
-        {/* 404 for any other route */}
+        {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
