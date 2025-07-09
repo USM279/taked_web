@@ -37,7 +37,8 @@
 
 ## 📸 Preview
 
-![TAKED UI](/thewebsite.png) 
+![TAKED UI](public/the-website.png)
+
 
 ---
 
