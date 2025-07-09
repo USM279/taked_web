@@ -200,7 +200,7 @@ export const EnContact = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 h-[104px]">
               <div className="bg-sky-950/10 p-4 rounded-lg">
-                <Phone className="text-sky-950 w-6 h-6" />
+                <Phone className="text-sky-900 w-6 h-6" />
               </div>
               <div>
                 <h3 className="font-bold mb-2 text-gray-900">Phone Numbers</h3>
@@ -215,7 +215,7 @@ export const EnContact = () => {
 
             <div className="flex items-center gap-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 h-[104px]">
               <div className="bg-sky-950/10 p-4 rounded-lg">
-                <Mail className="text-sky-950 w-6 h-6" />
+                <Mail className="text-sky-900 w-6 h-6" />
               </div>
               <div>
                 <h3 className="font-bold mb-2 text-gray-900">Email Address</h3>
@@ -225,7 +225,7 @@ export const EnContact = () => {
 
             <div className="flex items-center gap-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 h-[104px]">
               <div className="bg-sky-950/10 p-4 rounded-lg">
-                <MapPin className="text-sky-950 w-6 h-6" />
+                <MapPin className="text-sky-900 w-6 h-6" />
               </div>
               <div>
                 <h3 className="font-bold mb-2 text-gray-900">Our Address</h3>
@@ -245,7 +245,7 @@ export const EnContact = () => {
               className="flex items-center gap-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 h-[104px]"
             >
               <div className="bg-sky-950/10 p-4 rounded-lg">
-                <Facebook className="text-sky-950 w-6 h-6" />
+                <Facebook className="text-sky-900 w-6 h-6" />
               </div>
               <div>
                 <h3 className="font-bold mb-2 text-gray-900">
@@ -262,7 +262,7 @@ export const EnContact = () => {
               className="flex items-center gap-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 h-[104px]"
             >
               <div className="bg-sky-950/10 p-4 rounded-lg">
-                <Instagram className="text-sky-950 w-6 h-6" />
+                <Instagram className="text-sky-900 w-6 h-6" />
               </div>
               <div>
                 <h3 className="font-bold mb-2 text-gray-900">Our Instagram</h3>
@@ -277,7 +277,7 @@ export const EnContact = () => {
               className="flex items-center gap-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 h-[104px]"
             >
               <div className="bg-sky-950/10 p-4 rounded-lg">
-                <MessageCircle className="text-sky-950 w-6 h-6" />
+                <MessageCircle className="text-sky-900 w-6 h-6" />
               </div>
               <div>
                 <h3 className="font-bold mb-2 text-gray-900">

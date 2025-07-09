@@ -17,6 +17,10 @@ import {
   Globe,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  DEFAULT_TYPING_SPEED,
+  TypingAnimation,
+} from "../components/motions/TypingAnimation";
 
 export const ArContactPage = () => {
   const [formData, setFormData] = useState({
@@ -247,7 +251,12 @@ export const ArContactPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-6xl font-heading font-bold text-gray-900 mb-6">
-              تواصل معنا
+              <TypingAnimation
+                text="تواصل مع فريق تأكيد"
+                highlightedWord="تأكيد"
+                direction="rtl"
+                speed={DEFAULT_TYPING_SPEED}
+              />
             </h1>
             <p className="text-2xl text-gray-700 leading-relaxed mb-8">
               نحن هنا لمساعدتك في كل خطوة من رحلتك التجارية. تواصل معنا اليوم
@@ -257,17 +266,21 @@ export const ArContactPage = () => {
             {/* Quick Stats */}
             <div className="grid md:grid-cols-3 gap-6 mt-12">
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">
+                <div className="text-4xl font-bold text-sky-900 mb-2 text-sky-900">
                   &lt; 1hr
                 </div>
                 <div className="text-gray-600">متوسط وقت الرد</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">24/7</div>
+                <div className="text-4xl font-bold text-sky-900 mb-2 text-sky-900 ">
+                  24/7
+                </div>
                 <div className="text-gray-600">دعم مستمر</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">95%</div>
+                <div className="text-4xl font-bold text-sky-900 mb-2 text-sky-900">
+                  95%
+                </div>
                 <div className="text-gray-600">رضا العملاء</div>
               </div>
             </div>
@@ -480,7 +493,7 @@ export const ArContactPage = () => {
               {/* Office Hours */}
               <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                  <Clock className="text-primary w-6 h-6" />
+                  <Clock className="text-sky-900 w-6 h-6" />
                   أوقات العمل
                 </h3>
                 <div className="space-y-4">
@@ -492,7 +505,7 @@ export const ArContactPage = () => {
                       <span className="font-medium text-gray-900">
                         {schedule.day}
                       </span>
-                      <span className="text-primary font-semibold">
+                      <span className="text-sky-900 font-semibold">
                         {schedule.hours}
                       </span>
                     </div>
@@ -503,13 +516,13 @@ export const ArContactPage = () => {
               {/* Location */}
               <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                  <MapPin className="text-primary w-6 h-6" />
+                  <MapPin className="text-sky-900 w-6 h-6" />
                   موقعنا
                 </h3>
                 <div className="space-y-4">
                   <p className="text-gray-700">
-                    <strong>العنوان:</strong> الطابق الأرضي، مركز الممزر - ديرة - دبي - الإمارات العربية المتحدة
-
+                    <strong>العنوان:</strong> الطابق الأرضي، مركز الممزر - ديرة
+                    - دبي - الإمارات العربية المتحدة
                   </p>
                 </div>
               </div>
@@ -553,7 +566,7 @@ export const ArContactPage = () => {
                 className="bg-gray-50 rounded-2xl p-8 hover:shadow-md transition-shadow"
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-start gap-3">
-                  <AlertCircle className="text-primary w-6 h-6 mt-1 flex-shrink-0" />
+                  <AlertCircle className="text-sky-900 w-6 h-6 mt-1 flex-shrink-0" />
                   {item.question}
                 </h3>
                 <p className="text-gray-700 leading-relaxed pr-9">

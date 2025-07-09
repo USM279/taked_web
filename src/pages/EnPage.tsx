@@ -7,6 +7,10 @@ import { EnTestimonials } from "../components/EnTestimonials";
 import { EnContact } from "../components/EnContact";
 import { EnChatbot } from "../components/EnChatbot";
 import { EnFooter } from "../components/EnFooter";
+import {
+  TypingAnimation,
+  DEFAULT_TYPING_SPEED,
+} from "../components/motions/TypingAnimation";
 
 export const EnPage = () => {
   useEffect(() => {

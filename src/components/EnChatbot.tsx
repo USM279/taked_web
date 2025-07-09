@@ -116,7 +116,7 @@ export function EnChatbot() {
       });
       setTimeout(
         () => setShowOptions(true),
-        option.response.length * 500 + 500
+        option.response.length * 500 + 500,
       );
     }, 1000);
   };

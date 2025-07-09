@@ -25,9 +25,13 @@ import {
   UserCheck,
   MessageCircle,
 } from "lucide-react";
+import {
+  TypingAnimation,
+  DEFAULT_TYPING_SPEED,
+} from "../components/motions/TypingAnimation.tsx";
 
 export const EnAboutPage = () => {
-  const [activeYear, setActiveYear] = useState(2024);
+  const [activeYear, setActiveYear] = useState(2025);
 
   useEffect(() => {
     document.documentElement.dir = "ltr";
@@ -38,7 +42,7 @@ export const EnAboutPage = () => {
 
   const timeline = [
     {
-      year: 2008,
+      year: 2011,
       title: "Company Establishment",
       description:
         "Founded Taked with the vision of simplifying government transactions in the UAE",
@@ -62,7 +66,7 @@ export const EnAboutPage = () => {
         "Became one of the leading companies in government services in the UAE",
     },
     {
-      year: 2024,
+      year: 2025,
       title: "Sustainable Growth",
       description:
         "Continuing our journey towards innovation and excellence in customer service",
@@ -108,32 +112,32 @@ export const EnAboutPage = () => {
     },
   ];
 
-  const team = [
-    {
-      name: "Ahmed Al-Mansouri",
-      position: "Chief Executive Officer",
-      experience: "15+ years",
-      specialty: "Strategic Leadership and Business Development",
-    },
-    {
-      name: "Sarah Al-Zahra",
-      position: "Head of Operations",
-      experience: "12+ years",
-      specialty: "Government Relations and Process Management",
-    },
-    {
-      name: "Mohammed Al-Rashid",
-      position: "Legal Services Director",
-      experience: "10+ years",
-      specialty: "Commercial Law and Licensing",
-    },
-    {
-      name: "Fatima Al-Nuaimi",
-      position: "Customer Relations Manager",
-      experience: "8+ years",
-      specialty: "Customer Experience and Support",
-    },
-  ];
+  // const team = [
+  //   {
+  //     name: "Ahmed Al-Mansouri",
+  //     position: "Chief Executive Officer",
+  //     experience: "15+ years",
+  //     specialty: "Strategic Leadership and Business Development",
+  //   },
+  //   {
+  //     name: "Sarah Al-Zahra",
+  //     position: "Head of Operations",
+  //     experience: "12+ years",
+  //     specialty: "Government Relations and Process Management",
+  //   },
+  //   {
+  //     name: "Mohammed Al-Rashid",
+  //     position: "Legal Services Director",
+  //     experience: "10+ years",
+  //     specialty: "Commercial Law and Licensing",
+  //   },
+  //   {
+  //     name: "Fatima Al-Nuaimi",
+  //     position: "Customer Relations Manager",
+  //     experience: "8+ years",
+  //     specialty: "Customer Experience and Support",
+  //   },
+  // ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -147,7 +151,12 @@ export const EnAboutPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-6xl font-heading font-bold text-gray-900 mb-6">
-              About <span className="text-primary">Taked</span>
+              <TypingAnimation
+                text="About Taked"
+                highlightedWord="About Taked"
+                direction="ltr"
+                speed={DEFAULT_TYPING_SPEED}
+              />
             </h1>
             <p className="text-2xl text-gray-700 leading-relaxed mb-8">
               For over 15 years, we have been your trusted partner in navigating
@@ -158,19 +167,19 @@ export const EnAboutPage = () => {
             {/* Quick Stats */}
             <div className="grid md:grid-cols-4 gap-6 mt-12">
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">15+</div>
+                <div className="text-4xl font-bold text-sky-900 mb-2">15+</div>
                 <div className="text-gray-600">Years of Excellence</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">10K+</div>
+                <div className="text-4xl font-bold text-sky-900 mb-2">10K+</div>
                 <div className="text-gray-600">Happy Clients</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">50K+</div>
+                <div className="text-4xl font-bold text-sky-900 mb-2">50K+</div>
                 <div className="text-gray-600">Completed Services</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">100%</div>
+                <div className="text-4xl font-bold text-sky-900 mb-2">100%</div>
                 <div className="text-gray-600">Success Rate</div>
               </div>
             </div>
@@ -188,7 +197,7 @@ export const EnAboutPage = () => {
               </h2>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                 <p>
-                  <strong className="text-primary">Taked</strong> was born from
+                  <strong className="text-sky-900">Taked</strong> was born from
                   a simple yet powerful vision: to make government services in
                   the UAE accessible, efficient, and hassle-free for everyone.
                   What started as a small team of dedicated professionals has
@@ -301,8 +310,8 @@ export const EnAboutPage = () => {
                       className="bg-white rounded-3xl shadow-lg p-12 border border-gray-100"
                     >
                       <div className="flex items-center justify-center gap-3 mb-6">
-                        <Calendar className="text-primary w-8 h-8" />
-                        <span className="text-4xl font-bold text-primary">
+                        <Calendar className="text-sky-900 w-8 h-8" />
+                        <span className="text-4xl font-bold text-sky-900">
                           {item.year}
                         </span>
                       </div>
@@ -340,7 +349,7 @@ export const EnAboutPage = () => {
                 className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow"
               >
                 <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                  <value.icon className="text-primary w-8 h-8" />
+                  <value.icon className="text-sky-900 w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   {value.title}
@@ -355,7 +364,7 @@ export const EnAboutPage = () => {
       </section>
 
       {/* Our Team */}
-      <section
+      {/* <section
         className="py-20 bg-gradient-to-b from-gray-50 to-white"
         dir="ltr"
       >
@@ -378,12 +387,12 @@ export const EnAboutPage = () => {
               >
                 <div className="p-8 text-center">
                   <div className="bg-gradient-to-br from-primary/20 to-sky-200/50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Users className="text-primary w-10 h-10" />
+                    <Users className="text-sky-900 w-10 h-10" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
                     {member.name}
                   </h3>
-                  <p className="text-primary font-semibold mb-3">
+                  <p className="text-sky-900 font-semibold mb-3">
                     {member.position}
                   </p>
                   <div className="space-y-2 text-sm text-gray-600">
@@ -415,11 +424,11 @@ export const EnAboutPage = () => {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center p-8 bg-gradient-to-br from-blue-50 to-sky-50 rounded-2xl">
-              <Phone className="text-primary w-12 h-12 mx-auto mb-4" />
+              <Phone className="text-sky-900 w-12 h-12 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Call Us</h3>
               <a
                 href="tel:+971564331993"
-                className="text-primary font-semibold text-lg hover:underline"
+                className="text-sky-900 font-semibold text-lg hover:underline"
               >
                 +971 56 433 1993
               </a>

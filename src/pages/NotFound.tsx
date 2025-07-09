@@ -1,10 +1,21 @@
 import { Link } from "react-router-dom";
+import {
+  TypingAnimation,
+  DEFAULT_TYPING_SPEED,
+} from "../components/motions/TypingAnimation";
 
 const NotFound = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="text-center">
-        <h1 className="text-6xl font-bold text-gray-900 mb-4">404</h1>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-gray-900 leading-tight">
+          <TypingAnimation
+            text="Page Not Found"
+            highlightedWord="Page Not Found"
+            direction="ltr"
+            speed={DEFAULT_TYPING_SPEED}
+          />
+        </h1>
         <p className="text-xl text-gray-600 mb-8">
           الصفحة غير موجودة / Page not found
         </p>

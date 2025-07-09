@@ -25,9 +25,14 @@ import {
   UserCheck,
   MessageCircle,
 } from "lucide-react";
+import {
+  TypingAnimation,
+  DEFAULT_TYPING_SPEED,
+} from "../components/motions/TypingAnimation";
+import { CountingNumber } from "@/components/motions/counting-number";
 
 export const ArAboutPage = () => {
-  const [activeYear, setActiveYear] = useState(2024);
+  const [activeYear, setActiveYear] = useState(2025);
 
   useEffect(() => {
     document.documentElement.dir = "rtl";
@@ -38,7 +43,7 @@ export const ArAboutPage = () => {
 
   const timeline = [
     {
-      year: 2008,
+      year: 2011,
       title: "تأسيس الشركة",
       description:
         "تأسست تأكيد برؤية تبسيط المعاملات الحكومية في دولة الإمارات",
@@ -60,7 +65,7 @@ export const ArAboutPage = () => {
         "أصبحنا إحدى الشركات الرائدة في الخدمات الحكومية في الإمارات",
     },
     {
-      year: 2024,
+      year: 2025,
       title: "النمو المستدام",
       description: "نواصل رحلتنا نحو الابتكار والتميز في خدمة العملاء",
     },
@@ -101,32 +106,32 @@ export const ArAboutPage = () => {
     },
   ];
 
-  const team = [
-    {
-      name: "أحمد المنصوري",
-      position: "الرئيس التنفيذي",
-      experience: "+15 عام",
-      specialty: "القيادة الاستراتيجية وتطوير الأعمال",
-    },
-    {
-      name: "سارة الزهراء",
-      position: "رئيسة العمليات",
-      experience: "+12 عام",
-      specialty: "العلاقات الحكومية وإدارة العمليات",
-    },
-    {
-      name: "محمد الراشد",
-      position: "مدير الخدمات القانونية",
-      experience: "+10 أعوام",
-      specialty: "القانون التجاري والتراخيص",
-    },
-    {
-      name: "فاطمة النعيمي",
-      position: "مديرة علاقات العملاء",
-      experience: "+8 أعوام",
-      specialty: "تجربة العملاء والدعم",
-    },
-  ];
+  // const team = [
+  //   {
+  //     name: "أحمد المنصوري",
+  //     position: "الرئيس التنفيذي",
+  //     experience: "+15 عام",
+  //     specialty: "القيادة الاستراتيجية وتطوير الأعمال",
+  //   },
+  //   {
+  //     name: "سارة الزهراء",
+  //     position: "رئيسة العمليات",
+  //     experience: "+12 عام",
+  //     specialty: "العلاقات الحكومية وإدارة العمليات",
+  //   },
+  //   {
+  //     name: "محمد الراشد",
+  //     position: "مدير الخدمات القانونية",
+  //     experience: "+10 أعوام",
+  //     specialty: "القانون التجاري والتراخيص",
+  //   },
+  //   {
+  //     name: "فاطمة النعيمي",
+  //     position: "مديرة علاقات العملاء",
+  //     experience: "+8 أعوام",
+  //     specialty: "تجربة العملاء والدعم",
+  //   },
+  // ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -140,7 +145,12 @@ export const ArAboutPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-6xl font-heading font-bold text-gray-900 mb-6">
-              من نحن <span className="text-primary">تأكيد</span>
+              <TypingAnimation
+                text="من نحن تأكيد"
+                highlightedWord="تأكيد"
+                direction="rtl"
+                speed={DEFAULT_TYPING_SPEED}
+              />
             </h1>
             <p className="text-2xl text-gray-700 leading-relaxed mb-8">
               لأكثر من 15 عاماً، كنا شريككم الموثوق في التنقل في المشهد التجاري
@@ -149,22 +159,63 @@ export const ArAboutPage = () => {
             </p>
 
             {/* Quick Stats */}
-            <div className="grid md:grid-cols-4 gap-6 mt-12">
+            <div className="text-sky-900 grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-gray-200">
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">15+</div>
-                <div className="text-gray-600">عام من التميز</div>
+                <div
+                  className="flex items-baseline justify-center gap-0.5"
+                  dir="ltr"
+                >
+                  <span className="text-3xl font-bold">+</span>
+                  <CountingNumber
+                    number={15}
+                    className="text-4xl md:text-5xl font-bold"
+                  />
+                </div>
+                <p className="text-gray-600 mt-1">عام من التميّز</p>
               </div>
+
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">10K+</div>
-                <div className="text-gray-600">عميل سعيد</div>
+                <div
+                  className="flex items-baseline justify-center gap-0.5"
+                  dir="ltr"
+                >
+                  <span className="text-3xl font-bold">+</span>
+                  <CountingNumber
+                    number={10}
+                    className="text-4xl md:text-5xl font-bold"
+                  />
+                  <span className="text-4xl font-bold">K</span>
+                </div>
+                <p className="text-gray-600 mt-1">عميل سعيد</p>
               </div>
+
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">50K+</div>
-                <div className="text-gray-600">خدمة مكتملة</div>
+                <div
+                  className="flex items-baseline justify-center gap-0.5"
+                  dir="ltr"
+                >
+                  <span className="text-3xl font-bold">+</span>
+                  <CountingNumber
+                    number={50}
+                    className="text-4xl md:text-5xl font-bold"
+                  />
+                  <span className="text-4xl font-bold">K</span>
+                </div>
+                <p className="text-gray-600 mt-1">خدمة مكتملة</p>
               </div>
+
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">100%</div>
-                <div className="text-gray-600">معدل النجاح</div>
+                <div
+                  className="flex items-baseline justify-center gap-0.5"
+                  dir="ltr"
+                >
+                  <CountingNumber
+                    number={100}
+                    className="text-4xl md:text-5xl font-bold"
+                  />
+                  <span className="text-3xl font-bold">%</span>
+                </div>
+                <p className="text-gray-600 mt-1">معدل النجاح</p>
               </div>
             </div>
           </div>
@@ -179,7 +230,7 @@ export const ArAboutPage = () => {
               <h2 className="text-4xl font-bold text-gray-900 mb-6">قصتنا</h2>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                 <p>
-                  وُلدت <strong className="text-primary">تأكيد</strong> من رؤية
+                  وُلدت <strong className="text-sky-900">تأكيد</strong> من رؤية
                   بسيطة ولكنها قوية: جعل الخدمات الحكومية في دولة الإمارات في
                   متناول الجميع وفعالة وخالية من المتاعب. ما بدأ كفريق صغير من
                   المهنيين المتفانين نما ليصبح واحداً من أكثر الأسماء الموثوقة
@@ -288,8 +339,8 @@ export const ArAboutPage = () => {
                       className="bg-white rounded-3xl shadow-lg p-12 border border-gray-100"
                     >
                       <div className="flex items-center justify-center gap-3 mb-6">
-                        <Calendar className="text-primary w-8 h-8" />
-                        <span className="text-4xl font-bold text-primary">
+                        <Calendar className="text-sky-900 w-8 h-8" />
+                        <span className="text-4xl font-bold text-sky-900">
                           {item.year}
                         </span>
                       </div>
@@ -326,7 +377,7 @@ export const ArAboutPage = () => {
                 className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow"
               >
                 <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                  <value.icon className="text-primary w-8 h-8" />
+                  <value.icon className="text-sky-900 w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   {value.title}
@@ -341,7 +392,7 @@ export const ArAboutPage = () => {
       </section>
 
       {/* Our Team */}
-      <section
+      {/* <section
         className="py-20 bg-gradient-to-b from-gray-50 to-white"
         dir="rtl"
       >
@@ -363,12 +414,12 @@ export const ArAboutPage = () => {
               >
                 <div className="p-8 text-center">
                   <div className="bg-gradient-to-br from-primary/20 to-sky-200/50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Users className="text-primary w-10 h-10" />
+                    <Users className="text-sky-900 w-10 h-10" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
                     {member.name}
                   </h3>
-                  <p className="text-primary font-semibold mb-3">
+                  <p className="text-sky-900 font-semibold mb-3">
                     {member.position}
                   </p>
                   <div className="space-y-2 text-sm text-gray-600">
@@ -383,7 +434,7 @@ export const ArAboutPage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Information */}
       <section className="py-20 bg-white" dir="rtl">
@@ -400,11 +451,11 @@ export const ArAboutPage = () => {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center p-8 bg-gradient-to-br from-blue-50 to-sky-50 rounded-2xl">
-              <Phone className="text-primary w-12 h-12 mx-auto mb-4" />
+              <Phone className="text-sky-900 w-12 h-12 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">اتصل بنا</h3>
               <a
                 href="tel:+971564331993"
-                className="text-primary font-semibold text-lg hover:underline"
+                className="text-sky-900 font-semibold text-lg hover:underline"
               >
                 +971 56 433 1993
               </a>

@@ -29,25 +29,25 @@ export const ArNavbar = () => {
             <Link
               to="/ar"
               onClick={handleLogoClick}
-              className="text-gray-700 hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-sky-900 transition-colors"
             >
               الرئيسية
             </Link>
             <Link
               to="/ar/about-us"
-              className="text-gray-700 hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-sky-900 transition-colors"
             >
               من نحن
             </Link>
             <Link
               to="/ar/services"
-              className="text-gray-700 hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-sky-900 transition-colors"
             >
               خدماتنا
             </Link>
             <Link
               to="/ar/contact-us"
-              className="text-gray-700 hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-sky-900 transition-colors"
             >
               تواصل معنا
             </Link>
@@ -84,7 +84,7 @@ export const ArNavbar = () => {
               <div className="flex flex-col items-start space-y-4">
                 <Link
                   to="/ar"
-                  className="text-xl text-gray-700 hover:text-primary transition-colors"
+                  className="text-xl text-gray-700 hover:text-sky-900 transition-colors"
                   onClick={() => {
                     setIsOpen(false);
                     handleLogoClick();
@@ -94,28 +94,28 @@ export const ArNavbar = () => {
                 </Link>
                 <Link
                   to="/ar/about-us"
-                  className="text-xl text-gray-700 hover:text-primary transition-colors"
+                  className="text-xl text-gray-700 hover:text-sky-900 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   من نحن
                 </Link>
                 <Link
                   to="/ar/services"
-                  className="text-xl text-gray-700 hover:text-primary transition-colors"
+                  className="text-xl text-gray-700 hover:text-sky-900 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   خدماتنا
                 </Link>
                 <Link
                   to="/ar/contact-us"
-                  className="text-xl text-gray-700 hover:text-primary transition-colors"
+                  className="text-xl text-gray-700 hover:text-sky-900 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   تواصل معنا
                 </Link>
                 <Link
                   to="/en"
-                  className="text-xl text-gray-700 hover:text-primary transition-colors font-medium"
+                  className="text-xl text-gray-700 hover:text-sky-900 transition-colors font-medium"
                 >
                   EN
                 </Link>

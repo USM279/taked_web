@@ -27,25 +27,25 @@ export const EnNavbar = () => {
             <Link
               to="/en"
               onClick={handleLogoClick}
-              className="text-gray-700 hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-sky-900 transition-colors"
             >
               Home
             </Link>
             <Link
               to="/en/about-us"
-              className="text-gray-700 hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-sky-900 transition-colors"
             >
               About Us
             </Link>
             <Link
               to="/en/services"
-              className="text-gray-700 hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-sky-900 transition-colors"
             >
               Services
             </Link>
             <Link
               to="/en/contact-us"
-              className="text-gray-700 hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-sky-900 transition-colors"
             >
               Contact Us
             </Link>
@@ -82,7 +82,7 @@ export const EnNavbar = () => {
               <div className="flex flex-col items-start space-y-4">
                 <Link
                   to="/en"
-                  className="text-gray-700 hover:text-primary transition-colors"
+                  className="text-gray-700 hover:text-sky-900 transition-colors"
                   onClick={() => {
                     setIsOpen(false);
                     handleLogoClick();
@@ -92,28 +92,28 @@ export const EnNavbar = () => {
                 </Link>
                 <Link
                   to="/en/about-us"
-                  className="text-gray-700 hover:text-primary transition-colors"
+                  className="text-gray-700 hover:text-sky-900 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   About Us
                 </Link>
                 <Link
                   to="/en/services"
-                  className="text-gray-700 hover:text-primary transition-colors"
+                  className="text-gray-700 hover:text-sky-900 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   Services
                 </Link>
                 <Link
                   to="/en/contact-us"
-                  className="text-gray-700 hover:text-primary transition-colors"
+                  className="text-gray-700 hover:text-sky-900 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   Contact Us
                 </Link>
                 <Link
                   to="/ar"
-                  className="text-gray-700 hover:text-primary transition-colors font-medium"
+                  className="text-gray-700 hover:text-sky-900 transition-colors font-medium"
                 >
                   AR
                 </Link>

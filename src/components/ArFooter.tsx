@@ -24,7 +24,7 @@ export const ArFooter = () => {
 
       <div className="relative">
         {/* Main Footer Content */}
-        <div className="container mx-auto px-4 py-16" dir="rtl">
+        <div className="container mx-auto px-4 py-16 hidden md:block" dir="rtl">
           <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-12">
             {/* Company Info */}
             <div className="space-y-6">
@@ -145,7 +145,7 @@ export const ArFooter = () => {
                   © {new Date().getFullYear()} تأكيد جميع الحقوق محفوظة
                 </p>
                 <p className="text-sm text-gray-400 mt-1">
-                  مرخص من الحكومة الإماراتية
+                  مرخص من الدائرة الإقتصادية - دبي
                 </p>
               </div>
 
@@ -154,13 +154,27 @@ export const ArFooter = () => {
                 <span className="text-gray-400 text-sm ml-4">تابعنا على:</span>
                 <div className="flex gap-3">
                   {[
-                    { icon: Facebook, href: "#", color: "text-blue-400" },
-                    { icon: Instagram, href: "#", color: "text-pink-400" },
-                    { icon: Linkedin, href: "#", color: "text-blue-600" },
+                    {
+                      icon: Facebook,
+                      href: "https://www.facebook.com/taked24/",
+                      color: "text-blue-400",
+                    },
+                    {
+                      icon: Instagram,
+                      href: "https://www.instagram.com/taked.ae/",
+                      color: "text-pink-400",
+                    },
+                    {
+                      icon: Linkedin,
+                      href: "https://www.linkedin.com/company/taked/",
+                      color: "text-blue-600",
+                    },
                   ].map((social, index) => (
                     <a
                       key={index}
                       href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={`${social.color} hover:scale-110 transition-transform duration-200 bg-gray-800 p-2 rounded-full hover:bg-gray-700`}
                     >
                       <social.icon className="w-5 h-5" />

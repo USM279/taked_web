@@ -45,7 +45,6 @@ export const EnFooter = () => {
                   <Shield className="w-4 h-4 text-green-400" />
                   <span className="text-green-400">Officially Licensed</span>
                 </div>
-              
               </div>
             </div>
 
@@ -58,7 +57,6 @@ export const EnFooter = () => {
                   { name: "Our Services", href: "/en/services" },
                   { name: "About Us", href: "/en/about-us" },
                   { name: "Contact Us", href: "/en/contact-us" },
-                
                 ].map((link) => (
                   <li key={link.name}>
                     <a
@@ -71,9 +69,8 @@ export const EnFooter = () => {
                 ))}
               </ul>
             </div>
-
             {/* Services */}
-            <div>
+            <div className="hidden">
               <h4 className="text-xl font-bold text-white mb-6">
                 Our Main Services
               </h4>
@@ -92,7 +89,6 @@ export const EnFooter = () => {
                 ))}
               </ul>
             </div>
-
             {/* Contact Info */}
             <div>
               <h4 className="text-xl font-bold text-white mb-6">
@@ -126,10 +122,9 @@ export const EnFooter = () => {
                     </p>
                   </div>
                 </div>
-
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3 hidden">
                   <Clock className="w-5 h-5 text-sky-400 mt-1 flex-shrink-0" />
-                  <div>
+                  <div className="text-right">
                     <p className="text-gray-300 text-lg">Sunday - Thursday</p>
                     <p className="text-gray-400 text-sm">9:00 AM - 6:00 PM</p>
                   </div>
@@ -137,8 +132,6 @@ export const EnFooter = () => {
               </div>
             </div>
           </div>
-
-        
         </div>
 
         {/* Bottom Bar */}
@@ -151,7 +144,7 @@ export const EnFooter = () => {
                   © {new Date().getFullYear()} Taked. All rights reserved.
                 </p>
                 <p className="text-sm text-gray-400 mt-1">
-                  Licensed by UAE Government 
+                  Licensed by UAE Government
                 </p>
               </div>
 
