@@ -1,29 +1,56 @@
-# Taked Business Services Portal
+<h1 align="center">🚀 TAKED – Government Services Platform (UAE)</h1>
 
-**Taked** is a modern business services portal based in Dubai, providing streamlined solutions for entrepreneurs and investors to start and manage their businesses with confidence.
+<p align="center">
+  A sleek, fully responsive web application providing a suite of business & government services in the UAE.<br/>
+  Built with modern frontend technologies, designed with elegance, and optimized for performance.
+</p>
 
-## 🌟 Key Features
-
-- Company Formation Services  
-- Business Licensing and Government Approvals  
-- Visa and Immigration Services  
-- Business Consultations and Investor Support  
-
-## 🛠️ Technologies Used
-
-- **React** with **TypeScript**
-- **Tailwind CSS** for modern UI styling
-- **Vite** for fast development and builds
-- **EmailJS** for contact form integration
-
-## 📍 Target Audience
-
-Startups, entrepreneurs, and investors looking to launch or expand their businesses in the UAE.
-
-## 💼 About the Project
-
-This portal was built to provide a seamless, user-friendly experience for clients seeking business setup services in Dubai. Whether you're just getting started or looking to scale, Taked offers everything you need — all in one place.
+<p align="center">
+  <a href="https://github.com/USM279/taked_web"><img src="https://img.shields.io/badge/Code-GitHub-black?style=for-the-badge&logo=github" /></a>
+  <a href="https://obada.tech"><img src="https://img.shields.io/badge/Portfolio-obada.tech-orange?style=for-the-badge&logo=google-chrome" /></a>
+</p>
 
 ---
 
-*Crafted with care and precision to support the business visionaries of tomorrow.*
+## 🧩 Tech Stack
+
+| Category      | Tech Used                                                                 |
+|---------------|---------------------------------------------------------------------------|
+| 🧠 Framework   | [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) |
+| ⚡️ Bundler    | [Vite](https://vitejs.dev/)                                                |
+| 🎨 Styling    | [Tailwind CSS](https://tailwindcss.com/) + Custom Utility Classes          |
+| ✉️ Forms      | [EmailJS](https://www.emailjs.com/) - client-side email integration        |
+| 🚀 Hosting    | [Vercel](https://vercel.com/) - instant deployment + global CDN            |
+
+---
+
+## 💎 Features
+
+- ⚡️ **Blazing Fast** – Powered by Vite and deployed on Vercel  
+- 📱 **Mobile-First Design** – Clean layout across all screen sizes  
+- 🖼️ **Elegant UI** – Inspired by luxury branding in the UAE  
+- ✉️ **Integrated Contact Form** – With real-time validation & EmailJS  
+- 💡 **SEO Optimized** – Proper meta tags and OG image support  
+- 🧩 **Component-Based** – Easy to maintain and extend  
+
+---
+
+## 📸 Preview
+
+![TAKED UI](/thewebsite.png) 
+
+---
+
+## 🚀 Run Locally
+
+```bash
+git clone https://github.com/USM279/taked_web.git
+cd taked_web
+npm install
+npm run dev
+
+📬 Contact
+Feel free to reach out for collaborations, improvements, or just to say hi!
+📧 Email: obada.smaisem@gmail.com
+🌍 Portfolio: obada.tech
+💼 LinkedIn: linkedin.com/in/obada-smaisem
