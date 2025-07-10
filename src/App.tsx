@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { useEffect } from "react";
 import ReactGA from "react-ga4";
+import { analytics } from "./lib/analytics";
 
 import { ArPage } from "./pages/ArPage";
 import { EnPage } from "./pages/EnPage";
@@ -18,12 +19,13 @@ import { EnServicesPage } from "./pages/EnServicesPage";
 import { EnContactPage } from "./pages/EnContactPage";
 import NotFound from "./pages/NotFound";
 
-// ✅ Page tracking component
+// ✅ Enhanced Page tracking component
 function PageTracker() {
   const location = useLocation();
 
   useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: location.pathname });
+    // Track page view using our analytics utility
+    analytics.trackPageView(location.pathname, document.title);
   }, [location]);
 
   return null;

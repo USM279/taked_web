@@ -7,7 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // ✅ Google Analytics
 import ReactGA from "react-ga4";
-ReactGA.initialize("G-ZKHLZXZV2K"); 
+ReactGA.initialize("G-ZKHLZXZV2K");
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
