@@ -16,7 +16,7 @@
 
 | Category      | Tech Used                                                                 |
 |---------------|---------------------------------------------------------------------------|
-| 🧠 Framework   | [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) |
+| 🧠 Framework  | [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) |
 | ⚡️ Bundler    | [Vite](https://vitejs.dev/)                                                |
 | 🎨 Styling    | [Tailwind CSS](https://tailwindcss.com/) + Custom Utility Classes          |
 | ✉️ Forms      | [EmailJS](https://www.emailjs.com/) - client-side email integration        |
