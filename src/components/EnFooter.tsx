@@ -173,7 +173,7 @@ export const EnFooter = () => {
                 <p>
                   ✨ Powered by{" "}
                   <a
-                    href="https://obada.me"
+                    href="http://obada.tech"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sky-400 hover:text-sky-300 font-medium transition-colors duration-200 hover:underline"
