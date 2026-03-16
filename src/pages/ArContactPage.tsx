@@ -203,7 +203,7 @@ export const ArContactPage = () => {
     {
       icon: Phone,
       title: "اتصل بنا",
-      info: <div dir="ltr">+971 56 433 1993</div>,
+      info: <span dir="ltr">+971 56 433 1993</span>,
       description: "متاح على مدار الساعة لاستقبال استفساراتكم",
       action: "tel:+971564331993",
       color: "from-green-50 to-emerald-50",
@@ -212,7 +212,7 @@ export const ArContactPage = () => {
     {
       icon: MessageCircle,
       title: "واتساب",
-      info: <div dir="ltr">+971 56 433 1993</div>,
+      info: <span dir="ltr">+971 56 433 1993</span>,
       description: "تواصل سريع ومباشر عبر واتساب",
       action: "https://wa.me/971564331993",
       color: "from-green-50 to-green-100",

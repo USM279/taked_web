@@ -36,6 +36,8 @@ export const sendContactEmail = async (payload: ContactEmailPayload) => {
 
   const data = await response.json();
 
+  console.log("Web3Forms response:", data);
+
   if (!data.success) {
     throw new Error(data.message || "Web3Forms submission failed");
   }
