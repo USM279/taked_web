@@ -221,9 +221,9 @@ export const EnContactPage = () => {
     {
       icon: Mail,
       title: "Email",
-      info: "info@takedgroup.com",
+      info: "info.taked@gmail.com",
       description: "Send us a message and we'll reply within an hour",
-      action: "mailto:info@takedgroup.com",
+      action: "mailto:info.taked@gmail.com",
       color: "from-blue-50 to-sky-50",
       iconColor: "text-blue-600",
     },

@@ -479,10 +479,10 @@ export const ArAboutPage = () => {
               <Mail className="text-green-600 w-12 h-12 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">راسلنا</h3>
               <a
-                href="mailto:info@takedgroup.com"
+                href="mailto:info.taked@gmail.com"
                 className="text-green-600 font-semibold text-lg hover:underline"
               >
-                info@takedgroup.com
+                info.taked@gmail.com
               </a>
               <p className="text-gray-600 mt-2">رد خلال ساعة واحدة</p>
             </div>

@@ -29,7 +29,7 @@ const englishChatbotOptions = [
     response: [
       "You can reach us through:",
       "📞 Phone: +971 56 433 1993",
-      "📧 Email: info@takedgroup.com",
+      "📧 Email: info.taked@gmail.com",
       "🏢 Address: Ground Floor, Al Mamzar Centre - Deira - Dubai",
       "⏰ Working Hours: Sunday - Thursday, 9:00 AM - 6:00 PM",
     ],

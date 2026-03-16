@@ -225,7 +225,7 @@ export const ArContact = () => {
                 <h3 className="font-bold mb-2 text-gray-900">
                   البريد الإلكتروني
                 </h3>
-                <p className="text-gray-600">info@takedgroup.com</p>
+                <p className="text-gray-600">info.taked@gmail.com</p>
               </div>
             </div>
 

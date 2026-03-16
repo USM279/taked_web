@@ -159,7 +159,7 @@ export const applySeo = ({
     image: [toAbsoluteUrl("/the-website.png")],
     url: SITE_URL,
     telephone: "+971564331993",
-    email: "info@takedgroup.com",
+    email: "info.taked@gmail.com",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Ground Floor, Al Mamzar Centre, Deira",

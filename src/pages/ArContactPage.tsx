@@ -221,9 +221,9 @@ export const ArContactPage = () => {
     {
       icon: Mail,
       title: "البريد الإلكتروني",
-      info: "info@takedgroup.com",
+      info: "info.taked@gmail.com",
       description: "راسلنا وسنرد عليك خلال ساعة واحدة",
-      action: "mailto:info@takedgroup.com",
+      action: "mailto:info.taked@gmail.com",
       color: "from-blue-50 to-sky-50",
       iconColor: "text-blue-600",
     },

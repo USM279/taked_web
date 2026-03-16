@@ -109,7 +109,7 @@ export const ArFooter = () => {
                 <div className="flex items-start gap-3">
                   <Mail className="w-5 h-5 text-sky-400 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="text-gray-300 text-lg">info@takedgroup.com</p>
+                    <p className="text-gray-300 text-lg">info.taked@gmail.com</p>
                     <p className="text-gray-400 text-sm">للاستفسارات العامة</p>
                   </div>
                 </div>

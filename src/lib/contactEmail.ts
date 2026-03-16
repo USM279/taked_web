@@ -10,7 +10,7 @@ type ContactEmailPayload = {
 };
 
 const CONTACT_RECEIVER_EMAIL =
-  import.meta.env.VITE_CONTACT_RECEIVER_EMAIL || "info@takedgroup.com";
+  import.meta.env.VITE_CONTACT_RECEIVER_EMAIL || "info.taked@gmail.com";
 
 export const sendContactEmail = async (payload: ContactEmailPayload) => {
   const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
