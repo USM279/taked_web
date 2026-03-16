@@ -170,13 +170,12 @@ export const EnContact = () => {
       console.warn(
         "EmailJS not configured properly. Form submission disabled."
       );
-      analytics.trackLead("form", {
+      analytics.trackFormSubmission("home_contact_en", false);
+      analytics.trackEvent("emailjs_config_missing", {
         form_name: "home_contact_en",
         page_path: window.location.pathname,
-        status: "simulated_success",
       });
-      setSubmitStatus("success"); // Show temporary success message
-      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+      setSubmitStatus("error");
       return;
     }
 

@@ -171,13 +171,12 @@ export const ArContact = () => {
       console.warn(
         "EmailJS not configured properly. Form submission disabled."
       );
-      analytics.trackLead("form", {
+      analytics.trackFormSubmission("home_contact_ar", false);
+      analytics.trackEvent("emailjs_config_missing", {
         form_name: "home_contact_ar",
         page_path: window.location.pathname,
-        status: "simulated_success",
       });
-      setSubmitStatus("success"); // show success message temporarily
-      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+      setSubmitStatus("error");
       return;
     }
 

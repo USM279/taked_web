@@ -23,6 +23,7 @@ import {
 } from "../components/motions/TypingAnimation.tsx";
 import { applySeo } from "../lib/seo";
 import { analytics } from "@/lib/analytics";
+import emailjs from "@emailjs/browser";
 
 export const EnContactPage = () => {
   const [formData, setFormData] = useState({
@@ -165,9 +166,31 @@ export const EnContactPage = () => {
 
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      analytics.trackFormSubmission("contact_page_en", false);
       setIsSubmitting(false);
+      setSubmitStatus("error");
+      return;
+    }
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          reply_to: formData.email,
+          phone: formData.phone,
+          service: formData.service || "Not specified",
+          message: formData.message,
+        },
+        publicKey
+      );
+
       setSubmitStatus("success");
       analytics.trackLead("form", {
         form_name: "contact_page_en",
@@ -176,7 +199,13 @@ export const EnContactPage = () => {
       });
       setFormData({ name: "", email: "", phone: "", service: "", message: "" });
       setFieldErrors({ name: "", email: "", phone: "", message: "" });
-    }, 2000);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      analytics.trackFormSubmission("contact_page_en", false);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactMethods = [
@@ -498,6 +527,15 @@ export const EnContactPage = () => {
                     <span className="text-green-800">
                       Your message has been sent successfully! We'll contact you
                       soon.
+                    </span>
+                  </div>
+                )}
+                {submitStatus === "error" && (
+                  <div className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <AlertCircle className="text-red-600 w-5 h-5" />
+                    <span className="text-red-800">
+                      We could not send your message now. Please try again or
+                      contact us via WhatsApp.
                     </span>
                   </div>
                 )}
