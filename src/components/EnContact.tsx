@@ -8,8 +8,8 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import emailjs from "@emailjs/browser";
 import { analytics } from "@/lib/analytics";
+import { sendContactEmail } from "@/lib/contactEmail";
 
 interface FormData {
   name: string;
@@ -138,7 +138,6 @@ export const EnContact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.current) return;
 
     // Validate all form data
     const isNameValid = validateField("name", formData.name);
@@ -154,34 +153,23 @@ export const EnContact = () => {
       return; // Don't submit if there are errors
     }
 
-    // Check if EmailJS is configured
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    if (
-      !serviceId ||
-      !templateId ||
-      !publicKey ||
-      serviceId === "service_xxxxxxx" ||
-      templateId === "template_xxxxxxx" ||
-      publicKey === "xxxxxxxxxxxxxxx"
-    ) {
-      console.warn(
-        "EmailJS not configured properly. Form submission disabled."
-      );
-      analytics.trackFormSubmission("home_contact_en", false);
-      analytics.trackEvent("emailjs_config_missing", {
-        form_name: "home_contact_en",
-        page_path: window.location.pathname,
-      });
-      setSubmitStatus("error");
-      return;
-    }
-
     setIsSubmitting(true);
     try {
-      await emailjs.sendForm(serviceId, templateId, form.current, publicKey);
+      const result = await sendContactEmail({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message,
+        locale: "en",
+      });
+
+      analytics.trackEvent("emailjs_send_result", {
+        form_name: "home_contact_en",
+        page_path: window.location.pathname,
+        status_code: result.status,
+        status_text: result.text,
+      });
       analytics.trackLead("form", {
         form_name: "home_contact_en",
         page_path: window.location.pathname,

@@ -23,7 +23,7 @@ import {
 } from "../components/motions/TypingAnimation";
 import { applySeo } from "../lib/seo";
 import { analytics } from "@/lib/analytics";
-import emailjs from "@emailjs/browser";
+import { sendContactEmail } from "@/lib/contactEmail";
 
 export const ArContactPage = () => {
   const [formData, setFormData] = useState({
@@ -166,32 +166,23 @@ export const ArContactPage = () => {
 
     setIsSubmitting(true);
 
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-      analytics.trackFormSubmission("contact_page_ar", false);
-      setIsSubmitting(false);
-      setSubmitStatus("error");
-      return;
-    }
-
     try {
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          from_name: formData.name,
-          reply_to: formData.email,
-          phone: formData.phone,
-          service: formData.service || "غير محدد",
-          message: formData.message,
-        },
-        publicKey
-      );
+      const result = await sendContactEmail({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message,
+        locale: "ar",
+      });
 
       setSubmitStatus("success");
+      analytics.trackEvent("emailjs_send_result", {
+        form_name: "contact_page_ar",
+        page_path: window.location.pathname,
+        status_code: result.status,
+        status_text: result.text,
+      });
       analytics.trackLead("form", {
         form_name: "contact_page_ar",
         page_path: window.location.pathname,
