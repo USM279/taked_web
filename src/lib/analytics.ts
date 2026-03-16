@@ -29,6 +29,17 @@ export const analytics = {
     }
   },
 
+  // Track high-intent lead actions using GA4 recommended naming
+  trackLead: (
+    method: "phone" | "whatsapp" | "email" | "form",
+    parameters: Record<string, any> = {}
+  ) => {
+    analytics.trackEvent("generate_lead", {
+      method,
+      ...parameters,
+    });
+  },
+
   // Track button clicks
   trackButtonClick: (buttonName: string, location?: string) => {
     analytics.trackEvent('button_click', {

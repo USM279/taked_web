@@ -21,6 +21,8 @@ import {
   DEFAULT_TYPING_SPEED,
   TypingAnimation,
 } from "../components/motions/TypingAnimation";
+import { applySeo } from "../lib/seo";
+import { analytics } from "@/lib/analytics";
 
 export const ArContactPage = () => {
   const [formData, setFormData] = useState({
@@ -109,9 +111,21 @@ export const ArContactPage = () => {
   };
 
   useEffect(() => {
-    document.documentElement.dir = "rtl";
-    document.documentElement.lang = "ar";
-    document.title = "تواصل معنا - تأكيد";
+    applySeo({
+      title: "تواصل معنا | تأكيد لخدمات تأسيس الشركات",
+      description:
+        "تواصل مع فريق تأكيد للاستشارات وخدمات تأسيس الشركات في دبي والإمارات، وإصدار الرخص والإقامات والمعاملات الحكومية.",
+      path: "/ar/contact-us",
+      language: "ar",
+      alternates: {
+        ar: "/ar/contact-us",
+        en: "/en/contact-us",
+      },
+      breadcrumb: [
+        { name: "الرئيسية", path: "/ar" },
+        { name: "تواصل معنا", path: "/ar/contact-us" },
+      ],
+    });
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
@@ -142,6 +156,10 @@ export const ArContactPage = () => {
     const isMessageValid = validateField("message", formData.message);
 
     if (!isNameValid || !isEmailValid || !isPhoneValid || !isMessageValid) {
+      analytics.trackEvent("form_validation_failed", {
+        form_name: "contact_page_ar",
+        page_path: window.location.pathname,
+      });
       return; // Don't submit if there are validation errors
     }
 
@@ -151,6 +169,11 @@ export const ArContactPage = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitStatus("success");
+      analytics.trackLead("form", {
+        form_name: "contact_page_ar",
+        page_path: window.location.pathname,
+        status: "success",
+      });
       setFormData({ name: "", email: "", phone: "", service: "", message: "" });
       setFieldErrors({ name: "", email: "", phone: "", message: "" });
     }, 2000);

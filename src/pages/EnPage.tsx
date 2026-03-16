@@ -7,17 +7,24 @@ import { EnTestimonials } from "../components/EnTestimonials";
 import { EnContact } from "../components/EnContact";
 import { EnChatbot } from "../components/EnChatbot";
 import { EnFooter } from "../components/EnFooter";
-import {
-  TypingAnimation,
-  DEFAULT_TYPING_SPEED,
-} from "../components/motions/TypingAnimation";
+import { applySeo } from "../lib/seo";
 
 export const EnPage = () => {
   useEffect(() => {
-    document.documentElement.dir = "ltr";
-    document.documentElement.lang = "en";
-    document.title =
-      "Taked - Your trusted partner for business setup in the UAE";
+    applySeo({
+      title: "Taked | Business Setup Services in Dubai & UAE",
+      description:
+        "Taked provides company formation in Dubai and UAE, trade license support, investor visa services, and full PRO/government processing.",
+      path: "/en",
+      language: "en",
+      keywords:
+        "business setup dubai, company formation dubai, trade license dubai, investor visa uae, pro services dubai",
+      alternates: {
+        ar: "/ar",
+        en: "/en",
+      },
+      breadcrumb: [{ name: "Home", path: "/en" }],
+    });
   }, []);
 
   return (

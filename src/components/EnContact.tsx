@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import emailjs from "@emailjs/browser";
+import { analytics } from "@/lib/analytics";
 
 interface FormData {
   name: string;
@@ -146,6 +147,10 @@ export const EnContact = () => {
     const isMessageValid = validateField("message", formData.message);
 
     if (!isNameValid || !isEmailValid || !isPhoneValid || !isMessageValid) {
+      analytics.trackEvent("form_validation_failed", {
+        form_name: "home_contact_en",
+        page_path: window.location.pathname,
+      });
       return; // Don't submit if there are errors
     }
 
@@ -165,6 +170,11 @@ export const EnContact = () => {
       console.warn(
         "EmailJS not configured properly. Form submission disabled."
       );
+      analytics.trackLead("form", {
+        form_name: "home_contact_en",
+        page_path: window.location.pathname,
+        status: "simulated_success",
+      });
       setSubmitStatus("success"); // Show temporary success message
       setFormData({ name: "", email: "", phone: "", service: "", message: "" });
       return;
@@ -173,10 +183,16 @@ export const EnContact = () => {
     setIsSubmitting(true);
     try {
       await emailjs.sendForm(serviceId, templateId, form.current, publicKey);
+      analytics.trackLead("form", {
+        form_name: "home_contact_en",
+        page_path: window.location.pathname,
+        status: "success",
+      });
       setSubmitStatus("success");
       setFormData({ name: "", email: "", phone: "", service: "", message: "" });
     } catch (error) {
       console.error("EmailJS Error:", error);
+      analytics.trackFormSubmission("home_contact_en", false);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);

@@ -28,12 +28,28 @@ import {
   TypingAnimation,
   DEFAULT_TYPING_SPEED,
 } from "../components/motions/TypingAnimation";
+import { applySeo } from "../lib/seo";
+import { Link } from "react-router-dom";
 
 export const ArServicesPage = () => {
   useEffect(() => {
-    document.documentElement.dir = "rtl";
-    document.documentElement.lang = "ar";
-    document.title = "خدماتنا - تأكيد";
+    applySeo({
+      title: "خدمات تأسيس الشركات والرخص في دبي | تأكيد",
+      description:
+        "تعرف على خدمات تأكيد: تأسيس الشركات، الرخص التجارية، التأشيرات، الإقامات، والخدمات القانونية في دبي والإمارات.",
+      path: "/ar/services",
+      language: "ar",
+      keywords:
+        "خدمات تأسيس الشركات دبي, رخصة تجارية دبي, اقامة مستثمر الامارات, خدمات قانونية دبي",
+      alternates: {
+        ar: "/ar/services",
+        en: "/en/services",
+      },
+      breadcrumb: [
+        { name: "الرئيسية", path: "/ar" },
+        { name: "خدماتنا", path: "/ar/services" },
+      ],
+    });
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
@@ -193,6 +209,45 @@ export const ArServicesPage = () => {
                 <div className="text-gray-600">معدل النجاح</div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-white" dir="rtl">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">
+              صفحات تأسيس الأكثر طلبًا
+            </h2>
+            <p className="text-gray-600">
+              اختر الخدمة المتخصصة المناسبة لاحتياجك
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link
+              to="/ar/business-setup-dubai"
+              className="rounded-2xl border border-sky-100 bg-sky-50 p-5 font-bold text-sky-900 hover:bg-sky-100 transition-colors"
+            >
+              تأسيس شركة في دبي
+            </Link>
+            <Link
+              to="/ar/free-zone-company-setup"
+              className="rounded-2xl border border-sky-100 bg-sky-50 p-5 font-bold text-sky-900 hover:bg-sky-100 transition-colors"
+            >
+              تأسيس شركة في المنطقة الحرة
+            </Link>
+            <Link
+              to="/ar/trade-license-dubai"
+              className="rounded-2xl border border-sky-100 bg-sky-50 p-5 font-bold text-sky-900 hover:bg-sky-100 transition-colors"
+            >
+              رخصة تجارية دبي
+            </Link>
+            <Link
+              to="/ar/investor-visa-uae"
+              className="rounded-2xl border border-sky-100 bg-sky-50 p-5 font-bold text-sky-900 hover:bg-sky-100 transition-colors"
+            >
+              إقامة مستثمر الإمارات
+            </Link>
           </div>
         </div>
       </section>

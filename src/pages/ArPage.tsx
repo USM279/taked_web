@@ -7,13 +7,24 @@ import { ArTestimonials } from "../components/ArTestimonials";
 import { ArContact } from "../components/ArContact";
 import { ArChatbot } from "../components/ArChatbot";
 import { ArFooter } from "../components/ArFooter";
-import { TypingAnimation } from "../components/motions/TypingAnimation";
+import { applySeo } from "../lib/seo";
 
 export const ArPage = () => {
   useEffect(() => {
-    document.documentElement.dir = "rtl";
-    document.documentElement.lang = "ar";
-    document.title = "تأكيد - شريكك الموثوق لتأسيس الشركات في الإمارات";
+    applySeo({
+      title: "تأكيد | خدمات تأسيس الشركات في دبي والإمارات",
+      description:
+        "تأكيد تقدم خدمات تأسيس الشركات في دبي والإمارات، الرخص التجارية، إقامة المستثمر، والخدمات الحكومية للشركات والأفراد.",
+      path: "/ar",
+      language: "ar",
+      keywords:
+        "تأسيس شركة في دبي, تأسيس شركة في الامارات, رخصة تجارية دبي, اقامة مستثمر الامارات, خدمات رجال الأعمال دبي",
+      alternates: {
+        ar: "/ar",
+        en: "/en",
+      },
+      breadcrumb: [{ name: "الرئيسية", path: "/ar" }],
+    });
   }, []);
 
   return (

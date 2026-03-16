@@ -30,14 +30,27 @@ import {
   DEFAULT_TYPING_SPEED,
 } from "../components/motions/TypingAnimation";
 import { CountingNumber } from "@/components/motions/counting-number";
+import { applySeo } from "../lib/seo";
 
 export const ArAboutPage = () => {
   const [activeYear, setActiveYear] = useState(2025);
 
   useEffect(() => {
-    document.documentElement.dir = "rtl";
-    document.documentElement.lang = "ar";
-    document.title = "من نحن - تأكيد";
+    applySeo({
+      title: "من نحن | تأكيد لخدمات تأسيس الشركات في الإمارات",
+      description:
+        "تعرف على شركة تأكيد وخبرتها في تأسيس الشركات بدبي والإمارات، ورؤيتنا لتقديم خدمات حكومية وتجارية سريعة وموثوقة.",
+      path: "/ar/about-us",
+      language: "ar",
+      alternates: {
+        ar: "/ar/about-us",
+        en: "/en/about-us",
+      },
+      breadcrumb: [
+        { name: "الرئيسية", path: "/ar" },
+        { name: "من نحن", path: "/ar/about-us" },
+      ],
+    });
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 

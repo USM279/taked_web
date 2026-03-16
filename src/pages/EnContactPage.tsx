@@ -21,6 +21,8 @@ import {
   TypingAnimation,
   DEFAULT_TYPING_SPEED,
 } from "../components/motions/TypingAnimation.tsx";
+import { applySeo } from "../lib/seo";
+import { analytics } from "@/lib/analytics";
 
 export const EnContactPage = () => {
   const [formData, setFormData] = useState({
@@ -109,9 +111,21 @@ export const EnContactPage = () => {
   };
 
   useEffect(() => {
-    document.documentElement.dir = "ltr";
-    document.documentElement.lang = "en";
-    document.title = "Contact Us - Taked";
+    applySeo({
+      title: "Contact Taked | Business Setup Support in Dubai",
+      description:
+        "Contact Taked for company setup in Dubai and UAE, trade license assistance, investor visa processing, and PRO/government services.",
+      path: "/en/contact-us",
+      language: "en",
+      alternates: {
+        ar: "/ar/contact-us",
+        en: "/en/contact-us",
+      },
+      breadcrumb: [
+        { name: "Home", path: "/en" },
+        { name: "Contact Us", path: "/en/contact-us" },
+      ],
+    });
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
@@ -142,6 +156,10 @@ export const EnContactPage = () => {
     const isMessageValid = validateField("message", formData.message);
 
     if (!isNameValid || !isEmailValid || !isPhoneValid || !isMessageValid) {
+      analytics.trackEvent("form_validation_failed", {
+        form_name: "contact_page_en",
+        page_path: window.location.pathname,
+      });
       return; // Don't submit if there are validation errors
     }
 
@@ -151,6 +169,11 @@ export const EnContactPage = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitStatus("success");
+      analytics.trackLead("form", {
+        form_name: "contact_page_en",
+        page_path: window.location.pathname,
+        status: "success",
+      });
       setFormData({ name: "", email: "", phone: "", service: "", message: "" });
       setFieldErrors({ name: "", email: "", phone: "", message: "" });
     }, 2000);

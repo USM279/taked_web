@@ -29,14 +29,27 @@ import {
   TypingAnimation,
   DEFAULT_TYPING_SPEED,
 } from "../components/motions/TypingAnimation.tsx";
+import { applySeo } from "../lib/seo";
 
 export const EnAboutPage = () => {
   const [activeYear, setActiveYear] = useState(2025);
 
   useEffect(() => {
-    document.documentElement.dir = "ltr";
-    document.documentElement.lang = "en";
-    document.title = "About Us - Taked";
+    applySeo({
+      title: "About Taked | Business Setup Experts in UAE",
+      description:
+        "Learn about Taked, our experience in Dubai company formation, and our mission to simplify government and business services across the UAE.",
+      path: "/en/about-us",
+      language: "en",
+      alternates: {
+        ar: "/ar/about-us",
+        en: "/en/about-us",
+      },
+      breadcrumb: [
+        { name: "Home", path: "/en" },
+        { name: "About Us", path: "/en/about-us" },
+      ],
+    });
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 

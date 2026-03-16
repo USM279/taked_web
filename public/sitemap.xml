@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <url>
+    <loc>https://www.takedgroup.com/</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.takedgroup.com/ar</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en" />
+  </url>
+  <url>
+    <loc>https://www.takedgroup.com/en</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en" />
+  </url>
+
+  <url>
+    <loc>https://www.takedgroup.com/ar/about-us</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar/about-us" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en/about-us" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en/about-us" />
+  </url>
+  <url>
+    <loc>https://www.takedgroup.com/en/about-us</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar/about-us" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en/about-us" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en/about-us" />
+  </url>
+
+  <url>
+    <loc>https://www.takedgroup.com/ar/services</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar/services" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en/services" />
+  </url>
+  <url>
+    <loc>https://www.takedgroup.com/en/services</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar/services" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en/services" />
+  </url>
+
+  <url>
+    <loc>https://www.takedgroup.com/ar/contact-us</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar/contact-us" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en/contact-us" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en/contact-us" />
+  </url>
+  <url>
+    <loc>https://www.takedgroup.com/en/contact-us</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar/contact-us" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en/contact-us" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en/contact-us" />
+  </url>
+
+  <url>
+    <loc>https://www.takedgroup.com/ar/business-setup-dubai</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar/business-setup-dubai" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en/business-setup-dubai" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en/business-setup-dubai" />
+  </url>
+  <url>
+    <loc>https://www.takedgroup.com/en/business-setup-dubai</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar/business-setup-dubai" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en/business-setup-dubai" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en/business-setup-dubai" />
+  </url>
+
+  <url>
+    <loc>https://www.takedgroup.com/ar/free-zone-company-setup</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar/free-zone-company-setup" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en/free-zone-company-setup" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en/free-zone-company-setup" />
+  </url>
+  <url>
+    <loc>https://www.takedgroup.com/en/free-zone-company-setup</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar/free-zone-company-setup" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en/free-zone-company-setup" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en/free-zone-company-setup" />
+  </url>
+
+  <url>
+    <loc>https://www.takedgroup.com/ar/trade-license-dubai</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar/trade-license-dubai" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en/trade-license-dubai" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en/trade-license-dubai" />
+  </url>
+  <url>
+    <loc>https://www.takedgroup.com/en/trade-license-dubai</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar/trade-license-dubai" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en/trade-license-dubai" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en/trade-license-dubai" />
+  </url>
+
+  <url>
+    <loc>https://www.takedgroup.com/ar/investor-visa-uae</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar/investor-visa-uae" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en/investor-visa-uae" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en/investor-visa-uae" />
+  </url>
+  <url>
+    <loc>https://www.takedgroup.com/en/investor-visa-uae</loc>
+    <lastmod>2026-03-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://www.takedgroup.com/ar/investor-visa-uae" />
+    <xhtml:link rel="alternate" hreflang="en-AE" href="https://www.takedgroup.com/en/investor-visa-uae" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.takedgroup.com/en/investor-visa-uae" />
+  </url>
+</urlset>

@@ -28,12 +28,28 @@ import {
   TypingAnimation,
   DEFAULT_TYPING_SPEED,
 } from "../components/motions/TypingAnimation.tsx";
+import { applySeo } from "../lib/seo";
+import { Link } from "react-router-dom";
 
 export const EnServicesPage = () => {
   useEffect(() => {
-    document.documentElement.dir = "ltr";
-    document.documentElement.lang = "en";
-    document.title = "Services - Taked";
+    applySeo({
+      title: "Company Formation & PRO Services in Dubai | Taked",
+      description:
+        "Explore Taked services for business setup in Dubai, trade licensing, investor visa processing, residency, and legal support in the UAE.",
+      path: "/en/services",
+      language: "en",
+      keywords:
+        "business setup services dubai, company formation services uae, trade license support dubai, investor visa services",
+      alternates: {
+        ar: "/ar/services",
+        en: "/en/services",
+      },
+      breadcrumb: [
+        { name: "Home", path: "/en" },
+        { name: "Services", path: "/en/services" },
+      ],
+    });
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
@@ -200,6 +216,45 @@ export const EnServicesPage = () => {
                 <div className="text-gray-600">Success Rate</div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-white" dir="ltr">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">
+              High-Intent Setup Pages
+            </h2>
+            <p className="text-gray-600">
+              Explore dedicated pages built around top business setup searches
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link
+              to="/en/business-setup-dubai"
+              className="rounded-2xl border border-sky-100 bg-sky-50 p-5 font-bold text-sky-900 hover:bg-sky-100 transition-colors"
+            >
+              Business Setup Dubai
+            </Link>
+            <Link
+              to="/en/free-zone-company-setup"
+              className="rounded-2xl border border-sky-100 bg-sky-50 p-5 font-bold text-sky-900 hover:bg-sky-100 transition-colors"
+            >
+              Free Zone Company Setup
+            </Link>
+            <Link
+              to="/en/trade-license-dubai"
+              className="rounded-2xl border border-sky-100 bg-sky-50 p-5 font-bold text-sky-900 hover:bg-sky-100 transition-colors"
+            >
+              Trade License Dubai
+            </Link>
+            <Link
+              to="/en/investor-visa-uae"
+              className="rounded-2xl border border-sky-100 bg-sky-50 p-5 font-bold text-sky-900 hover:bg-sky-100 transition-colors"
+            >
+              Investor Visa UAE
+            </Link>
           </div>
         </div>
       </section>

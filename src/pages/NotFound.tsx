@@ -1,10 +1,22 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import {
   TypingAnimation,
   DEFAULT_TYPING_SPEED,
 } from "../components/motions/TypingAnimation";
+import { applySeo } from "../lib/seo";
 
 const NotFound = () => {
+  useEffect(() => {
+    applySeo({
+      title: "Page Not Found | Taked",
+      description: "The page you are looking for does not exist.",
+      path: window.location.pathname,
+      language: "en",
+      noindex: true,
+    });
+  }, []);
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="text-center">
