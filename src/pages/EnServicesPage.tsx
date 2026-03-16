@@ -34,9 +34,9 @@ import { Link } from "react-router-dom";
 export const EnServicesPage = () => {
   useEffect(() => {
     applySeo({
-      title: "Company Formation & PRO Services in Dubai | Taked",
+      title: "Business Setup Services Dubai | Trade License, PRO & Investor Visa",
       description:
-        "Explore Taked services for business setup in Dubai, trade licensing, investor visa processing, residency, and legal support in the UAE.",
+        "Dubai business setup services including trade license, investor visa, PRO support, residency, and legal processing across the UAE.",
       path: "/en/services",
       language: "en",
       keywords:

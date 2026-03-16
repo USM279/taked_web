@@ -5,9 +5,9 @@ import { applySeo } from "../lib/seo";
 export const EnFreeZoneCompanySetupPage = () => {
   useEffect(() => {
     applySeo({
-      title: "Free Zone Company Setup Dubai | Cost & Process - Taked",
+      title: "Free Zone Company Setup Dubai | Cost, Visa Options & Zones",
       description:
-        "Set up a free zone company in Dubai with a clear comparison of zones, expected costs, licensing requirements, and visa options.",
+        "Compare Dubai free zones, setup costs, visa eligibility, and licensing options to choose the right company formation route.",
       path: "/en/free-zone-company-setup",
       language: "en",
       keywords:

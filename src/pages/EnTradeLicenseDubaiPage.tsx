@@ -5,9 +5,9 @@ import { applySeo } from "../lib/seo";
 export const EnTradeLicenseDubaiPage = () => {
   useEffect(() => {
     applySeo({
-      title: "Trade License Dubai | Issue or Renew Fast - Taked",
+      title: "Trade License Dubai | Fast Issue, Renewal & Cost Support",
       description:
-        "Trade license Dubai support for first-time issuance and renewals with full documentation checks and compliance follow-up.",
+        "Issue or renew a Dubai trade license with help on activity selection, approvals, renewal steps, and expected costs.",
       path: "/en/trade-license-dubai",
       language: "en",
       keywords:

@@ -12,9 +12,9 @@ import { applySeo } from "../lib/seo";
 export const EnPage = () => {
   useEffect(() => {
     applySeo({
-      title: "Taked | Business Setup Services in Dubai & UAE",
+      title: "Business Setup Dubai & UAE | Trade License & Investor Visa | Taked",
       description:
-        "Taked provides company formation in Dubai and UAE, trade license support, investor visa services, and full PRO/government processing.",
+        "Business setup in Dubai and the UAE with trade license, investor visa, PRO services, and step-by-step company formation support.",
       path: "/en",
       language: "en",
       keywords:

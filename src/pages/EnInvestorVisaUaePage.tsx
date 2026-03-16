@@ -5,9 +5,9 @@ import { applySeo } from "../lib/seo";
 export const EnInvestorVisaUaePage = () => {
   useEffect(() => {
     applySeo({
-      title: "Investor Visa UAE | Apply and Renew - Taked",
+      title: "Investor Visa UAE | Requirements, Cost & Renewal | Taked",
       description:
-        "Investor visa UAE service for entrepreneurs and company owners, including file preparation, process tracking, and renewal support.",
+        "Apply for an investor visa in the UAE with support for eligibility, paperwork, medical, Emirates ID, and renewal.",
       path: "/en/investor-visa-uae",
       language: "en",
       keywords:

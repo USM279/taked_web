@@ -113,9 +113,9 @@ export const EnContactPage = () => {
 
   useEffect(() => {
     applySeo({
-      title: "Contact Taked | Business Setup Support in Dubai",
+      title: "Contact Business Setup Experts in Dubai | Taked",
       description:
-        "Contact Taked for company setup in Dubai and UAE, trade license assistance, investor visa processing, and PRO/government services.",
+        "Speak with Taked for Dubai business setup, trade license, investor visa, and UAE PRO support. Fast response by phone, WhatsApp, or form.",
       path: "/en/contact-us",
       language: "en",
       alternates: {

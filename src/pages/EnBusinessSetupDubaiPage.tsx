@@ -5,9 +5,9 @@ import { applySeo } from "../lib/seo";
 export const EnBusinessSetupDubaiPage = () => {
   useEffect(() => {
     applySeo({
-      title: "Business Setup Dubai | Fast Company Formation - Taked",
+      title: "Business Setup Dubai | Cost, Steps & Company Formation | Taked",
       description:
-        "End-to-end business setup in Dubai: activity selection, trade license issuance, investor residency support, and launch guidance.",
+        "Start a company in Dubai with clear setup steps, trade license support, investor visa processing, and practical cost guidance.",
       path: "/en/business-setup-dubai",
       language: "en",
       keywords:

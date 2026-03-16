@@ -5,9 +5,9 @@ import { applySeo } from "../lib/seo";
 export const ArTradeLicenseDubaiPage = () => {
   useEffect(() => {
     applySeo({
-      title: "رخصة تجارية دبي | إصدار وتجديد بسرعة - تأكيد",
+      title: "رخصة تجارية دبي | إصدار سريع وتجديد أون لاين | تأكيد",
       description:
-        "إصدار رخصة تجارية دبي وتجديدها أون لاين مع متابعة كاملة للمتطلبات والموافقات وتجنب الأخطاء الشائعة.",
+        "إصدار رخصة تجارية دبي أو تجديدها أون لاين مع متابعة الاسم التجاري والنشاط والموافقات حتى استلام الرخصة.",
       path: "/ar/trade-license-dubai",
       language: "ar",
       keywords:

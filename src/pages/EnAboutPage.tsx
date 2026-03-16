@@ -36,9 +36,9 @@ export const EnAboutPage = () => {
 
   useEffect(() => {
     applySeo({
-      title: "About Taked | Business Setup Experts in UAE",
+      title: "About Taked | Dubai Business Setup & PRO Experts",
       description:
-        "Learn about Taked, our experience in Dubai company formation, and our mission to simplify government and business services across the UAE.",
+        "Learn about Taked, our Dubai company formation experience, and how we simplify trade licensing, investor visas, and PRO services across the UAE.",
       path: "/en/about-us",
       language: "en",
       alternates: {
