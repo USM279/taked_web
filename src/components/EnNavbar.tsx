@@ -44,6 +44,12 @@ export const EnNavbar = () => {
               Services
             </Link>
             <Link
+              to="/en/blog"
+              className="text-gray-700 hover:text-sky-900 transition-colors"
+            >
+              Blog
+            </Link>
+            <Link
               to="/en/contact-us"
               className="text-gray-700 hover:text-sky-900 transition-colors"
             >
@@ -103,6 +109,13 @@ export const EnNavbar = () => {
                   onClick={() => setIsOpen(false)}
                 >
                   Services
+                </Link>
+                <Link
+                  to="/en/blog"
+                  className="text-gray-700 hover:text-sky-900 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Blog
                 </Link>
                 <Link
                   to="/en/contact-us"

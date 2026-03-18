@@ -16,6 +16,12 @@ type SeoAlternates = {
   xDefault?: string;
 };
 
+export type ArticleSeoMeta = {
+  publishedAt?: string;
+  modifiedAt?: string;
+  ogImage?: string;
+};
+
 export type SeoOptions = {
   title: string;
   description: string;
@@ -27,6 +33,7 @@ export type SeoOptions = {
   alternates?: SeoAlternates;
   breadcrumb?: BreadcrumbItem[];
   faqs?: FaqItem[];
+  article?: ArticleSeoMeta;
 };
 
 const SITE_URL = (import.meta.env.VITE_SITE_URL || "https://www.takedgroup.com").replace(/\/+$/, "");
@@ -95,6 +102,7 @@ export const applySeo = ({
   alternates,
   breadcrumb = [],
   faqs = [],
+  article,
 }: SeoOptions) => {
   const pageUrl = toAbsoluteUrl(path);
   const html = document.documentElement;
@@ -109,18 +117,31 @@ export const applySeo = ({
   }
   upsertMeta("name", "robots", noindex ? "noindex, nofollow" : "index, follow");
 
+  const ogImage = article?.ogImage
+    ? toAbsoluteUrl(article.ogImage)
+    : toAbsoluteUrl(DEFAULT_OG_IMAGE);
+
   upsertMeta("property", "og:title", title);
   upsertMeta("property", "og:description", description);
   upsertMeta("property", "og:type", type);
   upsertMeta("property", "og:url", pageUrl);
   upsertMeta("property", "og:site_name", "Taked");
   upsertMeta("property", "og:locale", language === "ar" ? "ar_AE" : "en_AE");
-  upsertMeta("property", "og:image", toAbsoluteUrl(DEFAULT_OG_IMAGE));
+  upsertMeta("property", "og:image", ogImage);
+  upsertMeta("property", "og:image:width", "1200");
+  upsertMeta("property", "og:image:height", "630");
+
+  if (type === "article" && article?.publishedAt) {
+    upsertMeta("property", "article:published_time", article.publishedAt);
+  }
+  if (type === "article" && article?.modifiedAt) {
+    upsertMeta("property", "article:modified_time", article.modifiedAt);
+  }
 
   upsertMeta("name", "twitter:card", "summary_large_image");
   upsertMeta("name", "twitter:title", title);
   upsertMeta("name", "twitter:description", description);
-  upsertMeta("name", "twitter:image", toAbsoluteUrl(DEFAULT_OG_IMAGE));
+  upsertMeta("name", "twitter:image", ogImage);
 
   upsertCanonical(pageUrl);
   clearManagedTags();
@@ -222,5 +243,36 @@ export const applySeo = ({
   }
   if (faqSchema) {
     appendJsonLd(faqSchema);
+  }
+
+  if (type === "article") {
+    const articleSchema: Record<string, unknown> = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: title,
+      description,
+      url: pageUrl,
+      image: ogImage,
+      publisher: {
+        "@type": "Organization",
+        name: "Taked",
+        url: SITE_URL,
+        logo: {
+          "@type": "ImageObject",
+          url: toAbsoluteUrl("/thewebsite.png"),
+        },
+      },
+      author: {
+        "@type": "Organization",
+        name: "Taked",
+      },
+    };
+    if (article?.publishedAt) {
+      articleSchema.datePublished = article.publishedAt;
+    }
+    if (article?.modifiedAt) {
+      articleSchema.dateModified = article.modifiedAt;
+    }
+    appendJsonLd(articleSchema);
   }
 };

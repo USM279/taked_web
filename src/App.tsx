@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import { useEffect } from "react";
 import { analytics } from "./lib/analytics";
+import { AuthProvider } from "./contexts/AuthContext";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 import { ArPage } from "./pages/ArPage";
 import { EnPage } from "./pages/EnPage";
@@ -25,6 +27,19 @@ import { EnFreeZoneCompanySetupPage } from "./pages/EnFreeZoneCompanySetupPage";
 import { EnTradeLicenseDubaiPage } from "./pages/EnTradeLicenseDubaiPage";
 import { EnInvestorVisaUaePage } from "./pages/EnInvestorVisaUaePage";
 import NotFound from "./pages/NotFound";
+
+// Blog pages
+import { ArBlogPage } from "./pages/ArBlog";
+import { EnBlogPage } from "./pages/EnBlog";
+import { ArBlogPostPage } from "./pages/ArBlogPost";
+import { EnBlogPostPage } from "./pages/EnBlogPost";
+
+// Admin pages
+import { AdminLogin } from "./pages/admin/Login";
+import { AdminDashboard } from "./pages/admin/Dashboard";
+import { AdminSubmissions } from "./pages/admin/Submissions";
+import { AdminBlogList } from "./pages/admin/BlogList";
+import { AdminBlogEditor } from "./pages/admin/BlogEditor";
 
 // ✅ Enhanced Page tracking component
 function PageTracker() {
@@ -98,48 +113,65 @@ function LeadTracker() {
 
 function App() {
   return (
-    <Router>
-      <PageTracker /> {/* ✅ Page view tracking */}
-      <LeadTracker />
-      <Routes>
-        <Route path="/" element={<Navigate to="/ar" replace />} />
+    <AuthProvider>
+      <Router>
+        <PageTracker />
+        <LeadTracker />
+        <Routes>
+          <Route path="/" element={<Navigate to="/ar" replace />} />
 
-        {/* Arabic routes */}
-        <Route path="/ar" element={<ArPage />} />
-        <Route path="/ar/about-us" element={<ArAboutPage />} />
-        <Route path="/ar/services" element={<ArServicesPage />} />
-        <Route path="/ar/contact-us" element={<ArContactPage />} />
-        <Route
-          path="/ar/business-setup-dubai"
-          element={<ArBusinessSetupDubaiPage />}
-        />
-        <Route
-          path="/ar/free-zone-company-setup"
-          element={<ArFreeZoneCompanySetupPage />}
-        />
-        <Route path="/ar/trade-license-dubai" element={<ArTradeLicenseDubaiPage />} />
-        <Route path="/ar/investor-visa-uae" element={<ArInvestorVisaUaePage />} />
+          {/* Arabic routes */}
+          <Route path="/ar" element={<ArPage />} />
+          <Route path="/ar/about-us" element={<ArAboutPage />} />
+          <Route path="/ar/services" element={<ArServicesPage />} />
+          <Route path="/ar/contact-us" element={<ArContactPage />} />
+          <Route path="/ar/business-setup-dubai" element={<ArBusinessSetupDubaiPage />} />
+          <Route path="/ar/free-zone-company-setup" element={<ArFreeZoneCompanySetupPage />} />
+          <Route path="/ar/trade-license-dubai" element={<ArTradeLicenseDubaiPage />} />
+          <Route path="/ar/investor-visa-uae" element={<ArInvestorVisaUaePage />} />
+          <Route path="/ar/blog" element={<ArBlogPage />} />
+          <Route path="/ar/blog/:slug" element={<ArBlogPostPage />} />
 
-        {/* English routes */}
-        <Route path="/en" element={<EnPage />} />
-        <Route path="/en/about-us" element={<EnAboutPage />} />
-        <Route path="/en/services" element={<EnServicesPage />} />
-        <Route path="/en/contact-us" element={<EnContactPage />} />
-        <Route
-          path="/en/business-setup-dubai"
-          element={<EnBusinessSetupDubaiPage />}
-        />
-        <Route
-          path="/en/free-zone-company-setup"
-          element={<EnFreeZoneCompanySetupPage />}
-        />
-        <Route path="/en/trade-license-dubai" element={<EnTradeLicenseDubaiPage />} />
-        <Route path="/en/investor-visa-uae" element={<EnInvestorVisaUaePage />} />
+          {/* English routes */}
+          <Route path="/en" element={<EnPage />} />
+          <Route path="/en/about-us" element={<EnAboutPage />} />
+          <Route path="/en/services" element={<EnServicesPage />} />
+          <Route path="/en/contact-us" element={<EnContactPage />} />
+          <Route path="/en/business-setup-dubai" element={<EnBusinessSetupDubaiPage />} />
+          <Route path="/en/free-zone-company-setup" element={<EnFreeZoneCompanySetupPage />} />
+          <Route path="/en/trade-license-dubai" element={<EnTradeLicenseDubaiPage />} />
+          <Route path="/en/investor-visa-uae" element={<EnInvestorVisaUaePage />} />
+          <Route path="/en/blog" element={<EnBlogPage />} />
+          <Route path="/en/blog/:slug" element={<EnBlogPostPage />} />
 
-        {/* 404 */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
+          {/* Admin routes */}
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route
+            path="/admin/dashboard"
+            element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>}
+          />
+          <Route
+            path="/admin/submissions"
+            element={<ProtectedRoute><AdminSubmissions /></ProtectedRoute>}
+          />
+          <Route
+            path="/admin/blog"
+            element={<ProtectedRoute><AdminBlogList /></ProtectedRoute>}
+          />
+          <Route
+            path="/admin/blog/new"
+            element={<ProtectedRoute><AdminBlogEditor /></ProtectedRoute>}
+          />
+          <Route
+            path="/admin/blog/:id"
+            element={<ProtectedRoute><AdminBlogEditor /></ProtectedRoute>}
+          />
+
+          {/* 404 */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

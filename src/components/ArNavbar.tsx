@@ -46,6 +46,12 @@ export const ArNavbar = () => {
               خدماتنا
             </Link>
             <Link
+              to="/ar/blog"
+              className="text-gray-700 hover:text-sky-900 transition-colors"
+            >
+              المدونة
+            </Link>
+            <Link
               to="/ar/contact-us"
               className="text-gray-700 hover:text-sky-900 transition-colors"
             >
@@ -105,6 +111,13 @@ export const ArNavbar = () => {
                   onClick={() => setIsOpen(false)}
                 >
                   خدماتنا
+                </Link>
+                <Link
+                  to="/ar/blog"
+                  className="text-xl text-gray-700 hover:text-sky-900 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  المدونة
                 </Link>
                 <Link
                   to="/ar/contact-us"

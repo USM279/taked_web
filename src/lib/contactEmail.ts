@@ -1,3 +1,5 @@
+import { saveSubmission } from "./firestore";
+
 type ContactEmailPayload = {
   name: string;
   email: string;
@@ -16,6 +18,19 @@ export const sendContactEmail = async (payload: ContactEmailPayload) => {
       ? "غير محدد"
       : "Not specified";
 
+  const pageUrl = typeof window !== "undefined" ? window.location.href : "";
+
+  // Save to Firestore (non-blocking — don't throw if it fails)
+  saveSubmission({
+    name: payload.name,
+    email: payload.email,
+    phone: payload.phone,
+    service: safeService,
+    message: payload.message,
+    locale: payload.locale,
+    pageUrl,
+  }).catch((err) => console.warn("Firestore save failed:", err));
+
   const formData = new FormData();
   formData.append("access_key", WEB3FORMS_ACCESS_KEY);
   formData.append("name", payload.name);
@@ -24,10 +39,7 @@ export const sendContactEmail = async (payload: ContactEmailPayload) => {
   formData.append("service", safeService);
   formData.append("message", payload.message);
   formData.append("locale", payload.locale);
-  formData.append(
-    "page_url",
-    typeof window !== "undefined" ? window.location.href : ""
-  );
+  formData.append("page_url", pageUrl);
 
   const response = await fetch("https://api.web3forms.com/submit", {
     method: "POST",
@@ -35,8 +47,6 @@ export const sendContactEmail = async (payload: ContactEmailPayload) => {
   });
 
   const data = await response.json();
-
-  console.log("Web3Forms response:", data);
 
   if (!data.success) {
     throw new Error(data.message || "Web3Forms submission failed");

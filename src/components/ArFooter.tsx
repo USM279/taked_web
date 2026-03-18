@@ -55,6 +55,7 @@ export const ArFooter = () => {
                   { name: "الصفحة الرئيسية", href: "/ar" },
                   { name: "خدماتنا", href: "/ar/services" },
                   { name: "من نحن", href: "/ar/about-us" },
+                  { name: "المدونة", href: "/ar/blog" },
                   { name: "اتصل بنا", href: "/ar/contact-us" },
                 ].map((link) => (
                   <li key={link.name}>
